@@ -11,11 +11,13 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    # Use latest kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -122,6 +124,12 @@
   };
 
   powerManagement.enable = true;
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
