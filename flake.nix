@@ -12,34 +12,49 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      flake-parts,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       name = "splashdown";
     in
-    {
-      nixosConfigurations.${name} = nixpkgs.lib.nixosSystem {
-        inherit system;
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.shaver = import ./home.nix;
-            };
-          }
+      flake = {
+        nixosConfigurations.${name} = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-          inputs.determinate.nixosModules.default
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.shaver = import ./home.nix;
+              };
+            }
 
-          ./hosts/${name}
-        ];
+            inputs.determinate.nixosModules.default
+
+            ./hosts/${name}
+          ];
+        };
+
+        formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
       };
-
-      formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
     };
 }
