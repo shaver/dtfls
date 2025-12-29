@@ -116,8 +116,18 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git # for flake management
+    lutris
     #  wget
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    extraPackages = [ pkgs.gamemode ];
+  };
 
   programs.neovim = {
     enable = true;
