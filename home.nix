@@ -133,6 +133,7 @@ in
     nix-info
     nixpkgs-fmt
     nixfmt-rfc-style
+    nh
 
     jq
     curl
