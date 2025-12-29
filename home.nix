@@ -8,9 +8,11 @@ let
   configRepo = "${config.home.homeDirectory}/nixconfig";
 in
 {
-  home.username = "shaver";
-  home.homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/shaver";
-  home.stateVersion = "25.11";
+  home = {
+    username = "shaver";
+    homeDirectory = lib.mkDefault "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/shaver";
+    stateVersion = "25.11";
+  };
 
   programs = {
     direnv.nix-direnv.enable = true;
