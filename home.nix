@@ -148,4 +148,11 @@ in
     nerd-fonts.jetbrains-mono
   ];
 
+  programs.ssh.matchBlocks."*".addKeysToAgent = "yes";
+
+  services.ssh-agent = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
 }
