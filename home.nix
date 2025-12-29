@@ -119,6 +119,8 @@ in
     };
   };
 
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     # Unix tools
     ripgrep # Better `grep`
@@ -140,6 +142,10 @@ in
     jq
     curl
     coreutils
+
+    # Fonts
+    nerd-fonts.meslo-lg
+    nerd-fonts.jetbrains-mono
   ];
 
 }
