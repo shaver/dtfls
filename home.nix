@@ -100,6 +100,8 @@ in
         mermaid-cli
         statix
         cargo
+        unzip
+        gcc
       ];
     };
   };
