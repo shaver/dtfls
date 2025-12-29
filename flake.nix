@@ -27,15 +27,16 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.shaver = import ./home.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.shaver = import ./home.nix;
+            };
           }
 
           inputs.determinate.nixosModules.default
 
-          ./configuration.nix # includes hardware-configuration.nix
+          ./hosts/${name}
         ];
       };
 
