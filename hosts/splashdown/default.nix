@@ -34,6 +34,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  programs.zsh.enable = true;
   # Set your time zone.
   time.timeZone = "America/Toronto";
 
@@ -101,6 +102,7 @@
       #  kdePackages.kate
       #  thunderbird
     ];
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
