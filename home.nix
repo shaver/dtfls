@@ -146,6 +146,9 @@ in
     # Fonts
     nerd-fonts.meslo-lg
     nerd-fonts.jetbrains-mono
+
+    # for jj
+    meld
   ];
 
   programs.ssh.matchBlocks."*".addKeysToAgent = "yes";
