@@ -23,6 +23,11 @@ in
       syntaxHighlighting.enable = true;
     };
 
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     # Type `z <pat>` to cd to some directory
     zoxide.enable = true;
 
