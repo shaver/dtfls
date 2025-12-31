@@ -149,6 +149,12 @@ in
 
     # for jj
     meld
+
+    # for niri
+    fuzzel
+    alacritty
+    hyprlock
+    xwayland-satellite
   ];
 
   programs.ssh.matchBlocks."*".addKeysToAgent = "yes";
