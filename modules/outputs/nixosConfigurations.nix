@@ -17,7 +17,7 @@ in
       in
       nixpkgs.lib.nixosSystem {
         # these will live in modules/hosts/${hostname}/configuration.nix
-        modules = [ flake.modules.nixosConfigurations.${hostname} ];
+        modules = [ flake.modules.nixos.${hostname} ];
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
