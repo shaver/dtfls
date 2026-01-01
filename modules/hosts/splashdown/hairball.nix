@@ -24,6 +24,7 @@
       ++ (with config.flake.modules.nixos; [
         steam
         desktop-audio
+        nix
       ]);
 
       # Bootloader.
@@ -34,11 +35,6 @@
         # Use latest kernel.
         kernelPackages = pkgs.linuxPackages_latest;
       };
-
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
 
       networking.hostName = "splashdown"; # Define your hostname.
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
