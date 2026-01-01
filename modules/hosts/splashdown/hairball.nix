@@ -25,6 +25,7 @@
         steam
         desktop-audio
         nix
+        desktop
       ]);
 
       # Bootloader.
@@ -63,20 +64,6 @@
         LC_PAPER = "en_CA.UTF-8";
         LC_TELEPHONE = "en_CA.UTF-8";
         LC_TIME = "en_CA.UTF-8";
-      };
-
-      # Enable the X11 windowing system.
-      # You can disable this if you're only using the Wayland session.
-      services.xserver.enable = true;
-
-      # Enable the KDE Plasma Desktop Environment.
-      services.displayManager.sddm.enable = true;
-      services.desktopManager.plasma6.enable = true;
-
-      # Configure keymap in X11
-      services.xserver.xkb = {
-        layout = "us";
-        variant = "";
       };
 
       # Enable CUPS to print documents.
@@ -138,8 +125,6 @@
 
       # Enable the OpenSSH daemon.
       services.openssh.enable = true;
-
-      programs.niri.enable = true;
 
       # Open ports in the firewall.
       # networking.firewall.allowedTCPPorts = [ ... ];
