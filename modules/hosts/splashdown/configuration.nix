@@ -11,14 +11,14 @@
     }:
     {
       imports = [
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.shaver = import ../../../home.nix;
-          };
-        }
+        # inputs.home-manager.nixosModules.home-manager
+        # {
+        #   home-manager = {
+        #     useGlobalPkgs = true;
+        #     useUserPackages = true;
+        #     users.shaver = import ../../../home.nix;
+        #   };
+        # }
         inputs.determinate.nixosModules.default
       ]
       ++ (with config.flake.modules.nixos; [
@@ -26,6 +26,7 @@
         desktop-audio
         nix
         desktop
+        shaver
       ])
       ++ (with config.flake.commonModules; [
         sudo
