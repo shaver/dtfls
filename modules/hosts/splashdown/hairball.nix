@@ -26,6 +26,9 @@
         desktop-audio
         nix
         desktop
+      ])
+      ++ (with config.flake.commonModules; [
+        sudo
       ]);
 
       # Bootloader.
