@@ -57,25 +57,6 @@
         LC_TIME = "en_CA.UTF-8";
       };
 
-      # Define a user account. Don't forget to set a password with ‘passwd’.
-      users.users.shaver = {
-        isNormalUser = true;
-        description = "Mike Shaver";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        packages = with pkgs; [
-          discord
-          #  kdePackages.kate
-          #  thunderbird
-        ];
-        shell = pkgs.zsh;
-      };
-
-      # Install firefox.
-      programs.firefox.enable = true;
-
       environment.systemPackages = with pkgs; [
         git # for flake management
       ];
