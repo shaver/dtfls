@@ -11,14 +11,6 @@
     }:
     {
       imports = [
-        # inputs.home-manager.nixosModules.home-manager
-        # {
-        #   home-manager = {
-        #     useGlobalPkgs = true;
-        #     useUserPackages = true;
-        #     users.shaver = import ../../../home.nix;
-        #   };
-        # }
         inputs.determinate.nixosModules.default
       ]
       ++ (with config.flake.modules.nixos; [
