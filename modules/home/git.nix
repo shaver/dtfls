@@ -1,11 +1,10 @@
-{ config, ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.git =
-    let
-      homeDirectory = "/home/shaver";
-      configRepo = "${homeDirectory}/dtfls";
-    in
     { config, ... }:
+    let
+      configRepo = "${config.home.homeDirectory}/dtfls";
+    in
     {
       programs = {
         git = {
