@@ -24,6 +24,35 @@
       };
 
       programs = {
+        bat.enable = true;
+        jq.enable = true;
+        btop.enable = true;
+
+        irssi = {
+          enable = true;
+          networks.sizone = {
+            server = {
+              address = "irc.sizone.org";
+              autoConnect = true;
+            };
+            nick = "shaver";
+            channels."#tek".autoJoin = true;
+          };
+        };
+
+        tmux = {
+          enable = true;
+          shortcut = "a";
+        };
+
+        nh = {
+          enable = true;
+          clean.enable = true;
+          flake = "${config.home.homeDirectory}/dtfls"; # default for "os switch"
+        };
+
+        htop.enable = true;
+
         direnv.nix-direnv.enable = true;
 
         zsh = {
@@ -112,7 +141,6 @@
         nix-info
         nixpkgs-fmt
         nixfmt-rfc-style
-        nh
 
         jq
         curl
