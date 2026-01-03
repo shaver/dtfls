@@ -1,32 +1,43 @@
 { config, ... }:
 {
-  flake.modules.homeManager.git = {
-    programs = {
-      git = {
-        enable = true;
-        settings = {
-          user = {
-            name = "Mike Shaver";
-            email = "shaver@off.net";
+  flake.modules.homeManager.git =
+    let
+      homeDirectory = "/home/shaver";
+      configRepo = "${homeDirectory}/dtfls";
+    in
+    { config, ... }:
+    {
+      programs = {
+        git = {
+          enable = true;
+          settings = {
+            user = {
+              name = "Mike Shaver";
+              email = "shaver@off.net";
+            };
+            alias = {
+              ci = "commit";
+            };
+            init.defaultBranch = "main";
+            push.autoSetupRemote = "true";
+            branch.autoSetupRebase = "always";
+            push.default = "current";
+            pull.rebase = "true";
           };
-          alias = {
-            ci = "commit";
-          };
-          init.defaultBranch = "main";
-          push.autoSetupRemote = "true";
-          branch.autoSetupRebase = "always";
-          push.default = "current";
-          pull.rebase = "true";
+          ignores = [
+            "*~"
+            "*.swp"
+          ];
         };
-        ignores = [
-          "*~"
-          "*.swp"
-        ];
+        lazygit.enable = true;
+        jujutsu.enable = true;
       };
-      lazygit.enable = true;
-      jujutsu.enable = true;
+
+      xdg.configFile.jj = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/jj";
+        recursive = true;
+      };
     };
-  };
 
   flake.modules.homeManager.git-fastly = {
     programs.git = {

@@ -88,11 +88,6 @@
 
       # use the "raw" nvim config from this repo
       xdg.configFile = {
-        jj = {
-          source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/jj";
-          recursive = true;
-        };
-
         nvim = {
           source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/nvim";
           recursive = true;
