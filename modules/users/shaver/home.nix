@@ -14,6 +14,7 @@
         git
         neovim
         shell
+        niri
       ];
       home = {
         username = "shaver";
@@ -78,15 +79,6 @@
         # Fonts
         nerd-fonts.meslo-lg
         nerd-fonts.jetbrains-mono
-
-        # for jj
-        meld
-
-        # for niri
-        fuzzel
-        alacritty
-        hyprlock
-        xwayland-satellite
       ];
 
       programs.ssh.matchBlocks."*".addKeysToAgent = "yes";

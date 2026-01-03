@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.git =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       configRepo = "${config.home.homeDirectory}/dtfls";
     in
@@ -36,6 +36,8 @@
         source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/jj";
         recursive = true;
       };
+
+      home.packages = [ pkgs.meld ]; # for diff-munging
     };
 
   flake.modules.homeManager.git-fastly = {
