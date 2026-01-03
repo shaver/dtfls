@@ -15,7 +15,9 @@
         neovim
         shell
         niri
+        ssh
       ];
+
       home = {
         username = "shaver";
         homeDirectory = if pkgs.stdenv.isDarwin then "/Users/shaver" else "/home/shaver";
@@ -26,6 +28,7 @@
         bat.enable = true;
         jq.enable = true;
         btop.enable = true;
+        htop.enable = true;
 
         irssi = {
           enable = true;
@@ -50,7 +53,6 @@
           flake = "${config.home.homeDirectory}/dtfls"; # default for "os switch"
         };
 
-        htop.enable = true;
       };
 
       fonts.fontconfig.enable = true;
@@ -61,8 +63,8 @@
         fd
         sd
         tree
-        gnumake
 
+        gnumake
         clang
 
         # Nix dev
@@ -80,13 +82,5 @@
         nerd-fonts.meslo-lg
         nerd-fonts.jetbrains-mono
       ];
-
-      programs.ssh.matchBlocks."*".addKeysToAgent = "yes";
-
-      services.ssh-agent = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-
     };
 }
