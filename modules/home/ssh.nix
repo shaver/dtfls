@@ -9,9 +9,7 @@
         enableDefaultConfig = false;
 
         matchBlocks = {
-          # these are sorted lexicographically by key when emtted into
-          # .ssh/config. lib.hm.dag.* did not work to override that
-          "all" = {
+          "*" = {
             host = "*";
             addKeysToAgent = "yes";
             identityFile = "~/.ssh/id_ed25519";
