@@ -1,6 +1,9 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.shaver =
+  # Common module for shaver user. Configurations should include
+  # shaver-personal or shaver-work rather than including shaver-base
+  # directly.
+  flake.modules.nixos.shaver-base =
     {
       lib,
       config,
@@ -27,10 +30,6 @@
         inputs.home-manager.nixosModules.home-manager
       ];
 
-      home-manager.users.shaver = {
-        imports = [
-          inputs.self.modules.homeManager.shaver
-        ];
-      };
+      home-manager.backupFileExtension = "hmbckp";
     };
 }

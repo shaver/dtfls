@@ -18,7 +18,7 @@
         desktop-audio
         nix
         desktop
-        shaver
+        shaver-personal
       ])
       ++ (with config.flake.commonModules; [
         sudo

@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.shaver =
+  flake.modules.homeManager.shaver-base =
     {
       pkgs,
       config,
@@ -29,18 +29,6 @@
         jq.enable = true;
         btop.enable = true;
         htop.enable = true;
-
-        irssi = {
-          enable = true;
-          networks.sizone = {
-            server = {
-              address = "irc.sizone.org";
-              autoConnect = true;
-            };
-            nick = "shaver";
-            channels."#tek".autoJoin = true;
-          };
-        };
 
         tmux = {
           enable = true;
