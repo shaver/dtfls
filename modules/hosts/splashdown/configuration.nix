@@ -18,6 +18,7 @@
         desktop-audio
         nix
         desktop
+        distrobox
         shaver-personal
       ])
       ++ (with config.flake.commonModules; [
