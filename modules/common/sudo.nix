@@ -1,14 +1,11 @@
 # nopasswd for shaver
-{ ... }:
 {
-  flake.commonModules.sudo =
-    { ... }:
-    {
+  flake.commonModules.sudo = {
 
-      security = {
-        sudo.extraConfig = ''
-          shaver ALL=(ALL) NOPASSWD: SETENV: ALL
-        '';
-      };
+    security = {
+      sudo.extraConfig = ''
+        shaver ALL=(ALL) NOPASSWD: SETENV: ALL
+      '';
     };
+  };
 }

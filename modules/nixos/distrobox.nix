@@ -1,4 +1,3 @@
-{ inputs, config, ... }:
 {
   # Distrobox support, configured as per https://wiki.nixos.org/wiki/Distrobox
   flake.modules.nixos.distrobox =
