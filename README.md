@@ -14,7 +14,6 @@ denizens of the [vimjoyer discord](https://discord.gg/4PRCEduR)
 - splashdown:
   - turn off screens from idle
   - some sort of desktop setup
-- ssh authorized keys and config
 - sops for private keys!
 - tmux configuration
 - alacritty configuration
