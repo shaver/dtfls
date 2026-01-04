@@ -14,5 +14,8 @@
       ++ (with inputs.self.modules.homeManager; [
         irssi
       ]);
+      home.packages = with pkgs; [
+        signal-desktop
+      ];
     };
 }
