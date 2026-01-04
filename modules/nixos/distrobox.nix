@@ -11,7 +11,7 @@
       environment = {
         systemPackages = [ pkgs.distrobox ];
         etc."distrobox/distrobox.conf".text = ''
-          container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro /etc/static/profiles/per-user:/etc/static/profiles/per-user:ro"
+          container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro"
         '';
       };
 
@@ -20,13 +20,13 @@
         subGidRanges = [
           {
             count = 65536;
-            startGid = 1000;
+            startGid = 1001;
           }
         ];
         subUidRanges = [
           {
             count = 65536;
-            startUid = 1000;
+            startUid = 1001;
           }
         ];
       };
