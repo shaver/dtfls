@@ -19,6 +19,7 @@
         nix
         desktop
         shaver-personal
+        base-networking
       ])
       ++ (with config.flake.commonModules; [
         sudo
@@ -31,11 +32,6 @@
 
         # Use latest kernel.
         kernelPackages = pkgs.linuxPackages_latest;
-      };
-
-      networking = {
-        hostName = "splashdown"; # Define your hostname.
-        networkmanager.enable = true;
       };
 
       programs.zsh.enable = true;
