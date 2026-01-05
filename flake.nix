@@ -15,6 +15,10 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

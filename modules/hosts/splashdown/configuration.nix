@@ -14,7 +14,7 @@
         inputs.determinate.nixosModules.default
       ]
       ++ (with config.flake.modules.nixos; [
-        steam
+        gaming
         desktop-audio
         nix
         desktop
