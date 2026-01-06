@@ -10,23 +10,18 @@ in
 {
   flake.nixosConfigurations = {
     # later, this will be a map that assembles all the hosts
-    splashdown =
-      let
+    splashdown = nixpkgs.lib.nixosSystem {
+      # these will live in modules/hosts/${hostname}/configuration.nix
+      modules = [
+        flake.modules.nixos.splashdown
+        {
+          networking.hostName = "splashdown";
+        }
+      ];
+      pkgs = import nixpkgs {
         system = "x86_64-linux";
-        hostname = "splashdown";
-      in
-      nixpkgs.lib.nixosSystem {
-        # these will live in modules/hosts/${hostname}/configuration.nix
-        modules = [
-          flake.modules.nixos.${hostname}
-          {
-            networking.hostName = "splashdown";
-          }
-        ];
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        config.allowUnfree = true;
       };
+    };
   };
 }
