@@ -2,7 +2,10 @@
   flake.modules.homeManager.shell = {
 
     programs = {
-      direnv.nix-direnv.enable = true;
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
 
       zsh = {
         enable = true;
@@ -27,10 +30,10 @@
             style_root = "red bold";
             format = "[$user]($style) ";
             disabled = false;
-            show_always = true;
+            show_always = false;
           };
           hostname = {
-            ssh_only = false;
+            ssh_only = true;
             ssh_symbol = "🌐 ";
             format = "on [$hostname](bold red) ";
             trim_at = ".local";
