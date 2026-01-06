@@ -1,10 +1,18 @@
 {
   flake.modules.nixos.base-networking = {
-    services.avahi = {
+    services.resolved = {
       enable = true;
-      nssmdns4 = true; # leave `nssmdns6` disabled to avoid timeouts
+      domains = [ "local" ];
+      llmnr = "false";
+      extraConfig = ''
+        MulticastDNS=true
+      '';
     };
 
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager.enable = true;
+      # firewall interferes with mDNS. TODO: narrower exemption?
+      firewall.enable = false;
+    };
   };
 }
