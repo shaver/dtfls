@@ -19,6 +19,12 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -29,24 +35,29 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+
       inherit (nixpkgs.lib.fileset) toList fileFilter;
       mkImport =
         path: toList (fileFilter (file: file.hasExt "nix" && !(nixpkgs.lib.hasPrefix "_" file.name)) path);
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
+      inherit systems;
 
       imports = [
         flake-parts.flakeModules.modules
       ]
       ++ (mkImport ./modules);
 
-      flake = {
-        formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
-      };
+      # build formatters for each system
+      flake.formatter = builtins.listToAttrs (
+        map (system: {
+          name = system;
+          value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+        }) systems
+      );
     };
 }
