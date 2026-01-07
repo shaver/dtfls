@@ -20,5 +20,12 @@ in
     # later, this will be a map that assembles all the hosts
     GWJ1G39KMF = work-laptop;
     inherit work-laptop;
+    daltron = nix-darwin.lib.darwinSystem {
+      modules = [ flake.modules.darwin.daltron ];
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
+    };
   };
 }
