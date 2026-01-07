@@ -2,12 +2,13 @@
   flake.modules.nixos.splashdown = { pkgs, ... }: {
     imports = [ inputs.determinate.nixosModules.default ]
       ++ (with config.flake.modules.nixos; [
+        base-system
+        base-networking
         gaming
         desktop-audio
         nix
         desktop
         shaver-personal
-        base-networking
       ]) ++ (with config.flake.commonModules; [ sudo ]);
 
     powerManagement.enable = true;
