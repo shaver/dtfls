@@ -1,5 +1,7 @@
-{
+{ config, ... }: {
   flake.modules.nixos.base-system = { pkgs, lib, ... }: {
+    imports = [ config.flake.modules.nixos.base-networking ];
+
     # Bootloader.
     boot = {
       loader.systemd-boot.enable = lib.mkDefault true;

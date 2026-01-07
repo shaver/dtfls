@@ -2,7 +2,6 @@
   flake.modules.nixos.splashdown = { pkgs, ... }: {
     imports = [ inputs.determinate.nixosModules.default ]
       ++ (with config.flake.modules.nixos; [
-        base-system
         gaming
         desktop-audio
         nix
