@@ -13,11 +13,16 @@
     ];
 
   };
+
   flake.modules.darwin.shaver-personal = {
-    imports = [ config.flake.modules.darwin.shaver-base ];
+    imports = with config.flake.modules.darwin; [
+      shaver-base
+      aerospace
+    ];
+
     home-manager.users.shaver = {
-      imports = [
-        config.flake.modules.homeManager.shaver-personal-darwin
+      imports = with config.flake.modules.homeManager; [
+        shaver-personal-darwin
       ];
     };
 
