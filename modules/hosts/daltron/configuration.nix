@@ -8,6 +8,7 @@
       ]
       ++ (with config.flake.modules.darwin; [
         base-system
+        shaver-personal
       ])
       ++ (with config.flake.commonModules; [ sudo ]);
     };

@@ -5,6 +5,11 @@
     {
       imports = [ ];
 
+      users.users.shaver = {
+        name = "shaver";
+        home = "/Users/shaver";
+      };
+
       programs.zsh.enable = true;
       # Set your time zone.
       time.timeZone = "America/Toronto";

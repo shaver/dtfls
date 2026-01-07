@@ -7,6 +7,7 @@
     {
       pkgs,
       config,
+      lib,
       ...
     }:
     {
@@ -14,7 +15,6 @@
         git
         neovim
         shell
-        niri
         ssh
       ];
 

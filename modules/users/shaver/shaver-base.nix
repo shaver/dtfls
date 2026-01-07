@@ -32,4 +32,23 @@
 
       home-manager.backupFileExtension = "hmbckp";
     };
+
+  flake.modules.darwin.shaver-base =
+    {
+      lib,
+      config,
+      pkgs,
+      ...
+    }:
+    {
+
+      programs.zsh.enable = true;
+
+      # bring in Home Manager
+      imports = [
+        inputs.home-manager.darwinModules.home-manager
+      ];
+
+      home-manager.backupFileExtension = "hmbckp";
+    };
 }
