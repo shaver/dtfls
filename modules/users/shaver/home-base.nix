@@ -41,6 +41,13 @@
           flake = "${config.home.homeDirectory}/dtfls"; # default for "os switch"
         };
 
+        gh = {
+          enable = true;
+          settings.git_protocol = "https";
+          settings.extensions = [ "yusukebe/gh-markdown-preview" ];
+        };
+        gh-dash.enable = true;
+
       };
 
       fonts.fontconfig.enable = true;
