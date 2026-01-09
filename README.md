@@ -12,7 +12,6 @@ denizens of the [vimjoyer discord](https://discord.gg/4PRCEduR)
 
 - set up the nix-darwin stuff
 - splashdown:
-  - turn off screens from idle
   - some sort of desktop setup
 - sops for private keys!
 - tmux configuration
