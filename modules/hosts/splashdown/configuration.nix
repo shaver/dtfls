@@ -9,6 +9,7 @@
         nix
         desktop
         shaver-personal
+        nvidia-hardware
       ]) ++ (with config.flake.commonModules; [ sudo ]);
 
     powerManagement.enable = true;
