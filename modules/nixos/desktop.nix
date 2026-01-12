@@ -30,5 +30,11 @@
     };
 
     programs.niri.enable = true;
+
+    # for printer discovery?
+    services.avahi = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }
