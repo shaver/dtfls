@@ -1,17 +1,11 @@
 {
-  flake.commonModules.nix =
-    { pkgs, ... }:
-    {
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+  flake.commonModules.nix = { pkgs, ... }: {
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-      environment.systemPackages = [
-        pkgs.rippkgs
-      ];
+    environment.systemPackages = [ pkgs.rippkgs ];
 
-      # condition on detsys use? mkIf nix.package == blah blah
-      nix.enable = false; # let detsys manage it
-    };
+    # detsys and nix-darwin don't get along
+    # condition on detsys use? mkIf nix.package == blah blah
+    nix.enable = !pkgs.stdenv.isDarwin;
+  };
 }
