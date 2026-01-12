@@ -15,6 +15,8 @@
       firewall.enable = false;
     };
 
+    services.tailscale = { enable = true; };
+
     environment.systemPackages = [ pkgs.ethtool ];
   };
 }
