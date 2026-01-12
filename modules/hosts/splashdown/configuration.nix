@@ -15,7 +15,6 @@
         shaver-personal-desktop
         nvidia-hardware
         shaver-personal
-      ]) ++ (with config.flake.commonModules; [ sudo ]);
       ])
       ++ (with config.flake.commonModules; [
         sudo
