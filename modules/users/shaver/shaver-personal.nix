@@ -1,7 +1,5 @@
-{ config, ... }:
-{
+{ config, ... }: {
   flake.modules.nixos.shaver-personal-desktop = {
-    imports = [ config.flake.modules.nixos.shaver-personal ];
     home-manager.users.shaver = {
       imports = with config.flake.modules.homeManager; [
         shaver-3d-printing
@@ -12,7 +10,8 @@
   flake.modules.nixos.shaver-personal = {
     imports = [ config.flake.modules.nixos.shaver-base ];
     home-manager.users.shaver = {
-      imports = with config.flake.modules.homeManager; [ shaver-personal-nixos ];
+      imports = with config.flake.modules.homeManager;
+        [ shaver-personal-nixos ];
     };
 
     users.users.shaver.openssh.authorizedKeys.keys = [
@@ -29,7 +28,8 @@
     ];
 
     home-manager.users.shaver = {
-      imports = with config.flake.modules.homeManager; [ shaver-personal-darwin ];
+      imports = with config.flake.modules.homeManager;
+        [ shaver-personal-darwin ];
     };
 
     users.users.shaver.openssh.authorizedKeys.keys = [
