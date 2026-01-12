@@ -9,7 +9,6 @@
 
       environment.systemPackages = [
         pkgs.rippkgs
-        pkgs.rippkgs-index
       ];
 
       # condition on detsys use? mkIf nix.package == blah blah
