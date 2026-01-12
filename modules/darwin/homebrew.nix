@@ -5,7 +5,7 @@
       casks = [
         "alacritty"
         "discord"
-        "iterm"
+        "iterm2"
         "kitty"
       ];
     };
