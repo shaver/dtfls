@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.base-networking = {
+  flake.modules.nixos.base-networking = { pkgs, ... }: {
     services.resolved = {
       enable = true;
       domains = [ "local" ];
@@ -14,5 +14,7 @@
       # firewall interferes with mDNS. TODO: narrower exemption?
       firewall.enable = false;
     };
+
+    environment.systemPackages = [ pkgs.ethtool ];
   };
 }
