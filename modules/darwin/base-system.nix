@@ -132,7 +132,7 @@
 
       power = {
         restartAfterFreeze = true;
-        restartAfterPowerFailure = true; # not supported on laptop, sigh
+        # restartAfterPowerFailure = true; # not supported on laptop, sigh
       };
 
       system.primaryUser = lib.mkDefault "shaver";
