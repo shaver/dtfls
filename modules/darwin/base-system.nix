@@ -3,7 +3,10 @@
   flake.modules.darwin.base-system =
     { pkgs, lib, ... }:
     {
-      imports = [ ];
+      imports = with config.flake.commonModules; [
+        sudo
+        nix
+      ];
 
       users.users.shaver = {
         name = "shaver";
@@ -17,9 +20,6 @@
       services.openssh.enable = lib.mkDefault true;
 
       security.pam.services.sudo_local.touchIdAuth = true; # Use TouchID for `sudo` authentication
-
-      # condition this on use of detsys nix?
-      nix.enable = false; # conflicts with Determinate
 
       # These users can add Nix caches.
       nix.settings.trusted-users = [
