@@ -8,7 +8,7 @@
         desktop-audio
         nix
         desktop
-        shaver-personal
+        shaver-personal-desktop
         nvidia-hardware
       ]) ++ (with config.flake.commonModules; [ sudo ]);
 
