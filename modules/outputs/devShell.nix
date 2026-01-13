@@ -19,6 +19,9 @@
         git
 
         mermaid-cli
+        sops
+        age
+        ssh-to-age
       ];
 
       shellHook = ''
