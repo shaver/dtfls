@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.shell = {
+  flake.modules.homeManager.shell = { pkgs, ... }: {
 
     programs = {
       direnv = {
@@ -11,6 +11,11 @@
         enable = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
+        plugins = [{
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }];
       };
 
       fzf = {
@@ -42,5 +47,9 @@
         };
       };
     };
+
+    home.sessionVariables = { ZVM_SYSTEM_CLIPBOARD_ENABLED = "true"; };
+
+    home.packages = [ pkgs.wl-clipboard ];
   };
 }
