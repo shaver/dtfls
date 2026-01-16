@@ -1,5 +1,5 @@
 {
-  description = "splashdown system-wide flake";
+  description = "dtfls comprehensive and brilliant flake";
 
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
@@ -25,39 +25,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-parts,
-      ...
-    }@inputs:
+  outputs = { self, nixpkgs, flake-parts, ... }@inputs:
     let
-      systems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
 
       inherit (nixpkgs.lib.fileset) toList fileFilter;
-      mkImport =
-        path: toList (fileFilter (file: file.hasExt "nix" && !(nixpkgs.lib.hasPrefix "_" file.name)) path);
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
+      mkImport = path:
+        toList (fileFilter
+          (file: file.hasExt "nix" && !(nixpkgs.lib.hasPrefix "_" file.name))
+          path);
+    in flake-parts.lib.mkFlake { inherit inputs; } {
       inherit systems;
 
-      imports = [
-        flake-parts.flakeModules.modules
-      ]
-      ++ (mkImport ./modules);
+      imports = [ flake-parts.flakeModules.modules ] ++ (mkImport ./modules);
 
       # build formatters for each system
-      flake.formatter = builtins.listToAttrs (
-        map (system: {
-          name = system;
-          value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
-        }) systems
-      );
+      flake.formatter = builtins.listToAttrs (map (system: {
+        name = system;
+        value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+      }) systems);
     };
 }

@@ -1,0 +1,25 @@
+keys:
+  - &admin_shaver age15vdqyudlj60pk5mxpuepkq632d336jgaw8j66kzjzac7plsmfeqqn7lfgs
+  - &host_splashdown age1g6ne5t8a3t504ufwe5ec40vqv0le2dhpwlruz8ccjkldgg0e4yuswa6ch7
+  - &host_daltron age1sh20tr76zak2m959a6cd56nfzqylh6radx0z9f6k5lpe7jthyytqn4z7vd
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini|txt)$
+    key_groups:
+      - age:
+          - *admin_shaver
+          - *host_splashdown
+          - *host_daltron
+  - path_regex: secrets/hosts/splashdown/[^/]+\.(yaml|json|env|ini|txt)$
+    key_groups:
+      - age:
+          - *admin_shaver
+          - *host_splashdown
+  - path_regex: secrets/hosts/daltron/[^/]+\.(yaml|json|env|ini|txt)$
+    key_groups:
+      - age:
+          - *admin_shaver
+          - *host_daltron
+  - path_regex: secrets/users/shaver/[^/]+\.(yaml|json|env|ini|txt)$
+    key_groups:
+      - age:
+          - *admin_shaver
