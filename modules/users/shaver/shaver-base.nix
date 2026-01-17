@@ -17,8 +17,11 @@
     # bring in Home Manager
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-    home-manager.backupFileExtension = "hmbckp";
-    home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+    home-manager = {
+      useGlobalPkgs = true;
+      backupFileExtension = "hmbckp";
+      sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+    };
   };
 
   flake.modules.darwin.shaver-base = { lib, config, pkgs, ... }: {
