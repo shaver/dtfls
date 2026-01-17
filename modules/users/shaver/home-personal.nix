@@ -15,7 +15,8 @@
     imports = with inputs.self.modules.homeManager; [ shaver-personal ];
   };
   flake.modules.homeManager.shaver-personal = { flake, pkgs, config, ... }: {
-    imports = [ inputs.self.modules.homeManager.shaver-base ]
+    imports = with inputs.self.modules.homeManager;
+      [ shaver-base shaver-secrets ]
       ++ (with inputs.self.modules.homeManager; [ irssi ]);
   };
 }
