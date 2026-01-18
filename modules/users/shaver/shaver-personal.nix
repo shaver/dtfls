@@ -4,6 +4,7 @@
       imports = with config.flake.modules.homeManager; [
         shaver-3d-printing
         shaver-personal-nixos-desktop
+        gaming # probably want to be able to mix this into per-host config...
       ];
     };
   };

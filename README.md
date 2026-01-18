@@ -14,10 +14,12 @@ denizens of the [vimjoyer discord](https://discord.gg/4PRCEduR)
   - [x] daltron
     - [ ] [paneru](https://github.com/karinushka/paneru)?
   - [ ] work laptop with gibberish name
+    - [ ] switch to alacritty
 - splashdown:
   - [ ] some sort of desktop setup
     - [ ] try noctalia
-  - [ ] [xlm](https://github.com/Blooym/xlm/issues/27#issuecomment-2925634085)
+  - [x] [xlm](https://github.com/Blooym/xlm/issues/27#issuecomment-2925634085)
+    - [ ] wire up [auto-otp](https://github.com/shaver/ffxiv-auto-otp)
   - [ ] patched kernel ([patch][rtl-patch]; [process][nixos-kernel-hacking])
   - fix sleep?
 - [x] sops for private keys!

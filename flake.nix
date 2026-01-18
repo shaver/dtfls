@@ -37,14 +37,19 @@
       systems = [ "x86_64-linux" "aarch64-darwin" ];
 
       inherit (nixpkgs.lib.fileset) toList fileFilter;
+      inherit (nixpkgs.lib) lists hasPrefix;
       mkImport = path:
-        toList (fileFilter
-          (file: file.hasExt "nix" && !(nixpkgs.lib.hasPrefix "_" file.name))
+        toList
+        (fileFilter (file: file.hasExt "nix" && !(hasPrefix "_" file.name))
           path);
     in flake-parts.lib.mkFlake { inherit inputs; } {
       inherit systems;
 
-      imports = [ flake-parts.flakeModules.modules ] ++ (mkImport ./modules);
+      imports = lists.flatten [
+        flake-parts.flakeModules.modules
+        (mkImport ./modules)
+        (mkImport ./packages)
+      ];
 
       # build formatters for each system
       flake.formatter = builtins.listToAttrs (map (system: {
