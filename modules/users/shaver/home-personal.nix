@@ -7,6 +7,7 @@
     imports = with inputs.self.modules.homeManager; [
       shaver-personal-nixos
       niri
+      noctalia
       desktop
     ];
     home.packages = with pkgs; [ signal-desktop ];

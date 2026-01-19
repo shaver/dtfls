@@ -8,6 +8,8 @@ largely built atop the endless patience of
 [@Michael-C-Buckley](https://github.com/Michael-C-Buckley) and the other
 denizens of the [vimjoyer discord](https://discord.gg/4PRCEduR)
 
+I sometimes force-push so track at your peril
+
 ## todo
 
 - set up the nix-darwin stuff
@@ -16,10 +18,9 @@ denizens of the [vimjoyer discord](https://discord.gg/4PRCEduR)
   - [ ] work laptop with gibberish name
     - [ ] switch to alacritty
 - splashdown:
-  - [ ] some sort of desktop setup
-    - [ ] try noctalia
+  - [x] some sort of desktop setup
+    - [x] try noctalia
   - [x] [xlm](https://github.com/Blooym/xlm/issues/27#issuecomment-2925634085)
-    - [ ] wire up [auto-otp](https://github.com/shaver/ffxiv-auto-otp)
   - [ ] patched kernel ([patch][rtl-patch]; [process][nixos-kernel-hacking])
   - fix sleep?
 - [x] sops for private keys!
