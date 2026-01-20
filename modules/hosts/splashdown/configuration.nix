@@ -12,6 +12,7 @@
       shaver-personal-desktop
       nvidia-hardware
       shaver-personal
+      sunshine
     ]) ++ (with config.flake.commonModules; [ sudo nix ]);
 
     powerManagement.enable = true;
