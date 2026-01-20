@@ -30,10 +30,11 @@
       LC_TIME = "en_CA.UTF-8";
     };
 
-    environment.systemPackages = with pkgs;
-      [
-        git # for flake management
-      ];
+    environment.systemPackages = with pkgs; [
+      lsof
+      file
+      git # for flake management
+    ];
 
     programs.neovim = {
       enable = true;
