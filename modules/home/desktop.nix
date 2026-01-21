@@ -1,5 +1,11 @@
 {
-  flake.modules.homeManager.desktop = { pkgs, ... }: {
-    home.packages = with pkgs; [ mate.caja-with-extensions jellyfin-desktop ];
-  };
+  flake.modules.homeManager.desktop =
+    { pkgs, ... }:
+    {
+      home.packages = [
+        pkgs.mate.caja-with-extensions
+        pkgs.jellyfin-desktop
+        pkgs.wl-clipboard
+      ];
+    };
 }
