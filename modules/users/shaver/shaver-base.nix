@@ -37,7 +37,7 @@
     };
   };
 
-  flake.modules.homeManager.shaver-base = { pkgs, ... }: {
+  flake.modules.homeManager.shaver-base = { config, pkgs, ... }: {
     imports = with inputs.self.modules.homeManager; [ git neovim shell ssh ];
 
     home = {
