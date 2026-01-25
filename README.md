@@ -37,7 +37,7 @@ I sometimes force-push so track at your peril
   - [ ] look at <https://github.com/pfassina/lazyvim-nix> and <https://github.com/b-src/lazy-nix-helper.nvim>
 - program configurations
   - [ ] tmux
-  - [ ] alacritty
+  - [x] alacritty
 - incus for containers and VMs
 
 [rtl-patch]: https://www.spinics.net/lists/netdev/msg1147783.html

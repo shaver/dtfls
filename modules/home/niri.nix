@@ -1,14 +1,10 @@
-{
-  flake.modules.homeManager.niri = { pkgs, config, ... }:
+{ inputs, ... }: {
+  flake.modules.homeManager.niri = { config, pkgs, ... }:
     let configRepo = "${config.home.homeDirectory}/dtfls";
     in {
-      home.packages = with pkgs; [
-        fuzzel
-        alacritty
-        swaylock
-        waybar
-        xwayland-satellite
-      ];
+      home.packages = with pkgs; [ fuzzel swaylock waybar xwayland-satellite ];
+
+      imports = [ inputs.self.modules.homeManager.alacritty ];
 
       services.swayidle = {
         enable = true;
