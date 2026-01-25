@@ -38,7 +38,13 @@
   };
 
   flake.modules.homeManager.shaver-base = { config, pkgs, ... }: {
-    imports = with inputs.self.modules.homeManager; [ git neovim shell ssh ];
+    imports = with inputs.self.modules.homeManager; [
+      git
+      neovim
+      shell
+      ssh
+      tmux
+    ];
 
     home = {
       username = "shaver";
@@ -53,11 +59,7 @@
       btop.enable = true;
       htop.enable = true;
 
-      tmux = {
-        enable = true;
-        shortcut = "a";
-      };
-
+      # TODO put this with other nix stuff somehow
       nh = {
         enable = true;
         clean.enable = true;

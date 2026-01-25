@@ -36,7 +36,7 @@ I sometimes force-push so track at your peril
   - [ ] marksman linking issue
   - [ ] look at <https://github.com/pfassina/lazyvim-nix> and <https://github.com/b-src/lazy-nix-helper.nvim>
 - program configurations
-  - [ ] tmux
+  - [x] tmux
   - [x] alacritty
 - incus for containers and VMs
 
