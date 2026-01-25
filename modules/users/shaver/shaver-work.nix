@@ -1,5 +1,5 @@
-{ inputs, ... }: {
-  flake.modules.darwin.shaver-work = {
+{
+  flake.modules.darwin.shaver-work = { inputs, ... }: {
     imports = with inputs.self.modules.darwin; [
       shaver-base
       aerospace
@@ -10,11 +10,11 @@
       imports = with inputs.self.modules.homeManager; [ shaver-work-darwin ];
     };
   };
-  flake.modules.homeManager.shaver-work-darwin = { pkgs, ... }: {
+  flake.modules.homeManager.shaver-work-darwin = { inputs, pkgs, ... }: {
     imports = with inputs.self.modules.homeManager; [ shaver-work ];
   };
 
-  flake.modules.homeManager.shaver-work = { pkgs, ... }:
+  flake.modules.homeManager.shaver-work = { inputs, pkgs, ... }:
     let
       gcloud-with-auth = pkgs.google-cloud-sdk.withExtraComponents
         (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);

@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   flake.modules.nixos.nvidia-hardware = { config, ... }: {
     hardware.graphics.enable = true; # enable OpenGL
     services.xserver.videoDrivers = [ "nvidia" ];

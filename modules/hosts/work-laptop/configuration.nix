@@ -1,15 +1,7 @@
-{ config, inputs, ... }:
 {
-  flake.modules.darwin.work-laptop =
-    { pkgs, ... }:
-    {
-      imports = [
-        inputs.determinate.darwinModules.default
-      ]
-      ++ (with config.flake.modules.darwin; [
-        base-system
-        shaver-work
-      ])
-      ++ (with config.flake.commonModules; [ sudo ]);
-    };
+  flake.modules.darwin.work-laptop = { inputs, pkgs, ... }: {
+    imports = [ inputs.determinate.darwinModules.default ]
+      ++ (with inputs.self.modules.darwin; [ base-system shaver-work ])
+      ++ (with inputs.self.commonModules; [ sudo ]);
+  };
 }

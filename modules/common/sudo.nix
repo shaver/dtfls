@@ -1,5 +1,5 @@
-# nopasswd for shaver
 {
+  # nopasswd for shaver
   flake.commonModules.sudo = {
 
     security = {

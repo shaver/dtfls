@@ -1,6 +1,6 @@
-{ config, ... }: {
+{ inputs, ... }: {
   flake.modules.nixos.base-system = { pkgs, lib, ... }: {
-    imports = [ config.flake.modules.nixos.base-networking ];
+    imports = [ inputs.self.modules.nixos.base-networking ];
 
     # Bootloader.
     boot = {

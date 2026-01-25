@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{
   perSystem = { pkgs, system, lib, ... }:
     let
       xlm = pkgs.callPackage

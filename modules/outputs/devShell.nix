@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{
   perSystem = { pkgs, system, ... }: {
     devShells.default = pkgs.mkShell {
       name = "dtfls";

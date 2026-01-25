@@ -1,9 +1,9 @@
-{ config, inputs, ... }: {
+{ inputs, ... }: {
   flake.modules.nixos.splashdown = { pkgs, ... }: {
     imports = [
       inputs.determinate.nixosModules.default
       inputs.sops-nix.nixosModules.sops
-    ] ++ (with config.flake.modules.nixos; [
+    ] ++ (with inputs.self.modules.nixos; [
       base-system
       base-networking
       gaming
@@ -13,7 +13,7 @@
       nvidia-hardware
       shaver-personal
       sunshine
-    ]) ++ (with config.flake.commonModules; [ sudo nix ]);
+    ]) ++ (with inputs.self.commonModules; [ sudo nix ]);
 
     powerManagement.enable = true;
     # sleep crashes this machine, so let's just not

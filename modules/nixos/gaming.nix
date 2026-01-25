@@ -1,6 +1,6 @@
-{ config, inputs, ... }: {
+{ inputs, ... }: {
   flake.modules.nixos.gaming = { pkgs, ... }:
-    let inherit (config.flake.packages.${pkgs.stdenv.hostPlatform.system}) xlm;
+    let inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm;
     in {
       imports = with inputs.nix-gaming.nixosModules; [
         wine
