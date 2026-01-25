@@ -66,6 +66,39 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+workspace "browser" { 
+    open-on-output "DP-3"
+}
+
+workspace "chat" {
+    open-on-output "DP-3"
+}
+
+workspace "games" {
+    open-on-output "DP-3"
+}
+
+workspace "other-browser" {
+    open-on-output "DP-2"
+}
+
+// Open the Discord window on chat -- doesn't work because title is set after opening I think
+window-rule {
+    match app-id=r#"firefox$"# title=r#"^• Discord"# // at-startup=true
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id="^steam$" title="Steam"
+    open-on-workspace "games"
+}
+
+window-rule {
+    match app-id="^steam_app_"
+    open-fullscreen true
+    open-on-workspace "games"
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
