@@ -38,7 +38,7 @@
 
   outputs = { self, nixpkgs, flake-parts, ... }@inputs:
     let
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
 
       inherit (nixpkgs.lib.fileset) toList fileFilter;
       inherit (nixpkgs.lib) lists hasPrefix;
