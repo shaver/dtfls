@@ -3,7 +3,8 @@ diff-invocation-mode = "file-by-file"
 
 [ui]
 default-command = "status"
-diff-editor = "vimdiff"
+diff-editor = "meld"
+merge-editors = "meld"
 
 [colors]
 "diff token" = { underline = false }
@@ -14,7 +15,11 @@ name = "Mike Shaver"
 
 # This is the most ridiculous syntax
 [[--scope]]
---when.repositories = ["~/src/fastly", "~/src/fastly-def", "~/src/signalsciences"]
+--when.repositories = [
+  "~/src/fastly",
+  "~/src/fastly-def",
+  "~/src/signalsciences",
+]
 [--scope.user]
 email = "mike.shaver@fastly.com"
 
@@ -34,5 +39,11 @@ email = "mike.shaver@fastly.com"
 
 [aliases]
 #tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "@"]
-tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
-
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "closest_bookmark(@)",
+  "--to",
+  "closest_pushable(@)",
+]
