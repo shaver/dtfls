@@ -11,6 +11,7 @@
       imports = with inputs.self.modules.homeManager; [ shaver-work-darwin ];
     };
   };
+
   flake.modules.homeManager.shaver-work-darwin =
     { pkgs, ... }:
     {
@@ -37,6 +38,8 @@
 
         rclone
         s3cmd
+
+        claude-code
       ];
     };
 }
