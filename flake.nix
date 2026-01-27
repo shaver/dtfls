@@ -36,29 +36,39 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-parts, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-parts,
+      ...
+    }@inputs:
     let
-      systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
-
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "aarch64-linux"
+      ];
       inherit (nixpkgs.lib.fileset) toList fileFilter;
       inherit (nixpkgs.lib) lists hasPrefix;
-      mkImport = path:
-        toList
-        (fileFilter (file: file.hasExt "nix" && !(hasPrefix "_" file.name))
-          path);
-    in flake-parts.lib.mkFlake { inherit inputs; } {
+      importsFromDirectoryTree =
+        path: toList (fileFilter (file: file.hasExt "nix" && !(hasPrefix "_" file.name)) path);
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
       inherit systems;
 
       imports = lists.flatten [
         flake-parts.flakeModules.modules
-        (mkImport ./modules)
-        (mkImport ./packages)
+        (importsFromDirectoryTree ./modules)
+        (importsFromDirectoryTree ./packages)
       ];
 
       # build formatters for each system
-      flake.formatter = builtins.listToAttrs (map (system: {
-        name = system;
-        value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
-      }) systems);
+      flake.formatter = builtins.listToAttrs (
+        map (system: {
+          name = system;
+          value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+        }) systems
+      );
     };
 }
