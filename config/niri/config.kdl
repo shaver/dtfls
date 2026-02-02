@@ -67,19 +67,19 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 workspace "browser" { 
-    open-on-output "DP-3"
+    open-on-output "Dell Inc. AW3423DWF FB742S3"
 }
 
 workspace "chat" {
-    open-on-output "DP-3"
+    open-on-output "Dell Inc. AW3423DWF FB742S3"
 }
 
 workspace "games" {
-    open-on-output "DP-3"
+    open-on-output "Dell Inc. AW3423DWF FB742S3"
 }
 
 workspace "other-browser" {
-    open-on-output "DP-2"
+    open-on-output "Dell Inc. Dell AW3420DW #ASONM/I5x9fd"
 }
 
 // Open the Discord window on chat -- doesn't work because title is set after opening I think
