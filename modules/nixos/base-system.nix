@@ -1,6 +1,10 @@
 { inputs, ... }: {
   flake.modules.nixos.base-system = { pkgs, lib, ... }: {
-    imports = [ inputs.self.modules.nixos.base-networking ];
+    imports = with inputs.self.modules; [
+      generic.sudo
+      generic.nix
+      nixos.base-networking
+    ];
 
     # Bootloader.
     boot = {

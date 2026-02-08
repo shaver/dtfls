@@ -1,6 +1,6 @@
 {
   # nopasswd for shaver
-  flake.commonModules.sudo = {
+  flake.modules.generic.sudo = {
 
     security = {
       sudo.extraConfig = ''

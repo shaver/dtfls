@@ -13,7 +13,7 @@
       nvidia-hardware
       shaver-personal
       sunshine
-    ]) ++ (with inputs.self.commonModules; [ sudo nix ]);
+    ]);
 
     powerManagement.enable = true;
     # sleep crashes this machine, so let's just not

@@ -1,5 +1,5 @@
 {
-  flake.commonModules.nix = { pkgs, ... }: {
+  flake.modules.generic.nix = { pkgs, ... }: {
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     environment.systemPackages = [ pkgs.rippkgs ];
