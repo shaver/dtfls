@@ -112,6 +112,12 @@
         ];
       };
 
+      fonts.packages = with pkgs; [
+        nerd-fonts.meslo-lg
+        nerd-fonts.jetbrains-mono
+        font-awesome
+      ];
+
       # Configure macOS system
       # More examples => https://github.com/ryan4yin/nix-darwin-kickstarter/blob/main/rich-demo/modules/system.nix
       system = {
