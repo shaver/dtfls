@@ -1,29 +1,46 @@
-{ inputs, lib, pkgs, ... }:
-let
-  shared-base = {
-    imports = with inputs.self.modules; [ generic.sudo generic.nix ];
-    programs.zsh.enable = true;
-    time.timeZone = lib.mkDefault "America/Toronto";
+{
+  inputs,
+  lib,
+  ...
+}:
+{
+  flake.modules.generic.base-system =
+    { pkgs, ... }:
+    {
+      imports = with inputs.self.modules; [
+        generic.sudo
+        generic.nix
+      ];
+      services.tailscale.enable = true;
 
-    services.openssh.enable = lib.mkDefault true;
+      programs.zsh.enable = true;
+      time.timeZone = lib.mkDefault "America/Toronto";
 
-    programs.neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
+      services.openssh.enable = lib.mkDefault true;
+
+      environment.systemPackages = with pkgs; [
+        lsof
+        file
+        git # for flake management
+      ];
+
+      # have to force this config globally, see
+      # https://stackoverflow.com/questions/79371917/direnv-printing-environment-diff-even-with-hide-env-diff-true/79543570#79543570
+      environment.etc."direnv/direnv.toml".text = ''
+        [global]
+        hide_env_diff = true
+      '';
     };
 
-    # have to force this config globally, see
-    # https://stackoverflow.com/questions/79371917/direnv-printing-environment-diff-even-with-hide-env-diff-true/79543570#79543570
-    environment.etc."direnv/direnv.toml".text = ''
-      [global]
-      hide_env_diff = true
-    '';
-  };
-in {
-  flake.modules.nixos.base-system = { pkgs, ... }:
+  flake.modules.nixos.base-system =
+    { pkgs, ... }:
     {
-      imports = [ inputs.self.modules.nixos.base-networking ];
+      imports = [
+        inputs.self.modules.generic.base-system
+        inputs.determinate.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
+        inputs.self.modules.nixos.base-networking
+      ];
 
       # Bootloader.
       boot = {
@@ -49,12 +66,11 @@ in {
         LC_TIME = "en_CA.UTF-8";
       };
 
-      # TODO: move these into shared-base somehow
-      environment.systemPackages = with pkgs; [
-        lsof
-        file
-        git # for flake management
-      ];
+      programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+      };
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
@@ -63,30 +79,38 @@ in {
       # Before changing this value read the documentation for this option
       # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
       system.stateVersion = "25.11"; # Did you read the comment?
-    } // shared-base;
+    };
 
-  flake.modules.darwin.base-system = { pkgs, ... }:
+  flake.modules.darwin.base-system =
+    { pkgs, ... }:
     {
+      imports = [
+        inputs.self.modules.generic.base-system
+        inputs.determinate.darwinModules.default
+        inputs.sops-nix.darwinModules.sops
+      ];
+
       users.users.shaver = {
         name = "shaver";
         home = "/Users/shaver";
       };
 
-      security.pam.services.sudo_local.touchIdAuth =
-        true; # Use TouchID for `sudo` authentication
+      security.pam.services.sudo_local.touchIdAuth = true; # Use TouchID for `sudo` authentication
 
       # These users can add Nix caches.
-      nix.settings.trusted-users = [ "root" "shaver" ];
+      nix.settings.trusted-users = [
+        "root"
+        "shaver"
+      ];
       ids.gids.nixbld = 350;
 
-      shells = [ pkgs.zsh ];
-      environment.systemPackages = with pkgs; [
-        lsof
-        file
-        git # for flake management
-        pam-watchid
-        coreutils # for GNU ls mostly
-      ];
+      environment = {
+        shells = [ pkgs.zsh ];
+        systemPackages = with pkgs; [
+          pam-watchid
+          coreutils # for GNU ls mostly
+        ];
+      };
 
       # Configure macOS system
       # More examples => https://github.com/ryan4yin/nix-darwin-kickstarter/blob/main/rich-demo/modules/system.nix
@@ -108,8 +132,7 @@ in {
             _FXShowPosixPathInTitle = true; # show full path in finder title
             AppleShowAllExtensions = true; # show all file extensions
             AppleShowAllFiles = true; # show hidden files
-            FXEnableExtensionChangeWarning =
-              false; # disable warning when changing file extension
+            FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
             NewWindowTarget = "Home"; # default Finder window folder
             FXPreferredViewStyle = "clmv"; # default to column view
             QuitMenuItem = true; # enable quit menu item
@@ -171,8 +194,6 @@ in {
 
       };
 
-      services = { tailscale.enable = true; };
-
       power = {
         restartAfterFreeze = true;
         # restartAfterPowerFailure = true; # not supported on laptop, sigh
@@ -185,5 +206,5 @@ in {
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
       system.stateVersion = 4;
-    } // shared-base;
+    };
 }
