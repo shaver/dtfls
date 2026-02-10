@@ -24,9 +24,10 @@ let
 
   # generate a set of configurations for building `hostname` (running
   # `system`) for each compilation system
-  forEachBuildSystem = f: (map f buildSystems);
+  forEachOtherBuildSystem = system: f:
+    (map f (builtins.filter (sys: sys != system) buildSystems));
   nixosConfigurationsFor = hostname: system:
-    (builtins.listToAttrs (forEachBuildSystem (buildSystem: {
+    (builtins.listToAttrs (forEachOtherBuildSystem system (buildSystem: {
       name = "${hostname}_${buildSystem}";
       value = makeNixosConfiguration hostname system buildSystem;
     }))) // {
