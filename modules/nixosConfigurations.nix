@@ -6,8 +6,8 @@ let
 
   # build a nixosConfiguration for `hostname` running on `system` that's
   # built by `buildSystem`
-  makeNixosConfiguration = hostname: system: buildSystem: {
-    "${hostname}_${buildSystem}" = nixpkgs.lib.nixosSystem {
+  makeNixosConfiguration = hostname: system: buildSystem:
+    (nixpkgs.lib.nixosSystem {
       modules = [
         flake.modules.nixos.${hostname}
         {
@@ -20,22 +20,21 @@ let
         inherit system;
         config.allowUnfree = true;
       };
-    };
-  };
+    });
 
   # generate a set of configurations for building `hostname` (running
   # `system`) for each compilation system
   forEachBuildSystem = f: (map f buildSystems);
   nixosConfigurationsFor = hostname: system:
-    builtins.listToAttrs (forEachBuildSystem (buildSystem: {
+    (builtins.listToAttrs (forEachBuildSystem (buildSystem: {
       name = "${hostname}_${buildSystem}";
       value = makeNixosConfiguration hostname system buildSystem;
-    }));
+    }))) // {
+      ${hostname} = makeNixosConfiguration hostname system system;
+    };
 in {
   # these will live in modules/hosts/${hostname}/configuration.nix
-  flake.nixosConfigurations = {
-    splashdown = (makeNixosConfiguration "splashdown" "x86_64-linux"
-      "x86_64-linux").splashdown_x86_64-linux;
-  } // (nixosConfigurationsFor "outpost-arm64" "aarch64-linux")
-    // (nixosConfigurationsFor "splashdown" "x86_64-linux");
+  flake.nixosConfigurations =
+    (nixosConfigurationsFor "splashdown" "x86_64-linux")
+    // (nixosConfigurationsFor "outpost-arm64" "aarch64-linux");
 }
