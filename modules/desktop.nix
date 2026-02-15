@@ -1,54 +1,50 @@
-{ inputs, ... }:
-{
-  flake.modules.homeManager.desktop =
-    { pkgs, ... }:
-    {
-      home.packages = [
-        pkgs.mate.caja-with-extensions
-        pkgs.jellyfin-desktop
-        pkgs.wl-clipboard
-      ];
+{ inputs, ... }: {
+  flake.modules.homeManager.desktop = { pkgs, ... }: {
+    home.packages = [
+      pkgs.mate.caja-with-extensions
+      pkgs.jellyfin-desktop
+      pkgs.wl-clipboard
+    ];
 
-      imports = [ inputs.self.flake.modules.homeManager.alacritty ];
-    };
+    imports = [ inputs.self.modules.homeManager.alacritty ];
+  };
 
-  flake.modules.nixos.desktop =
-    { pkgs, ... }:
-    {
-      # Enable the KDE Plasma Desktop Environment.
-      services = {
-        displayManager.sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
-        desktopManager.plasma6.enable = true;
-      };
-
-      environment.systemPackages = [ pkgs.mate.mate-polkit ];
-      security.polkit.enable = true;
-
-      systemd = {
-        user.services.polkit-mate-1 = {
-          description = "MATE polkit agent";
-          wantedBy = [ "graphical-session.target" ];
-          wants = [ "graphical-session.target" ];
-          after = [ "graphical-session.target" ];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-          };
-        };
-      };
-
-      programs.niri.enable = true;
-
-      # for printer discovery?
-      services.avahi = {
+  flake.modules.nixos.desktop = { pkgs, ... }: {
+    # Enable the KDE Plasma Desktop Environment.
+    services = {
+      displayManager.sddm = {
         enable = true;
-        openFirewall = true;
+        wayland.enable = true;
+      };
+      desktopManager.plasma6.enable = true;
+    };
+
+    environment.systemPackages = [ pkgs.mate.mate-polkit ];
+    security.polkit.enable = true;
+
+    systemd = {
+      user.services.polkit-mate-1 = {
+        description = "MATE polkit agent";
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart =
+            "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
       };
     };
+
+    programs.niri.enable = true;
+
+    # for printer discovery?
+    services.avahi = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
 }
