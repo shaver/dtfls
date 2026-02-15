@@ -3,7 +3,7 @@
     hardware.graphics.enable = true; # enable OpenGL
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
       powerManagement.enable = false;
       powerManagement.finegrained = false;

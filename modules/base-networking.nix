@@ -2,11 +2,10 @@
   flake.modules.nixos.base-networking = { pkgs, ... }: {
     services.resolved = {
       enable = true;
-      domains = [ "local" ];
-      llmnr = "false";
-      extraConfig = ''
-        MulticastDNS=true
-      '';
+      settings.Resolve = {
+        Domains = [ "local" ];
+        MulticastDNS = true;
+      };
     };
 
     networking = {
