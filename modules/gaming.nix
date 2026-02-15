@@ -57,8 +57,7 @@
       home.packages = [ pkgs.xivlauncher do-ff14-otp ];
       xdg.desktopEntries.do-ff14-otp = {
         name = "FF14 OTP";
-        exec = "do-ff14-otp";
-        terminal = true;
+        exec = "${lib.getExe do-ff14-otp}";
         categories = [ "Game" ];
       };
     };
