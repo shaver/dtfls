@@ -1,10 +1,7 @@
 { inputs, ... }: {
   flake.modules.homeManager.desktop = { pkgs, ... }: {
-    home.packages = [
-      pkgs.mate.caja-with-extensions
-      pkgs.jellyfin-desktop
-      pkgs.wl-clipboard
-    ];
+    home.packages =
+      [ pkgs.caja-with-extensions pkgs.jellyfin-desktop pkgs.wl-clipboard ];
 
     imports = [ inputs.self.modules.homeManager.alacritty ];
   };
@@ -19,7 +16,7 @@
       desktopManager.plasma6.enable = true;
     };
 
-    environment.systemPackages = [ pkgs.mate.mate-polkit ];
+    environment.systemPackages = [ pkgs.mate-polkit ];
     security.polkit.enable = true;
 
     systemd = {
@@ -31,7 +28,7 @@
         serviceConfig = {
           Type = "simple";
           ExecStart =
-            "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+            "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
           Restart = "on-failure";
           RestartSec = 1;
           TimeoutStopSec = 10;
