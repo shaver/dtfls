@@ -14,13 +14,14 @@ I sometimes force-push so track at your peril
 
 - set up the nix-darwin stuff
   - [x] daltron
-    - [ ] [paneru](https://github.com/karinushka/paneru)?
-  - [ ] work laptop with gibberish name
-    - [ ] switch to alacritty
+    - [ ] ~~[paneru](https://github.com/karinushka/paneru)?~~
+  - [x] work laptop with gibberish name
+    - [x] switch to alacritty
 - splashdown:
   - [x] some sort of desktop setup
     - [x] try noctalia
   - [x] [xlm](https://github.com/Blooym/xlm/issues/27#issuecomment-2925634085)
+  - [ ] xivlauncher-rb
   - [ ] patched kernel ([patch][rtl-patch]; [process][nixos-kernel-hacking])
   - fix sleep?
 - [x] sops for private keys!
