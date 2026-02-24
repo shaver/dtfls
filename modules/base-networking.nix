@@ -4,12 +4,15 @@
       enable = true;
       settings.Resolve = {
         Domains = [ "local" ];
-        MulticastDNS = true;
+        # MulticastDNS = true;
       };
     };
 
     networking = {
-      networkmanager.enable = true;
+      networkmanager = {
+        enable = true;
+        connectionConfig = { "connection.mdns" = 1; };
+      };
       # firewall interferes with mDNS. TODO: narrower exemption?
       firewall.enable = false;
     };
