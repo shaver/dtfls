@@ -403,7 +403,8 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "xivlauncher-rb": "xivlauncher-rb"
       }
     },
     "sops-nix": {
@@ -438,6 +439,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "xivlauncher-rb": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771694808,
+        "narHash": "sha256-/or0T41gQaQ8VdQPBKdRvcjuLf/3V2Fqlm/j2pkiyBM=",
+        "owner": "shaver",
+        "repo": "nixos-xivlauncher-rb",
+        "rev": "4787a9f7fdbff972ae668d0ef751fccf98d5b6e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shaver",
+        "repo": "nixos-xivlauncher-rb",
         "type": "github"
       }
     }
