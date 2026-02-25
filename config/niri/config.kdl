@@ -63,6 +63,18 @@ hotkey-overlay {
     skip-at-startup
 }
 
+output "DP-3" {
+    mode "3440x1440@99.982"
+    position x=0 y=0
+    variable-refresh-rate
+}
+
+output "DP-2" {
+    mode "3440x1440@100"
+    position x=3440 y=-400
+    variable-refresh-rate
+}
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -316,4 +328,10 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
