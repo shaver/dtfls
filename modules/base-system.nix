@@ -36,7 +36,7 @@
       loader.efi.canTouchEfiVariables = true;
 
       # Use 6.18 until NVIDIA stuff is sorted.
-      kernelPackages = pkgs.linuxPackages_6_18;
+      kernelPackages = lib.mkDefault pkgs.linuxPackages_6_18;
     };
 
     # Select internationalisation properties.

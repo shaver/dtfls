@@ -24,6 +24,7 @@ I sometimes force-push so track at your peril
   - [ ] xivlauncher-rb
   - [ ] patched kernel ([patch][rtl-patch]; [process][nixos-kernel-hacking])
   - fix sleep?
+  - [ ] claude with private npm/node
 - [x] sops for private keys!
   - [x] shaver: ffxiv
   - [ ] shaver: github ssh
