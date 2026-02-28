@@ -6,6 +6,8 @@
 
     shaver-nixpkgs.url = "github:shaver/nixpkgs";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,11 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     nix-darwin = {
