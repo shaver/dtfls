@@ -310,6 +310,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-patcher": {
+      "locked": {
+        "lastModified": 1769207991,
+        "narHash": "sha256-SwGLSB3H/Lq2gPa2/yCtmcUn8E/fVuPtZ5qnjrDj62s=",
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "rev": "2e59a7b94478f67e3ac2b221f737fe75c2175edc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -371,6 +386,7 @@
         "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "shaver-nixpkgs": "shaver-nixpkgs",
         "sops-nix": "sops-nix",

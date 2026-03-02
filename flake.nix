@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     shaver-nixpkgs.url = "github:shaver/nixpkgs";
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 

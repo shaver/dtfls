@@ -1,13 +1,15 @@
 { inputs, config, ... }:
 let
   inherit (config) flake;
-  inherit (inputs) nixpkgs;
+  inherit (inputs) nixpkgs nixpkgs-patcher;
   buildSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
 
   # build a nixosConfiguration for `hostname` running on `system` that's
   # built by `buildSystem`
   makeNixosConfiguration = hostname: system: buildSystem:
-    (nixpkgs.lib.nixosSystem {
+    (nixpkgs-patcher.lib.nixosSystem {
+      nixpkgsPatcher.inputs = inputs;
+
       modules = [
         flake.modules.nixos.${hostname}
         {
