@@ -63,13 +63,13 @@ hotkey-overlay {
     skip-at-startup
 }
 
-output "DP-3" {
+output "Dell Inc. AW3423DWF FB742S3" {
     mode "3440x1440@99.982"
     position x=0 y=0
     variable-refresh-rate
 }
 
-output "DP-2" {
+output "Dell Inc. Dell AW3420DW #ASONM/I5x9fd" {
     mode "3440x1440@100"
     position x=3440 y=-400
     variable-refresh-rate
