@@ -13,6 +13,8 @@
           "shaver"
           "@wheel"
         ];
+
+        warn-dirty = false;
       };
 
       environment.systemPackages = [ pkgs.rippkgs ];
