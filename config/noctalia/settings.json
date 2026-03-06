@@ -421,15 +421,15 @@
         "customCommands": "[]",
         "enabled": true,
         "fadeDuration": 5,
-        "lockCommand": "",
-        "lockTimeout": 660,
+        "lockCommand": "noctalia-shell ipc call lockScreen lock",
+        "lockTimeout": 1200,
         "resumeLockCommand": "",
-        "resumeScreenOffCommand": "",
+        "resumeScreenOffCommand": "niri msg action power-on-monitors",
         "resumeSuspendCommand": "",
-        "screenOffCommand": "",
+        "screenOffCommand": "niri msg action power-off-monitors",
         "screenOffTimeout": 600,
         "suspendCommand": "",
-        "suspendTimeout": 1785
+        "suspendTimeout": 0
     },
     "location": {
         "analogClockInCalendar": false,
