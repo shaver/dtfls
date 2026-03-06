@@ -1,14 +1,18 @@
 { inputs, config, ... }:
 let
   inherit (config) flake;
-  inherit (inputs) nixpkgs nixpkgs-patcher;
-  buildSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+  inherit (inputs) nixpkgs;
+  buildSystems = [
+    "x86_64-linux"
+    "aarch64-linux"
+    "aarch64-darwin"
+  ];
 
   # build a nixosConfiguration for `hostname` running on `system` that's
   # built by `buildSystem`
-  makeNixosConfiguration = hostname: system: buildSystem:
-    (nixpkgs-patcher.lib.nixosSystem {
-      nixpkgsPatcher.inputs = inputs;
+  makeNixosConfiguration =
+    hostname: system: buildSystem:
+    (nixpkgs.lib.nixosSystem {
 
       modules = [
         flake.modules.nixos.${hostname}
@@ -26,16 +30,20 @@ let
 
   # generate a set of configurations for building `hostname` (running
   # `system`) for each compilation system
-  forEachOtherBuildSystem = system: f:
-    (map f (builtins.filter (sys: sys != system) buildSystems));
-  nixosConfigurationsFor = hostname: system:
-    (builtins.listToAttrs (forEachOtherBuildSystem system (buildSystem: {
-      name = "${hostname}_${buildSystem}";
-      value = makeNixosConfiguration hostname system buildSystem;
-    }))) // {
+  forEachOtherBuildSystem = system: f: (map f (builtins.filter (sys: sys != system) buildSystems));
+  nixosConfigurationsFor =
+    hostname: system:
+    (builtins.listToAttrs (
+      forEachOtherBuildSystem system (buildSystem: {
+        name = "${hostname}_${buildSystem}";
+        value = makeNixosConfiguration hostname system buildSystem;
+      })
+    ))
+    // {
       ${hostname} = makeNixosConfiguration hostname system system;
     };
-in {
+in
+{
   # these will live in modules/hosts/${hostname}/configuration.nix
   flake.nixosConfigurations =
     (nixosConfigurationsFor "splashdown" "x86_64-linux")
