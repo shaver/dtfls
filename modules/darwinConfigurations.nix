@@ -28,4 +28,9 @@ in
       };
     };
   };
+
+  flake.modules.homeManager = {
+    host-GWJ1G39KMF-shaver = { }; # grr, want to use work-laptop here
+    host-daltron-shaver = { };
+  };
 }

@@ -3,6 +3,10 @@ let
   inherit (config) flake;
   inherit (inputs) nixpkgs;
 
+  makeHostHomeModules =
+    hostname: # { flake.modules.homeManager."host-${hostname}-shaver" = { }; };
+    { };
+
   # build a nixosConfiguration for `hostname` running on `system`
   makeNixosConfiguration =
     hostname: system:
@@ -27,4 +31,7 @@ in
     splashdown = makeNixosConfiguration "splashdown" "x86_64-linux";
     outpost-arm64 = makeNixosConfiguration "outpost-arm64" "aarch64-linux";
   };
+
+  flake.modules.homeManager.host-splashdown-shaver = { };
+  flake.modules.homeManager.host-outpost-arm64-shaver = { };
 }
