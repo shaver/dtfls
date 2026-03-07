@@ -38,6 +38,9 @@
         inputs.self.modules.nixos.base-networking
       ];
 
+      # drkonqi just crash-loops, so...
+      systemd.coredump.enable = false;
+
       # Bootloader.
       boot = {
         loader.systemd-boot.enable = lib.mkDefault true;
