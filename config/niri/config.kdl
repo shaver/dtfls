@@ -96,7 +96,7 @@ workspace "other-browser" {
 
 // Open the Discord window on chat -- doesn't work because title is set after opening I think
 window-rule {
-    match app-id=r#"firefox$"# title=r#"^• Discord"# // at-startup=true
+    match app-id="^discord$"
     open-on-workspace "chat"
 }
 
