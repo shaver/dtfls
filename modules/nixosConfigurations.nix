@@ -2,23 +2,16 @@
 let
   inherit (config) flake;
   inherit (inputs) nixpkgs;
-  buildSystems = [
-    "x86_64-linux"
-    "aarch64-linux"
-    "aarch64-darwin"
-  ];
 
-  # build a nixosConfiguration for `hostname` running on `system` that's
-  # built by `buildSystem`
+  # build a nixosConfiguration for `hostname` running on `system`
   makeNixosConfiguration =
-    hostname: system: buildSystem:
+    hostname: system:
     (nixpkgs.lib.nixosSystem {
 
       modules = [
         flake.modules.nixos.${hostname}
         {
           networking.hostName = hostname;
-          nixpkgs.buildPlatform.system = buildSystem;
         }
       ];
 
@@ -27,25 +20,11 @@ let
         config.allowUnfree = true;
       };
     });
-
-  # generate a set of configurations for building `hostname` (running
-  # `system`) for each compilation system
-  forEachOtherBuildSystem = system: f: (map f (builtins.filter (sys: sys != system) buildSystems));
-  nixosConfigurationsFor =
-    hostname: system:
-    (builtins.listToAttrs (
-      forEachOtherBuildSystem system (buildSystem: {
-        name = "${hostname}_${buildSystem}";
-        value = makeNixosConfiguration hostname system buildSystem;
-      })
-    ))
-    // {
-      ${hostname} = makeNixosConfiguration hostname system system;
-    };
 in
 {
   # these will live in modules/hosts/${hostname}/configuration.nix
-  flake.nixosConfigurations =
-    (nixosConfigurationsFor "splashdown" "x86_64-linux")
-    // (nixosConfigurationsFor "outpost-arm64" "aarch64-linux");
+  flake.nixosConfigurations = {
+    splashdown = makeNixosConfiguration "splashdown" "x86_64-linux";
+    outpost-arm64 = makeNixosConfiguration "outpost-arm64" "aarch64-linux";
+  };
 }
