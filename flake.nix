@@ -3,15 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    shaver-nixpkgs.url = "github:shaver/nixpkgs";
-    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -52,16 +44,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-parts, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-parts,
+      ...
+    }@inputs:
     let
-      systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "aarch64-linux"
+      ];
       inherit (nixpkgs.lib.fileset) toList fileFilter;
       inherit (nixpkgs.lib) lists hasPrefix;
-      importsFromDirectoryTree = path:
-        toList
-        (fileFilter (file: file.hasExt "nix" && !(hasPrefix "_" file.name))
-          path);
-    in flake-parts.lib.mkFlake { inherit inputs; } {
+      importsFromDirectoryTree =
+        path: toList (fileFilter (file: file.hasExt "nix" && !(hasPrefix "_" file.name)) path);
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
       inherit systems;
 
       imports = lists.flatten [
@@ -71,9 +72,11 @@
       ];
 
       # build formatters for each system
-      flake.formatter = builtins.listToAttrs (map (system: {
-        name = system;
-        value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
-      }) systems);
+      flake.formatter = builtins.listToAttrs (
+        map (system: {
+          name = system;
+          value = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+        }) systems
+      );
     };
 }
