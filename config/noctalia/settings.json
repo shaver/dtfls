@@ -51,14 +51,16 @@
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
-        "hideOnOverview": false,
+        "hideOnOverview": true,
         "marginHorizontal": 4,
         "marginVertical": 4,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
         "monitors": [
-            "DP-4"
+            "DP-4",
+            "DP-3",
+            "DP-2"
         ],
         "mouseWheelAction": "workspace",
         "mouseWheelWrap": true,
@@ -69,6 +71,10 @@
         "rightClickCommand": "",
         "rightClickFollowMouse": true,
         "screenOverrides": [
+            {
+                "enabled": true,
+                "name": "DP-3"
+            }
         ],
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
@@ -167,18 +173,6 @@
                 }
             ],
             "right": [
-                {
-                    "defaultSettings": {
-                        "activeColor": "primary",
-                        "enableToast": true,
-                        "hideInactive": false,
-                        "iconSpacing": 4,
-                        "inactiveColor": "none",
-                        "micFilterRegex": "",
-                        "removeMargins": false
-                    },
-                    "id": "plugin:privacy-indicator"
-                },
                 {
                     "blacklist": [
                     ],
