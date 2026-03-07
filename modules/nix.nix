@@ -1,6 +1,7 @@
+{ inputs, ... }:
 {
   flake.modules.generic.nix =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       nix.settings = {
         experimental-features = [
@@ -9,12 +10,15 @@
         ];
 
         trusted-users = [
-          "root"
           "shaver"
           "@wheel"
         ];
 
         warn-dirty = false;
+
+        # ensure that the registry only contains our inputs
+        nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+        flake-registry = "";
       };
 
       environment.systemPackages = [ pkgs.rippkgs ];
