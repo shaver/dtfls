@@ -1,11 +1,14 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.ai.claudecode",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.editor.mini-files",
+    "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.haskell",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.nix",
@@ -15,6 +18,7 @@
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.lang.zig",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.indent-blankline",
     "lazyvim.plugins.extras.ui.mini-indentscope",
