@@ -3,22 +3,25 @@
   flake.modules.generic.nix =
     { pkgs, lib, ... }:
     {
-      nix.settings = {
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+      nix = {
+        optimise.automatic = true;
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
 
-        trusted-users = [
-          "shaver"
-          "@wheel"
-        ];
+          trusted-users = [
+            "shaver"
+            "@wheel"
+          ];
 
-        warn-dirty = false;
+          warn-dirty = false;
 
-        # ensure that the registry only contains our inputs
-        nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
-        flake-registry = "";
+          # ensure that the registry only contains our inputs
+          nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
+          flake-registry = "";
+        };
       };
 
       environment.systemPackages = [ pkgs.rippkgs ];
