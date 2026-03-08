@@ -26,6 +26,8 @@
           cargo
           unzip
           gcc
+          ghc
+          hlint # haskell
         ];
       };
 
