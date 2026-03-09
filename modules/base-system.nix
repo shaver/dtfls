@@ -38,13 +38,23 @@
         inputs.self.modules.nixos.base-networking
       ];
 
+      environment.systemPackages = with pkgs; [
+        pciutils
+        usbutils
+      ];
+
       # drkonqi just crash-loops, so...
       systemd.coredump.enable = false;
 
       # Bootloader.
       boot = {
-        loader.systemd-boot.enable = lib.mkDefault true;
-        loader.efi.canTouchEfiVariables = true;
+        loader = {
+          systemd-boot = {
+            enable = true;
+            memtest86.enable = true;
+          };
+          efi.canTouchEfiVariables = true;
+        };
 
         # Use 6.18 until NVIDIA stuff is sorted.
         kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
@@ -108,6 +118,7 @@
         systemPackages = with pkgs; [
           pam-watchid
           coreutils # for GNU ls mostly
+          darwin.lsusb
         ];
       };
 
