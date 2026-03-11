@@ -628,9 +628,9 @@
     },
     "ui": {
         "boxBorderEnabled": false,
-        "fontDefault": "",
+        "fontDefault": "Hack",
         "fontDefaultScale": 1,
-        "fontFixed": "",
+        "fontFixed": "MesloLGMDZ Nerd Font",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
