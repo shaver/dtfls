@@ -29,7 +29,17 @@
     };
 
   flake.modules.nixos.base-system =
-    { pkgs, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
+    let
+      shaver-nixpkgs = import inputs.shaver-nixpkgs {
+        inherit (pkgs.stdenv.hostPlatform) system;
+        config.allowUnfree = true;
+      };
+    in
     {
       imports = [
         inputs.self.modules.generic.base-system
@@ -56,8 +66,7 @@
           efi.canTouchEfiVariables = true;
         };
 
-        # Use 6.18 until NVIDIA stuff is sorted.
-        kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+        kernelPackages = lib.mkDefault shaver-nixpkgs.linuxPackages_6_19;
       };
 
       # Select internationalisation properties.
