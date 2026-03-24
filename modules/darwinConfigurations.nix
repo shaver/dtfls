@@ -6,31 +6,27 @@
 let
   inherit (config) flake;
   inherit (inputs) nix-darwin nixpkgs;
-  work-laptop = nix-darwin.lib.darwinSystem {
-    # these will live in modules/hosts/${hostname}/configuration.nix
-    modules = [ flake.modules.darwin.work-laptop ];
-    pkgs = import nixpkgs {
-      system = "aarch64-darwin";
-      config.allowUnfree = true;
-    };
-  };
-in
-{
-  flake.darwinConfigurations = {
-    # later, this will be a map that assembles all the hosts
-    GWJ1G39KMF = work-laptop;
-    inherit work-laptop;
-    daltron = nix-darwin.lib.darwinSystem {
-      modules = [ flake.modules.darwin.daltron ];
+
+  makeDarwinConfiguration =
+    hostname:
+    (nix-darwin.lib.darwinSystem {
+      modules = [
+        flake.modules.darwin.${hostname}
+        flake.modules.darwin.base-system
+        {
+          networking.hostName = hostname;
+        }
+      ];
+
       pkgs = import nixpkgs {
         system = "aarch64-darwin";
         config.allowUnfree = true;
       };
-    };
-  };
-
-  flake.modules.homeManager = {
-    host-GWJ1G39KMF-shaver = { }; # grr, want to use work-laptop here
-    host-daltron-shaver = { };
+    });
+in
+{
+  flake.darwinConfigurations = {
+    GWJ1G39KMF = makeDarwinConfiguration "GWJ1G39KMF";
+    daltron = makeDarwinConfiguration "daltron";
   };
 }

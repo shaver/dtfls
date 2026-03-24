@@ -3,9 +3,9 @@
   flake.modules.generic.base-system =
     { pkgs, ... }:
     {
-      imports = with inputs.self.modules; [
-        generic.sudo
-        generic.nix
+      imports = with inputs.self.modules.generic; [
+        sudo
+        nix
       ];
       services.tailscale.enable = true;
 

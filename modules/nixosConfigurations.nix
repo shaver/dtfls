@@ -3,10 +3,6 @@ let
   inherit (config) flake;
   inherit (inputs) nixpkgs;
 
-  makeHostHomeModules =
-    hostname: # { flake.modules.homeManager."host-${hostname}-shaver" = { }; };
-    { };
-
   # build a nixosConfiguration for `hostname` running on `system`
   makeNixosConfiguration =
     hostname: system:
@@ -17,6 +13,7 @@ let
         {
           networking.hostName = hostname;
         }
+        flake.modules.nixos.base-system
       ];
 
       pkgs = import nixpkgs {
