@@ -34,12 +34,6 @@
       config,
       ...
     }:
-    let
-      shaver-nixpkgs = import inputs.shaver-nixpkgs {
-        inherit (pkgs.stdenv.hostPlatform) system;
-        config.allowUnfree = true;
-      };
-    in
     {
       imports = [
         inputs.self.modules.generic.base-system
@@ -66,7 +60,7 @@
           efi.canTouchEfiVariables = true;
         };
 
-        kernelPackages = lib.mkDefault shaver-nixpkgs.linuxPackages_6_19;
+        kernelPackages = lib.mkDefault pkgs.linuxPackages_6_19;
       };
 
       # Select internationalisation properties.
