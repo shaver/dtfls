@@ -98,7 +98,7 @@
     {
       imports = [
         inputs.self.modules.generic.base-system
-        inputs.determinate.darwinModules.default
+        # inputs.determinate.darwinModules.default
         inputs.sops-nix.darwinModules.sops
       ];
 

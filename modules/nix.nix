@@ -1,10 +1,15 @@
 { inputs, ... }:
 {
   flake.modules.generic.nix =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     {
       nix = {
-        optimise.automatic = true;
+        optimise.automatic = config.nix.enable;
         settings = {
           experimental-features = [
             "nix-command"

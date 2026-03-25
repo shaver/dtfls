@@ -24,10 +24,6 @@
       imports = [ inputs.home-manager.nixosModules.home-manager ];
 
       home-manager = {
-        users.shaver.imports = [
-          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
-        ];
-
         useGlobalPkgs = true;
         backupFileExtension = "hmbckp";
         sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
@@ -44,10 +40,6 @@
       imports = [ inputs.home-manager.darwinModules.home-manager ];
 
       home-manager = {
-        users.shaver.imports = [
-          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
-        ];
-
         useGlobalPkgs = true;
         backupFileExtension = "hmbckp";
         sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
