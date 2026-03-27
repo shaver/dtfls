@@ -42,6 +42,25 @@
       url = "github:shaver/nixos-xivlauncher-rb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Neovim plugins not in nixpkgs
+    jjsigns-nvim = {
+      url = "github:shaver/jjsigns.nvim";
+      flake = false;
+    };
+    jiaoshijie-undotree = {
+      url = "github:jiaoshijie/undotree";
+      flake = false;
+    };
+    tmux-status-nvim = {
+      url = "github:christopher-francisco/tmux-status.nvim";
+      flake = false;
+    };
   };
 
   outputs =

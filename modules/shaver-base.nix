@@ -52,6 +52,7 @@
       imports = with inputs.self.modules.homeManager; [
         git
         neovim
+        nvf-separate
         shell
         ssh
         tmux
