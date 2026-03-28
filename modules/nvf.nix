@@ -296,7 +296,17 @@ let
         # ── Utility ───────────────────────────────────────────────────────────
         utility = {
           yanky-nvim.enable = true;
-          snacks-nvim.enable = true;
+          snacks-nvim = {
+            enable = true;
+            setupOpts = {
+              terminal.enabled = true;
+              lazygit.enabled = true;
+              notifier.enabled = true;
+              bigfile.enabled = true;
+              quickfile.enabled = true;
+              bufdelete.enabled = true;
+            };
+          };
           grug-far-nvim.enable = true;
           motion.flash-nvim.enable = true;
         };
