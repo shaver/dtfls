@@ -306,7 +306,7 @@ let
 
         # ── AI / Claude ───────────────────────────────────────────────────────
         assistant.avante-nvim = {
-          enable = true;
+          enable = false;
           setupOpts = {
             provider = "claude";
             providers.claude = {
@@ -397,7 +397,11 @@ let
           };
           haskell-snippets-nvim = {
             package = pkgs.vimPlugins.haskell-snippets-nvim;
-            setup = "require('haskell-snippets').setup({})";
+            setup = ''
+              local ls = require('luasnip')
+              local haskell_snippets = require('haskell-snippets').all
+              ls.add_snippets('haskell', haskell_snippets, { key = 'haskell' })
+            '';
           };
           venv-selector-nvim = {
             package = pkgs.vimPlugins.venv-selector-nvim;
