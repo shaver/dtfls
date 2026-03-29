@@ -14,7 +14,10 @@
   flake.modules.nixos.shaver-personal = {
     imports = [ inputs.self.modules.nixos.shaver-base ];
     home-manager.users.shaver = {
-      imports = with inputs.self.modules.homeManager; [ shaver-personal-nixos ];
+      imports = with inputs.self.modules.homeManager; [
+        shaver-personal-nixos
+        haskell
+      ];
     };
 
     users.users.shaver.openssh.authorizedKeys.keys = [
