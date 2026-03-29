@@ -448,6 +448,8 @@ let
           vim-tmux-navigator = {
             package = pkgs.vimPlugins.vim-tmux-navigator;
           };
+          vim-sleuth.package = pkgs.vimPlugins.vim-sleuth;
+          vim-obsession.package = pkgs.vimPlugins.vim-obsession;
           guess-indent-nvim = {
             package = pkgs.vimPlugins.guess-indent-nvim;
             setup = ''
@@ -463,10 +465,6 @@ let
           };
           jiaoshijie-undotree = {
             package = jiaoshijie-undotree;
-          };
-          tmux-status-nvim = {
-            package = tmux-status-nvim;
-            setup = "require('tmux-status').setup({})";
           };
         };
 
