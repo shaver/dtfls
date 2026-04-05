@@ -65,7 +65,7 @@
     in
     {
       home.packages = [
-        pkgs.xivlauncher
+        # pkgs.xivlauncher # now managed by xlm
         do-ff14-otp
       ];
       xdg.desktopEntries.do-ff14-otp = {
