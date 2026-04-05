@@ -1,5 +1,10 @@
 {
-  flake.modules.homeManager.shaver-3d-printing = { pkgs, ... }: {
-    home.packages = [ pkgs.prusa-slicer pkgs.orca-slicer ];
-  };
+  flake.modules.homeManager.shaver-3d-printing =
+    { pkgs, ... }:
+    {
+      home.packages = [
+        pkgs.prusa-slicer
+        pkgs.orca-slicer
+      ];
+    };
 }

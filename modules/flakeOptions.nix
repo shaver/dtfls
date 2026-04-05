@@ -2,7 +2,8 @@
 let
   inherit (lib) mkOption;
   inherit (lib.types) attrs;
-in {
+in
+{
   options.flake = {
     dtflsLib = mkOption {
       type = attrs;
