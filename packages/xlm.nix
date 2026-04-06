@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   perSystem =
     {
@@ -19,11 +20,10 @@
           libGL,
           # not sure vulkan-loader is actually needed
           vulkan-loader,
-          xivlauncher,
         }:
         let
           # as a steam compatibility tool it runs inside steam's FHSEnv, using steam-run breaks it
-          xl-no-steam-run = xivlauncher.override { useSteamRun = false; };
+          xl-no-steam-run = inputs.self.packages.${system}.xivlauncher-rb;
         in
         rustPlatform.buildRustPackage rec {
           pname = "xlm";
@@ -81,12 +81,16 @@
               --skip-update" \
             --steam-compat-path $TMPDIR/
 
+            sed -i 's/XLCore/XLCore-RB/' $TMPDIR/XLM/compatibilitytool.vdf
+            sed -i 's/"xlm"/"xlm-rb"/' $TMPDIR/XLM/compatibilitytool.vdf
+            sed -i 's/"xlm"/"xlm-rb"/' $TMPDIR/XLM/toolmanifest.vdf
+
             mv $TMPDIR/XLM/* $steamcompattool
             ln -sfn $out/bin/${meta.mainProgram} $steamcompattool/
           '';
 
           meta = {
-            description = "A painless XIVLauncher on Linux/Steam Deck experience. Automatic updater & Steam Compatibility Tool";
+            description = "A painless XIVLauncher on Linux/Steam Deck experience. Automatic updater & Steam Compatibility Tool (RB version)";
             homepage = "https://github.com/Blooym/XLM";
             license = lib.licenses.agpl3Only;
             mainProgram = "xlm";
