@@ -8,7 +8,9 @@
         "customLaunchPrefixEnabled": false,
         "density": "default",
         "enableClipPreview": true,
+        "enableClipboardChips": true,
         "enableClipboardHistory": false,
+        "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
         "enableWindowsSearch": true,
@@ -23,7 +25,6 @@
         "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "xterm -e",
-        "useApp2Unit": false,
         "viewMode": "list"
     },
     "audio": {
@@ -31,6 +32,7 @@
         ],
         "preferredPlayer": "",
         "spectrumFrameRate": 30,
+        "spectrumMirrored": true,
         "visualizerType": "linear",
         "volumeFeedback": true,
         "volumeFeedbackSoundFile": "",
@@ -47,7 +49,7 @@
         "contentPadding": 2,
         "density": "default",
         "displayMode": "always_visible",
-        "floating": false,
+        "enableExclusionZoneInset": true,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -99,6 +101,7 @@
                     "occupiedColor": "secondary",
                     "pillSize": 0.6,
                     "showApplications": false,
+                    "showApplicationsHover": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
@@ -110,6 +113,7 @@
                     "maxWidth": 145,
                     "scrollingMode": "hover",
                     "showIcon": true,
+                    "showText": true,
                     "textColor": "none",
                     "useFixedWidth": false
                 }
@@ -275,6 +279,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Tokyo Night",
         "schedulingMode": "off",
+        "syncGsettings": true,
         "useWallpaperColors": false
     },
     "controlCenter": {
@@ -337,6 +342,7 @@
     "desktopWidgets": {
         "enabled": true,
         "gridSnap": false,
+        "gridSnapScale": false,
         "monitorWidgets": [
             {
                 "name": "DP-3",
@@ -363,8 +369,10 @@
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
         "indicatorThickness": 3,
+        "launcherIcon": "",
         "launcherIconColor": "none",
         "launcherPosition": "end",
+        "launcherUseDistroLogo": false,
         "monitors": [
         ],
         "onlySameOutput": true,
@@ -439,9 +447,11 @@
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": true
     },
     "hooks": {
+        "colorGeneration": "",
         "darkModeChange": "",
         "enabled": false,
         "performanceModeDisabled": "",
@@ -468,6 +478,7 @@
     },
     "location": {
         "analogClockInCalendar": false,
+        "autoLocate": false,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
@@ -478,10 +489,10 @@
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": true,
-        "weatherShowEffects": true
+        "weatherShowEffects": true,
+        "weatherTaliaMascotAlways": false
     },
     "network": {
-        "airplaneModeEnabled": false,
         "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
@@ -489,8 +500,7 @@
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-        "wifiDetailsViewMode": "grid",
-        "wifiEnabled": false
+        "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
         "autoSchedule": true,
@@ -552,7 +562,8 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false
+        "autoUpdate": false,
+        "notifyUpdates": true
     },
     "sessionMenu": {
         "countdownDuration": 5000,
@@ -621,7 +632,7 @@
         "showHeader": true,
         "showKeybinds": true
     },
-    "settingsVersion": 57,
+    "settingsVersion": 59,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -658,9 +669,11 @@
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
+        "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",
         "settingsPanelSideBarCardStyle": false,
-        "tooltipsEnabled": true
+        "tooltipsEnabled": true,
+        "translucentWidgets": false
     },
     "wallpaper": {
         "automationEnabled": false,
@@ -672,6 +685,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,
@@ -686,7 +700,10 @@
         "sortOrder": "name",
         "transitionDuration": 3000,
         "transitionEdgeSmoothness": 0.15,
-        "transitionType": "fade",
+        "transitionType": [
+            "fade"
+        ],
+        "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "recursive",
