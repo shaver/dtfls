@@ -629,8 +629,8 @@ let
           rustfmt
           pyright
           ruff
-          nodePackages.typescript-language-server
-          nodePackages.prettier
+          typescript-language-server
+          prettier
           clang-tools
           marksman
           yaml-language-server
