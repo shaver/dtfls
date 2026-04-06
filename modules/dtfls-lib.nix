@@ -11,4 +11,6 @@ in
       description = "Library functions for this flake.";
     };
   };
+
+  config.flake.dtflsLib.makeBaseHost = hostname: { name = hostname; };
 }
