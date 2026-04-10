@@ -19,10 +19,6 @@ let
         name = "undotree";
         src = inputs.jiaoshijie-undotree;
       };
-      tmux-status-nvim = pkgs.vimUtils.buildVimPlugin {
-        name = "tmux-status-nvim";
-        src = inputs.tmux-status-nvim;
-      };
     in
     {
       vim = {
@@ -652,7 +648,10 @@ in
       imports = [ inputs.nvf.homeManagerModules.nvf ];
       programs.nvf = {
         enable = true;
-        settings = nvfModule;
+        settings = nvfModule // {
+          viAlias = true;
+          vimAlias = true;
+        };
       };
     };
 
