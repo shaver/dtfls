@@ -48,7 +48,10 @@
       ];
 
       # drkonqi just crash-loops, so...
-      systemd.coredump.enable = false;
+      systemd = {
+        coredump.enable = false;
+        user.extraConfig = "DefaultTimeoutStopSec=10";
+      };
 
       # Bootloader.
       boot = {
