@@ -79,14 +79,9 @@ let
             enable = true;
             extensions.crates-nvim.enable = true;
           };
-          sql = {
-            enable = true;
-            dialect = "postgresql";
-          };
           toml.enable = true;
           ts.enable = true;
           yaml.enable = true;
-          zig.enable = true;
           lua = {
             enable = true;
             lsp.lazydev.enable = true;
@@ -278,11 +273,12 @@ let
         # ── Mini.nvim ─────────────────────────────────────────────────────────
         mini = {
           ai.enable = true;
-          pairs.enable = true;
+          pairs.enable = false;
           hipatterns.enable = true;
           indentscope.enable = true;
           files.enable = true;
           icons.enable = true;
+          starter.enable = true;
         };
 
         # ── Utility ───────────────────────────────────────────────────────────
@@ -331,15 +327,6 @@ let
         # ── Notes ─────────────────────────────────────────────────────────────
         notes = {
           todo-comments.enable = true;
-          obsidian = {
-            enable = true;
-            setupOpts.workspaces = [
-              {
-                name = "personal";
-                path = "~/obsidian";
-              }
-            ];
-          };
         };
 
         # ── Extra plugins ─────────────────────────────────────────────────────
@@ -351,17 +338,12 @@ let
             package = pkgs.vimPlugins.inc-rename-nvim;
             setup = "require('inc_rename').setup({})";
           };
-          claudecode-nvim = {
-            package = pkgs.vimPlugins.claudecode-nvim;
-            setup = "require('claudecode').setup({})";
-          };
           neotest = {
             package = pkgs.vimPlugins.neotest;
             after = [
               "neotest-python"
               "neotest-golang"
               "neotest-haskell"
-              "neotest-zig"
             ];
             setup = ''
               require('neotest').setup({
@@ -369,7 +351,6 @@ let
                   require('neotest-python'),
                   require('neotest-golang'),
                   require('neotest-haskell'),
-                  require('neotest-zig'),
                 },
               })
             '';
@@ -382,9 +363,6 @@ let
           };
           neotest-haskell = {
             package = pkgs.vimPlugins.neotest-haskell;
-          };
-          neotest-zig = {
-            package = pkgs.vimPlugins.neotest-zig;
           };
           ts-comments-nvim = {
             package = pkgs.vimPlugins.ts-comments-nvim;
@@ -447,7 +425,7 @@ let
             setup = ''
               require('guess-indent').setup({
                 auto_cmd = true,
-                override_editorconfig = true,
+                override_editorconfig = false,
               })
             '';
           };
@@ -644,6 +622,7 @@ in
       imports = [ inputs.nvf.homeManagerModules.nvf ];
       programs.nvf = {
         enable = true;
+        defaultEditor = true;
         settings = {
           imports = [ nvfModule ];
           vim = {
