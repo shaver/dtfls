@@ -33,6 +33,12 @@ let
           shada = "!,'100,<50,s10,h";
         };
 
+        clipboard = {
+          enable = true;
+          providers.wl-copy.enable = true;
+          registers = "unnamedplus";
+        };
+
         # ── Theme: tokyonight ─────────────────────────────────────────────────
         theme = {
           enable = true;
