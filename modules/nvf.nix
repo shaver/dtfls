@@ -22,10 +22,6 @@ let
     in
     {
       vim = {
-        # ── Aliases ───────────────────────────────────────────────────────────
-        viAlias = false;
-        vimAlias = false;
-
         # ── Core options (from init.lua) ──────────────────────────────────────
         options = {
           expandtab = true;
@@ -648,9 +644,12 @@ in
       imports = [ inputs.nvf.homeManagerModules.nvf ];
       programs.nvf = {
         enable = true;
-        settings = nvfModule // {
-          viAlias = true;
-          vimAlias = true;
+        settings = {
+          imports = [ nvfModule ];
+          vim = {
+            viAlias = true;
+            vimAlias = true;
+          };
         };
       };
     };
