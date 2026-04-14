@@ -26,6 +26,8 @@
           # ensure that the registry only contains our inputs
           nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
           flake-registry = "";
+
+          download-buffer-size = 671088640; # 640MB or 10x the default. lfg
         };
       };
 
