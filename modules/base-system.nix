@@ -45,6 +45,7 @@
       environment.systemPackages = with pkgs; [
         pciutils
         usbutils
+        fwupd
       ];
 
       # drkonqi just crash-loops, so...
