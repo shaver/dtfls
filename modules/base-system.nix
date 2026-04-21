@@ -45,8 +45,9 @@
       environment.systemPackages = with pkgs; [
         pciutils
         usbutils
-        fwupd
       ];
+
+      services.fwupd.enable = true;
 
       # drkonqi just crash-loops, so...
       systemd = {
