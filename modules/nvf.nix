@@ -35,7 +35,7 @@ let
 
         clipboard = {
           enable = true;
-          providers.wl-copy.enable = true;
+          providers.wl-copy.enable = pkgs.stdenv.isLinux; # TODO not for servers!
           registers = "unnamedplus";
         };
 
