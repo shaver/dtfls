@@ -18,7 +18,7 @@
       };
 
       programs.zsh.enable = true;
-      programs.firefox.enable = true;
+      programs.firefox.enable = config.flake.dtfls.opts.form == "desktop";
 
       # bring in Home Manager
       imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -31,7 +31,7 @@
     };
 
   flake.modules.darwin.shaver-base =
-    { config, ... }:
+    { ... }:
     {
 
       programs.zsh.enable = true;
@@ -47,7 +47,12 @@
     };
 
   flake.modules.homeManager.shaver-base =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      osConfig,
+      ...
+    }:
     {
       imports = with inputs.self.modules.homeManager; [
         git
@@ -85,35 +90,42 @@
 
       };
 
-      fonts.fontconfig.enable = true;
+      fonts.fontconfig.enable = osConfig.flake.dtfls.opts.form == "desktop";
 
-      home.packages = with pkgs; [
-        # Unix tools
-        ripgrep # Better `grep`
-        fd
-        sd
-        tree
-        less
-        coreutils
+      home.packages =
+        with pkgs;
+        [
+          # Unix tools
+          ripgrep # Better `grep`
+          fd
+          sd
+          tree
+          less
+          coreutils
 
-        gnumake
-        clang
+          gnumake
+          clang
 
-        # Nix dev
-        cachix
-        nil # Nix language server
-        nix-info
-        nixpkgs-fmt
-        nixfmt
+          # Nix dev
+          cachix
+          nil # Nix language server
+          nix-info
+          nixpkgs-fmt
+          nixfmt
 
-        jq
-        curl
-        coreutils
+          jq
+          curl
+          coreutils
 
-        # Fonts
-        nerd-fonts.meslo-lg
-        nerd-fonts.jetbrains-mono
-        font-awesome
-      ];
+        ]
+        ++ lib.optionals (osConfig.flake.dtfls.opts.form == "desktop") (
+          with pkgs;
+          [
+            # Fonts
+            nerd-fonts.meslo-lg
+            nerd-fonts.jetbrains-mono
+            font-awesome
+          ]
+        );
     };
 }

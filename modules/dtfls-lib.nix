@@ -1,34 +1,26 @@
 { lib, ... }:
 let
   inherit (lib) mkOption;
-  inherit (lib.types) attrs enum;
+  inherit (lib.types) enum;
 in
 {
-  options.flake = {
-    dtfls = {
-      opts = {
-        role = {
-          type = enum [
-            "personal"
-            "work"
-          ];
-          default = "personal";
-          description = "Do I get paid to use this computer?";
-        };
-        form = {
-          type = enum [
-            "laptop"
-            "desktop"
-            "server"
-          ];
-          default = "desktop";
-          description = "Can I carry this computer? Should I?";
-        };
+  flake.modules.generic.dtfls = {
+    options.flake.dtfls.opts = {
+      role = mkOption {
+        type = enum [
+          "personal"
+          "work"
+        ];
+        default = "personal";
+        description = "Do I get paid to use this computer?";
       };
-      lib = mkOption {
-        type = attrs;
-        default = { };
-        description = "Library functions for this flake.";
+      form = mkOption {
+        type = enum [
+          "desktop"
+          "server"
+        ];
+        default = "desktop";
+        description = "Can I carry this computer? Should I?";
       };
     };
   };

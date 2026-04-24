@@ -30,6 +30,7 @@ let
         flake.modules.${os}.${hostname}
         { networking.hostName = hostname; }
         flake.modules.${os}.base-system
+        flake.modules.generic.dtfls
       ];
 
       pkgs = import nixpkgs {

@@ -16,6 +16,8 @@
 
       powerManagement.enable = true;
 
+      flake.dtfls.opts.form = "desktop";
+
       # disable ASPM due to problem with igc network driver (I225, motherboard)
       boot.kernelParams = [
         "pcie_port_pm=off"
