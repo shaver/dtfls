@@ -20,6 +20,22 @@
       };
 
       programs.steam = {
+        package = pkgs.steam.override {
+          extraPkgs =
+            pkgs': with pkgs'; [
+              libXcursor
+              libXi
+              libXinerama
+              libXScrnSaver
+              libpng
+              libpulseaudio
+              libvorbis
+              stdenv.cc.cc.lib # Provides libstdc++.so.6
+              libkrb5
+              keyutils
+            ];
+        };
+
         enable = true;
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
@@ -31,6 +47,8 @@
         extraPackages = [ pkgs.gamemode ];
         platformOptimizations.enable = true;
       };
+
+      environment.systemPackages = [ pkgs.gamescope ];
 
       programs.wine = {
         enable = true;
