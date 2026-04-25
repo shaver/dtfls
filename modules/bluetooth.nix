@@ -1,20 +1,25 @@
 {
   flake.modules.nixos.bluetooth =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;
-        settings.General = {
-          experimental = true;
-
-          # https://old.reddit.com/r/NixOS/comments/1ch5d2p/comment/lkbabax
-          # for pairing bluetooth controller
-          Privacy = "device";
-          JustWorksRepairing = "always";
-          Class = "0x000100";
-          FastConnectable = true;
+        settings = {
+          General = {
+            experimental = true;
+            # https://old.reddit.com/r/NixOS/comments/1ch5d2p/comment/lkbabax
+            # for pairing bluetooth controller
+            Privacy = "device";
+            JustWorksRepairing = "always";
+            Class = "0x000100";
+            FastConnectable = true;
+          };
+          Policy = {
+            AutoEnable = true;
+          };
         };
+        package = pkgs.bluez-experimental;
       };
 
       services.blueman.enable = true;

@@ -12,6 +12,7 @@
         shaver-personal
         sunshine
         ollama
+        bluetooth
       ];
 
       powerManagement.enable = true;
