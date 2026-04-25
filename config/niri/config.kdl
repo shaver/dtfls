@@ -5,6 +5,7 @@
 input {
     keyboard {
         xkb {
+            options "compose:ralt"
         }
         // Enable numlock on startup, omitting this setting disables it.
         numlock
