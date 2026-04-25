@@ -11,12 +11,23 @@ let
 
   hostMap = {
     nixos = {
-      splashdown = "x86_64-linux";
-      "outpost-arm64" = "aarch64-linux";
+      splashdown = {
+        system = "x86_64-linux";
+        pkgs = {
+          config.cudaSupport = true;
+        };
+      };
+      "outpost-arm64" = {
+        system = "aarch64-linux";
+      };
     };
     darwin = {
-      GWJ1G39KMF = "aarch64-darwin";
-      daltron = "aarch64-darwin";
+      GWJ1G39KMF = {
+        system = "aarch64-darwin";
+      };
+      daltron = {
+        system = "aarch64-darwin";
+      };
     };
   };
 
@@ -24,7 +35,7 @@ let
 
   # construct a basic system configuration
   makeConfiguration =
-    hostname: system: os:
+    hostname: data: os:
     (builderForOS os) {
       modules = [
         flake.modules.${os}.${hostname}
@@ -33,16 +44,19 @@ let
         flake.modules.generic.dtfls
       ];
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      # create our nixpkgs instance, overlaying any per-host options
+      pkgs = import nixpkgs (
+        lib.recursiveUpdate {
+          inherit (data) system;
+          config.allowUnfree = true;
+        } (data.pkgs or { })
+      );
     };
 
   # build all configurations and per-host HM module stubs for all hosts of the given os
   makeConfigurations = hostMap: os: {
     "${os}Configurations" = mapAttrs' (
-      hostname: system: nameValuePair hostname (makeConfiguration hostname system os)
+      hostname: data: nameValuePair hostname (makeConfiguration hostname data os)
     ) hostMap.${os};
     modules.homeManager = mapAttrs' (
       hostname: _: nameValuePair "host-${hostname}-shaver" { }
