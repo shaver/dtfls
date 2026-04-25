@@ -11,7 +11,7 @@
         nvidia-hardware
         shaver-personal
         sunshine
-        # testing-kernel
+        ollama
       ];
 
       powerManagement.enable = true;
