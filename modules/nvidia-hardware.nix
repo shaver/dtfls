@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.nvidia-hardware =
-    { config, lib, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       inherit (lib) mkDefault;
     in
@@ -15,6 +20,8 @@
         open = true; # open-source NVIDIA kernel module (not "nouveau"!)
         nvidiaSettings = true;
       };
+
+      environment.systemPackages = [ pkgs.nvtopPackages.nvidia ];
 
       # don't compile the CUDA stuff if we don't have to
       nix.settings = {
