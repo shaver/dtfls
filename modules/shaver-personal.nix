@@ -3,10 +3,7 @@
   flake.modules.nixos.shaver-personal-desktop = {
     home-manager.users.shaver = {
       imports = with inputs.self.modules.homeManager; [
-        shaver-3d-printing
         shaver-personal-nixos-desktop
-        gaming # probably want to be able to mix this into per-host config...
-        claude-code # and this
       ];
     };
   };
@@ -16,7 +13,6 @@
     home-manager.users.shaver = {
       imports = with inputs.self.modules.homeManager; [
         shaver-personal-nixos
-        haskell
       ];
     };
 

@@ -35,4 +35,13 @@
 
       boot.kernelPackages = pkgs.linuxPackages_7_0;
     };
+
+  flake.modules.homeManager.host-splashdown-shaver = {
+    imports = with inputs.self.modules.homeManager; [
+      shaver-3d-printing
+      gaming
+      claude-code
+      haskell
+    ];
+  };
 }

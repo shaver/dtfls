@@ -26,14 +26,16 @@
       home-manager = {
         useGlobalPkgs = true;
         backupFileExtension = "hmbckp";
-        sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+        sharedModules = [
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
+        ];
       };
     };
 
   flake.modules.darwin.shaver-base =
-    { ... }:
+    { config, ... }:
     {
-
       programs.zsh.enable = true;
 
       # bring in Home Manager
@@ -42,7 +44,10 @@
       home-manager = {
         useGlobalPkgs = true;
         backupFileExtension = "hmbckp";
-        sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+        sharedModules = [
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
+        ];
       };
     };
 
@@ -121,7 +126,6 @@
         ++ lib.optionals (osConfig.flake.dtfls.opts.form == "desktop") (
           with pkgs;
           [
-            # Fonts
             nerd-fonts.meslo-lg
             nerd-fonts.jetbrains-mono
             font-awesome
