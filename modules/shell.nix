@@ -29,6 +29,7 @@
         # Better shell prompt!
         starship = {
           enable = true;
+          enableZshIntegration = true;
           settings = {
             username = {
               style_user = "blue bold";
@@ -38,11 +39,16 @@
               show_always = false;
             };
             hostname = {
-              ssh_only = true;
               ssh_symbol = "🌐 ";
               format = "on [$hostname](bold red) ";
               trim_at = ".local";
               disabled = false;
+            };
+            git_branch.disabled = true;
+            git_commit.disabled = true;
+            nix_shell = {
+              symbol = "❄️";
+              format = "[\\($symbol$name\\)]($style) ";
             };
           };
         };
