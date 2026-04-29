@@ -8,6 +8,8 @@
           enable = true;
           nix-direnv.enable = true;
           silent = true;
+          # https://github.com/NixOS/nixpkgs/issues/513019 -- direnv/zsh badness
+          package = pkgs.direnv.overrideAttrs { doCheck = false; };
         };
 
         zsh = {
