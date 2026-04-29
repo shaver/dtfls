@@ -39,6 +39,7 @@
               show_always = false;
             };
             hostname = {
+              ssh_only = true;
               ssh_symbol = "🌐 ";
               format = "on [$hostname](bold red) ";
               trim_at = ".local";
