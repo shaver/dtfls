@@ -32,7 +32,15 @@
         starship = {
           enable = true;
           enableZshIntegration = true;
+          extraPackages = [ pkgs.jj-starship ];
           settings = {
+            custom.jj = {
+              when = "jj-starship detect";
+              shell = [ "jj-starship" ];
+              format = "$output ";
+            };
+            format = "$all$jj$line_break$shell$character";
+            right_format = "$time$nix_shell";
             username = {
               style_user = "blue bold";
               style_root = "red bold";
@@ -49,6 +57,7 @@
             };
             git_branch.disabled = true;
             git_commit.disabled = true;
+            git_status.disabled = true;
             nix_shell = {
               symbol = "❄️";
               format = "[\\($symbol$name\\)]($style) ";
