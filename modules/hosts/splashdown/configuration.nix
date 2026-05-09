@@ -13,6 +13,7 @@
         sunshine
         ollama
         bluetooth
+        yubikey
       ];
 
       powerManagement.enable = true;
