@@ -53,6 +53,8 @@ let
           formatOnSave = true;
           servers.nixd.settings.nixd = {
             nixpkgs.expr = "import <nixpkgs> {}";
+            nixos.expr = "(builtins.getFlake \"/home/shaver/dtfls\").nixosConfigurations.splashdown.options";
+            home-manager.expr = "(builtins.getFlake \"/home/shaver/dtfls\").homeConfigurations.shaver.options";
           };
           trouble.enable = true;
         };
@@ -86,7 +88,7 @@ let
             extensions.crates-nvim.enable = true;
           };
           toml.enable = true;
-          ts.enable = true;
+          typescript.enable = true;
           yaml.enable = true;
           lua = {
             enable = true;
