@@ -95,9 +95,8 @@ workspace "other-browser" {
     open-on-output "Dell Inc. Dell AW3420DW #ASONM/I5x9fd"
 }
 
-// Open the Discord window on chat -- doesn't work because title is set after opening I think
 window-rule {
-    match app-id="^discord$"
+    match app-id="^(discord|vesktop)$"
     open-on-workspace "chat"
 }
 
