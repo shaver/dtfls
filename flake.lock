@@ -390,6 +390,26 @@
         "type": "github"
       }
     },
+    "proton-cachyos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778652748,
+        "narHash": "sha256-6xwY6bOS0dC1+W9rSzfpu7eQPYyFHR55e06uHkDzoLo=",
+        "owner": "powerofthe69",
+        "repo": "proton-cachyos-nix",
+        "rev": "29103f9fac8fa7f2b682315baa7d548863ca04cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "powerofthe69",
+        "repo": "proton-cachyos-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code": "claude-code",
@@ -402,6 +422,7 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "nvf": "nvf",
+        "proton-cachyos": "proton-cachyos",
         "sops-nix": "sops-nix",
         "tmux-status-nvim": "tmux-status-nvim",
         "xivlauncher-rb": "xivlauncher-rb"

@@ -42,6 +42,7 @@
         gamescopeSession.enable = true;
         extraCompatPackages = [
           pkgs.proton-ge-bin
+          inputs.proton-cachyos.packages.${pkgs.stdenv.hostPlatform.system}.proton-cachyos
           xlm
         ];
         extraPackages = [ pkgs.gamemode ];
