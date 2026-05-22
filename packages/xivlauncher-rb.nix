@@ -27,7 +27,7 @@
         }:
 
         let
-          rev = "1.3.1.2";
+          rev = "1.4.0.3";
         in
         buildDotnetModule rec {
           pname = "XIVLauncher";

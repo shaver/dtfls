@@ -27,7 +27,7 @@
         in
         rustPlatform.buildRustPackage rec {
           pname = "xlm";
-          version = "0.3.14";
+          version = "0.4.0";
 
           src = fetchFromGitHub {
             owner = "Blooym";
