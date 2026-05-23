@@ -129,6 +129,7 @@
             nerd-fonts.meslo-lg
             nerd-fonts.jetbrains-mono
             font-awesome
+            noto-fonts
           ]
         );
     };
