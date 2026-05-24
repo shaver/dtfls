@@ -13,11 +13,13 @@
       time.timeZone = lib.mkDefault "America/Toronto";
 
       services.openssh.enable = lib.mkDefault true;
+      services.udisks2.enable = true;
 
       environment.systemPackages = with pkgs; [
         lsof
         file
         git # for flake management
+        usermount
       ];
 
       # have to force this config globally, see
