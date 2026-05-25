@@ -12,12 +12,13 @@
       ];
 
       # avoid having to build everything
-      nix.settings = {
-        extra-substituters = [ "https://nix-gaming.cachix.org" ];
-        extra-trusted-public-keys = [
-          "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-        ];
-      };
+      ## covered by ncro in nix.nix
+      # nix.settings = {
+      #   extra-substituters = [ "https://nix-gaming.cachix.org" ];
+      #   extra-trusted-public-keys = [
+      #     "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      #   ];
+      # };
 
       programs.steam = {
         package = pkgs.steam.override {
@@ -83,10 +84,15 @@
       };
     in
     {
-      home.packages = [
-        # pkgs.xivlauncher # now managed by xlm
-        do-ff14-otp
-      ];
+      home = {
+        packages = [
+          # pkgs.xivlauncher # now managed by xlm
+          do-ff14-otp
+        ];
+        sessionVariables = {
+          "__GL_SHADER_DISK_CACHE_SIZE" = "10737418240";
+        };
+      };
       xdg.desktopEntries.do-ff14-otp = {
         name = "FF14 OTP";
         exec = "${lib.getExe do-ff14-otp}";
