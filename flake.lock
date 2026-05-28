@@ -397,11 +397,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779603672,
-        "narHash": "sha256-JbBzozM0iwrWw6u7bQy5HwAVt9XwXh0DAl5EsPIkv/8=",
+        "lastModified": 1779863612,
+        "narHash": "sha256-VyyWc4AwF90RtKVq3qNYRseJokiIzeqgUKL+rP4ZT7s=",
         "owner": "powerofthe69",
         "repo": "proton-cachyos-nix",
-        "rev": "e3fa6fe3d0e04a3c434931d0ff531aa16259c118",
+        "rev": "d2d6ac111e19ff31966ed230e817176184f2f560",
         "type": "github"
       },
       "original": {
