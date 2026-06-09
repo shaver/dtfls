@@ -68,7 +68,11 @@ let
 
           clang.enable = true;
           go.enable = true;
-          haskell.enable = true;
+          haskell = {
+            enable = true;
+            lsp.enable = false;
+            extensions.haskell-tools.enable = true;
+          };
           json.enable = true;
           markdown = {
             enable = true;
