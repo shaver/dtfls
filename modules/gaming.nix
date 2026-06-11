@@ -51,6 +51,7 @@
       };
 
       environment.systemPackages = [ pkgs.gamescope ];
+      hardware.steam-hardware.enable = true;
 
       programs.wine = {
         enable = true;
