@@ -1,7 +1,11 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.noctalia =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     {
       imports = [ inputs.noctalia.homeModules.default ];
 
@@ -43,7 +47,7 @@
         QT_QPA_PLATFORMTHEME = "gtk3";
       };
 
-      programs.noctalia-shell = {
+      programs.noctalia = {
         enable = true;
       };
 
@@ -51,5 +55,6 @@
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dtfls/config/noctalia";
         recursive = true;
       };
+
     };
 }
