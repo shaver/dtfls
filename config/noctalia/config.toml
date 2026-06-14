@@ -1,0 +1,160 @@
+[backdrop]
+enabled = true
+
+[bar.default]
+capsule = true
+center = [ "clock", "spacer_2", "media", "screenshot", "recorder" ]
+contact_shadow = true
+end = [
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session"
+]
+start = [ "launcher", "wallpaper", "workspaces", "spacer_3", "weather" ]
+widget_spacing = 12
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 5
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660
+
+[location]
+address = "Toronto, Ontario, Canada"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1720.0
+    cy = 1317.0
+    output = "DP-2"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1720.0
+    cy = 1317.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+[plugins]
+enabled = [ "noctalia/screen_recorder" ]
+
+[shell]
+clipboard_enabled = false
+settings_show_advanced = true
+
+    [shell.panel]
+    launcher_compact = true
+    launcher_session_search = true
+    transparency_mode = "glass"
+
+    [[shell.session.actions]]
+    action = "lock"
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    enabled = false
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+[theme]
+community_palette = "One"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-rainbow"
+
+[wallpaper.default]
+path = "/home/shaver/dtfls/config/wallpaper/waterfall/wallhaven-76dv2e_3440x1440.png"
+
+[wallpaper.last]
+path = "/home/shaver/dtfls/config/wallpaper/waterfall/wallhaven-76dv2e_3440x1440.png"
+
+[wallpaper.monitors.DP-2]
+path = "/home/shaver/dtfls/config/wallpaper/waterfall/wallhaven-76dv2e_3440x1440.png"
+
+[wallpaper.monitors.DP-3]
+path = "/home/shaver/dtfls/config/wallpaper/waterfall/wallhaven-76dv2e_3440x1440.png"
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
