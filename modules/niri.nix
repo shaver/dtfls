@@ -14,17 +14,6 @@
         playerctl
       ];
 
-      services.swayidle = {
-        enable = true;
-        timeouts = [
-          {
-            command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-            resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors";
-            timeout = 900; # 15 mins
-          }
-        ];
-      };
-
       # use the "raw" niri config from this repo
       xdg.configFile = {
         niri = {
