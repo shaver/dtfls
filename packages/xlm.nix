@@ -23,7 +23,7 @@
         }:
         let
           # as a steam compatibility tool it runs inside steam's FHSEnv, using steam-run breaks it
-          xl-no-steam-run = inputs.self.packages.${system}.xivlauncher-rb;
+          xl-no-steam-run = inputs.xivlauncher-rb.packages.${system}.xivlauncher-rb;
         in
         rustPlatform.buildRustPackage rec {
           pname = "xlm";
@@ -33,13 +33,13 @@
             owner = "Blooym";
             repo = "XLM";
             rev = "v${version}";
-            hash = "sha256-Awb/16ddPxNXNdrXGpnkDDWwd3pQLuMk0m13pqo35JM=";
+            hash = "sha256-E9EXKX26JkjrOYkWJFZineItnBQElL2qZ/leAQlA5bw=";
           };
 
           # the only feature is a self-updater
           buildNoDefaultFeatures = true;
 
-          cargoHash = "sha256-HMWQPqSwNgYxxMGnNmxSVAX2xxbVw5Wdj80w2zMLzug=";
+          cargoHash = "sha256-g2Xnhp0f5imz90EbutdYQQ49+DSgS/g8kIJ2bz3pTfE=";
 
           outputs = [
             "out"
