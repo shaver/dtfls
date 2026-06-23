@@ -26,6 +26,9 @@
         "pcie_aspm.policy=performance"
       ];
 
+      # put in a printing module once I get the declarative printer config sorted
+      services.printing.enable = true;
+
       # sleep crashes this machine, so let's just not
       systemd.sleep.settings.Sleep = {
         AllowSuspend = "no";
