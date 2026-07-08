@@ -36,8 +36,6 @@
         AllowHybridSleep = "no";
         AllowSuspendThenHibernate = "no";
       };
-
-      boot.kernelPackages = pkgs.linuxPackages_7_0;
     };
 
   flake.modules.homeManager.host-splashdown-shaver = {

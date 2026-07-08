@@ -66,7 +66,7 @@
           efi.canTouchEfiVariables = true;
         };
 
-        kernelPackages = lib.mkDefault pkgs.linuxPackages_6_19;
+        kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
       };
 
       # Select internationalisation properties.
