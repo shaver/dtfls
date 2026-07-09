@@ -7,22 +7,18 @@
         enable = true;
         enableDefaultConfig = false;
 
-        matchBlocks = {
-          "*" = {
-            host = "*";
-            addKeysToAgent = "yes";
-            identityFile = "~/.ssh/id_ed25519";
+        settings = {
+          "github.com" = {
+            IdentityFile = "~/.ssh/id_github";
           };
 
-          "github.com" = {
-            host = "github.com";
-            identityFile = "~/.ssh/id_github";
+          "*" = {
+            AddKeysToAgent = "yes";
+            IdentityFile = "~/.ssh/id_ed25519";
           };
         };
       };
 
-      services.ssh-agent = {
-        enable = true;
-      };
+      services.ssh-agent.enable = true;
     };
 }
