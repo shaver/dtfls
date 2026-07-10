@@ -43,6 +43,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pi.url = "github:lukasl-dev/pi.nix";
+
     xivlauncher-rb = {
       url = "github:shaver/nixos-xivlauncher-rb";
       inputs.nixpkgs.follows = "nixpkgs";
