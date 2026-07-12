@@ -4,7 +4,6 @@
     { pkgs, ... }:
     {
       imports = with inputs.self.modules.generic; [
-        sudo
         nix
       ];
       services.tailscale.enable = true;
