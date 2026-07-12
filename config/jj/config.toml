@@ -13,6 +13,12 @@ merge-editor    = "meld"
 email = "shaver@off.net"
 name  = "Mike Shaver"
 
+[[--scope]]
+--when.repositories = ["~/ts/"]
+--when.hostname     = ["alchemist"]
+[--scope.user]
+email = "shaver@tailscale.com"
+
 [revsets]
 bookmark-advance-to = "@-"
 
