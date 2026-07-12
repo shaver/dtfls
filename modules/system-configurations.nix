@@ -22,7 +22,7 @@ let
       };
     };
     darwin = {
-      GWJ1G39KMF = {
+      alchemist = {
         system = "aarch64-darwin";
       };
       daltron = {
