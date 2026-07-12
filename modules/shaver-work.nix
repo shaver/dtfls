@@ -5,6 +5,7 @@
       shaver-base
       aerospace
       homebrew
+      slack
     ];
 
     home-manager.users.shaver = {
