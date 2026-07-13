@@ -6,7 +6,9 @@
       imports = with inputs.self.modules.generic; [
         nix
       ];
-      services.tailscale.enable = true;
+
+      # on Mac we want to use the macsys thing instead
+      services.tailscale.enable = !pkgs.stdenv.isDarwin;
 
       programs.zsh.enable = true;
       time.timeZone = lib.mkDefault "America/Toronto";
