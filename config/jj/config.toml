@@ -15,7 +15,7 @@ name  = "Mike Shaver"
 
 [[--scope]]
 --when.repositories = ["~/ts/"]
---when.hostname     = ["alchemist"]
+--when.hostnames    = ["alchemist"]
 [--scope.user]
 email = "shaver@tailscale.com"
 
