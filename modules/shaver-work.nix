@@ -5,7 +5,7 @@
       shaver-base
       aerospace
       homebrew
-      slack
+      mac-app-store
     ];
 
     home-manager.users.shaver = {
