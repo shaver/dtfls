@@ -20,8 +20,6 @@
       home.packages = with pkgs; [
         go-junit-report
         golangci-lint
-
-        claude-code
       ];
     };
 }
