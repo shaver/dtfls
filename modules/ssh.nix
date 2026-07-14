@@ -15,6 +15,8 @@
           "*" = {
             AddKeysToAgent = "yes";
             IdentityFile = "~/.ssh/id_ed25519";
+            UseKeychain = "yes";
+            IgnoreUnknown = "UseKeychain";
           };
         };
       };
