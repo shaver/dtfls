@@ -114,7 +114,11 @@
         home = "/Users/shaver";
       };
 
-      security.pam.services.sudo_local.touchIdAuth = true; # Use TouchID for `sudo` authentication
+      security.pam.services.sudo_local = {
+        enable = true;
+        touchIdAuth = true; # Use TouchID for `sudo` authentication
+        reattach = true;
+      };
 
       # These users can add Nix caches.
       nix.settings.trusted-users = [
