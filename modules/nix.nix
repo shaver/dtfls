@@ -34,12 +34,10 @@
           nix-path = lib.mapAttrsToList (n: _: "${n}=flake:${n}") inputs;
           flake-registry = "";
 
-          download-buffer-size = 671088640; # 640MB or 10x the default. lfg
+          # download-buffer-size = 671088640; # 640MB or 10x the default. lfg
         };
       };
 
       environment.systemPackages = [ pkgs.rippkgs ];
-
-      nix.package = pkgs.lix;
     };
 }
