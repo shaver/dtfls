@@ -13,9 +13,6 @@ let
     nixos = {
       splashdown = {
         system = "x86_64-linux";
-        pkgs = {
-          config.cudaSupport = true;
-        };
       };
       "outpost-arm64" = {
         system = "aarch64-linux";

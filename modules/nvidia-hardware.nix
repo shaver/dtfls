@@ -24,9 +24,10 @@
       environment.systemPackages = [ pkgs.nvtopPackages.nvidia ];
 
       # don't compile the CUDA stuff if we don't have to
-      nix.settings = {
-        extra-substituters = [ "https://cache.nixos-cuda.org" ];
-        extra-trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
-      };
+      # TURNS OUT that this cache is slow as shit so it's faster to build ourselves
+      # nix.settings = {
+      #   extra-substituters = [ "https://cache.nixos-cuda.org" ];
+      #   extra-trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
+      # };
     };
 }
