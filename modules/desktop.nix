@@ -4,7 +4,6 @@
     { pkgs, ... }:
     {
       home.packages = [
-        pkgs.caja-with-extensions
         pkgs.jellyfin-desktop
         pkgs.wl-clipboard
       ];
@@ -15,16 +14,26 @@
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
-      # Enable the KDE Plasma Desktop Environment.
-      services = {
-        displayManager.sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
+      services.displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
       };
 
       environment.systemPackages = [ pkgs.mate-polkit ];
       security.polkit.enable = true;
+
+      programs.thunar = {
+        enable = true;
+        plugins = with pkgs; [
+          thunar-volman
+          thunar-shares-plugin
+          thunar-archive-plugin
+          thunar-dropbox-plugin
+        ];
+      };
+
+      services.gvfs.enable = true;
+      services.tumbler.enable = true;
 
       systemd = {
         user.services.polkit-mate-1 = {
