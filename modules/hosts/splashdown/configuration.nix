@@ -8,7 +8,6 @@
       shaver-personal-desktop
       nvidia-hardware
       shaver-personal
-      sunshine
       ollama
       bluetooth
       yubikey
