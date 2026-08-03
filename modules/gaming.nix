@@ -3,7 +3,7 @@
   flake.modules.nixos.gaming =
     { pkgs, ... }:
     let
-      inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm;
+      inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm moondeck-buddy;
     in
     {
       imports = with inputs.nix-gaming.nixosModules; [
@@ -50,7 +50,10 @@
         platformOptimizations.enable = true;
       };
 
-      environment.systemPackages = [ pkgs.gamescope ];
+      environment.systemPackages = [
+        pkgs.gamescope
+        moondeck-buddy
+      ];
       hardware.steam-hardware.enable = true;
 
       programs.wine = {
