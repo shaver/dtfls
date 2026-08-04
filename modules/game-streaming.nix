@@ -62,6 +62,30 @@
         };
       };
 
+      # based on the one by RoastBeefer00 at
+      # https://github.com/RoastBeefer00/nixos-config/blob/3a3801b52aa18cc598a17eec05c6bba31cf8449e/hm_modules/moondeck-buddy.nix#L207
+      systemd.user.services.moondeckbuddy-gui = {
+        unitConfig = {
+          Description = "MoonDeck Buddy (GUI session)";
+          After = [ "graphical-session.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "/run/current-system/sw/bin/MoonDeckBuddy";
+          Restart = "on-failure";
+          RestartSec = "5s";
+          Environment = [
+            "XDG_CONFIG_HOME=%h/.config"
+            "XDG_DATA_HOME=%h/.local/share"
+          ];
+        };
+
+        wantedBy = [ "graphical-session.target" ];
+        enable = true;
+      };
+
     };
 
 }
