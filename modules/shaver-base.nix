@@ -13,7 +13,6 @@
         extraGroups = [
           "networkmanager"
           "wheel"
-          "moonshine" # put in a moonshine.nix?
         ];
         shell = pkgs.zsh;
         uid = 1000;

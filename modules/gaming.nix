@@ -3,7 +3,7 @@
   flake.modules.nixos.gaming =
     { pkgs, ... }:
     let
-      inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm moondeck-buddy;
+      inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm;
     in
     {
       imports =
@@ -55,45 +55,12 @@
 
       environment.systemPackages = [
         pkgs.gamescope
-        moondeck-buddy
       ];
       hardware.steam-hardware.enable = true;
 
       programs.wine = {
         enable = true;
         ntsync = true;
-      };
-
-      # put in a nixosModules.moonshine?
-      services.moonshine = {
-        enable = true;
-        user = "shaver";
-        openFirewall = true;
-
-        # moonshine defaults to /usr/bin/steam
-        settings = {
-          application = [
-            {
-              title = "Steam";
-              command = [
-                "/run/current-system/sw/bin/steam"
-                "steam://open/bigpicture"
-              ];
-            }
-          ];
-
-          application_scanner = [
-            {
-              type = "steam";
-              library = "$HOME/.local/share/Steam";
-              command = [
-                "/run/current-system/sw/bin/steam"
-                "-bigpicture"
-                "steam://rungameid/{game_id}"
-              ];
-            }
-          ];
-        };
       };
     };
 

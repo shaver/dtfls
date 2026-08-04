@@ -11,6 +11,7 @@
       ollama
       bluetooth
       yubikey
+      moonshine-and-buddy # headless game streaming
     ];
 
     powerManagement.enable = true;
