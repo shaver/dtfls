@@ -90,7 +90,7 @@ let
           yaml.enable = true;
           lua = {
             enable = true;
-            lsp.lazydev.enable = true;
+            extensions.lazydev.enable = true;
           };
         };
 
