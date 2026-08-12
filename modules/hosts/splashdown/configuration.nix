@@ -14,6 +14,36 @@
       moonshine-and-buddy # headless game streaming
     ];
 
+    # disable the extraneous audio outputs
+    services.pipewire.wireplumber.extraConfig = {
+      "disable-bullshit-outputs" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              { "device.name" = "alsa_card.pci-0000_01_00.1"; }
+              { "device.name" = "alsa_card.usb-Generic_USB_Audio-00"; }
+              { "device.name" = "alsa_card.pci-0000_14_00.1"; }
+            ];
+            actions = {
+              update-props = {
+                "device.disabled" = "true";
+              };
+            };
+          }
+          {
+            matches = [
+              { "node.name" = "alsa_output.usb-Shure_Inc_Shure_MV7-00.analog-stereo"; }
+            ];
+            actions = {
+              update-props = {
+                "node.disabled" = "true";
+              };
+            };
+          }
+        ];
+      };
+    };
+
     powerManagement.enable = true;
 
     flake.dtfls.opts.form = "desktop";
