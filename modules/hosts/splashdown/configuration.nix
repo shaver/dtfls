@@ -12,6 +12,8 @@
       bluetooth
       yubikey
       moonshine-and-buddy # headless game streaming
+      airplay-server
+      airplay-client
     ];
 
     # disable the extraneous audio outputs
