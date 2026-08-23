@@ -8,7 +8,7 @@
       ];
 
       # on Mac we want to use the macsys thing instead
-      services.tailscale.enable = !pkgs.stdenv.isDarwin;
+      services.tailscale.enable = !pkgs.stdenv.hostPlatform.isDarwin;
 
       programs.zsh.enable = true;
       time.timeZone = lib.mkDefault "America/Toronto";

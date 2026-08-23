@@ -70,7 +70,7 @@
 
       home = {
         username = "shaver";
-        homeDirectory = if pkgs.stdenv.isDarwin then "/Users/shaver" else "/home/shaver";
+        homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/shaver" else "/home/shaver";
         stateVersion = "25.11";
       };
 

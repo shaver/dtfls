@@ -35,7 +35,7 @@ let
 
         clipboard = {
           enable = true;
-          providers.wl-copy.enable = pkgs.stdenv.isLinux; # TODO not for servers!
+          providers.wl-copy.enable = pkgs.stdenv.hostPlatform.isLinux; # TODO not for servers!
           registers = "unnamedplus";
         };
 
@@ -97,6 +97,8 @@ let
         # ── Treesitter ────────────────────────────────────────────────────────
         treesitter = {
           enable = true;
+          indent.enable = true;
+
           addDefaultGrammars = true;
           grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
             bash
@@ -431,7 +433,7 @@ let
             setup = ''
               require('guess-indent').setup({
                 auto_cmd = true,
-                override_editorconfig = false,
+                override_editorconfig = true,
               })
             '';
           };
