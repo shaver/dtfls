@@ -40,11 +40,12 @@
       ];
     };
 
-  flake.modules.homeManager.shaver-personal-nixos = {
+  flake.modules.homeManager.shaver-personal-nixos = { pkgs, ... }: {
     imports = with inputs.self.modules.homeManager; [
       shaver-personal
       music
     ];
+    home.packages = [ pkgs.hcloud ];
   };
 
   flake.modules.homeManager.shaver-personal = {
