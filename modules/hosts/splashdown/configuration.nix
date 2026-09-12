@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.splashdown = {
+  flake.modules.nixos.splashdown = { config, ... }: {
     imports = with inputs.self.modules.nixos; [
       gaming
       desktop-audio
@@ -66,6 +66,9 @@
       AllowHybridSleep = "no";
       AllowSuspendThenHibernate = "no";
     };
+
+    # for passing devices to Home Assistant on the server
+    environment.systemPackages = [ config.boot.kernelPackages.usbip ];
   };
 
   flake.modules.homeManager.host-splashdown-shaver = {
