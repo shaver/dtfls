@@ -124,6 +124,7 @@
           coreutils
 
         ]
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.darwin.libresolv ]
         ++ lib.optionals (osConfig.flake.dtfls.opts.form == "desktop") (
           with pkgs;
           [
