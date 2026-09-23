@@ -18,6 +18,10 @@ name  = "Mike Shaver"
 --when.hostnames    = ["alchemist"]
 [--scope.user]
 email = "shaver@tailscale.com"
+[--scope.templates]
+commit_trailers = '''
+format_signed_off_by_trailer(self)
+++ if(!trailers.contains_key("Change-Id"), format_gerrit_change_id_trailer(self))'''
 
 [revsets]
 bookmark-advance-to = "@-"
