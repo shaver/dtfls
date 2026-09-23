@@ -113,7 +113,6 @@
           clang
 
           # Nix dev
-          cachix
           nil # Nix language server
           nix-info
           nixpkgs-fmt
