@@ -33,6 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    umbriel = {
+      url = "github:noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     noctalia = {
       # guarantee a cache hit because compiling is for chumps
       url = "github:noctalia-dev/noctalia/cachix";

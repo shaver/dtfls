@@ -1,30 +1,26 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.niri =
+  flake.modules.homeManager.umbriel =
     { config, pkgs, ... }:
     let
       configRepo = "${config.home.homeDirectory}/dtfls";
     in
     {
       home.packages = with pkgs; [
-        fuzzel
-        swaylock
-        waybar
         xwayland-satellite
         playerctl
       ];
 
-      # use the "raw" niri config from this repo
       xdg.configFile = {
-        niri = {
-          source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/niri";
+        umbriel = {
+          source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/umbriel";
           recursive = true;
         };
       };
-
     };
 
-  flake.modules.nixos.niri = {
-    programs.niri.enable = true;
+  flake.modules.nixos.umbriel = {
+    imports = [ inputs.umbriel.nixosModules.default ];
+    programs.umbriel.enable = true;
   };
 }

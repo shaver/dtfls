@@ -1,0 +1,13 @@
+[general]
+autostart                  = ["noctalia"]
+mod_key                    = "Super"
+xwayland                   = true
+xwayland_native_resolution = false
+show_cheatsheet            = false
+honor_restore_maximized    = true
+
+[keybinds]
+"Mod+Shift+Space" = "window-move-to-scratchpad"
+"Mod+Space"       = "scratchpad-toggle"
+"Mod+T"           = { action = "spawn:alacritty", repeat = false }
+"Mod+Shift+4"     = { action = "submap:screencap", repeat = false }

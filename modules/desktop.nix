@@ -8,7 +8,10 @@
         pkgs.wl-clipboard
       ];
 
-      imports = [ inputs.self.modules.homeManager.alacritty ];
+      imports = with inputs.self.modules.homeManager; [
+        alacritty
+        umbriel
+      ];
     };
 
   flake.modules.nixos.desktop =
@@ -51,7 +54,10 @@
         };
       };
 
-      programs.niri.enable = true;
+      imports = with inputs.self.modules.nixos; [
+        umbriel
+        niri
+      ];
 
       # for printer discovery?
       services.avahi = {
