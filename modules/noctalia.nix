@@ -65,4 +65,21 @@
         ];
       };
     };
+
+  flake.modules.nixos.noctalia-greeter = { pkgs, ... }: {
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings = {
+        cursor.size = 24;
+        keyboard.layout = "us";
+        output.layout = "DP-3:0,0; DP-2:3440,-400"; # TODO splashdown
+        session.default = "Umbriel";
+        idle.timeout = 300;
+      };
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+      };
+    };
+  };
 }

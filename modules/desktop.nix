@@ -17,11 +17,6 @@
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
-      services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-
       environment.systemPackages = [ pkgs.mate-polkit ];
       security.polkit.enable = true;
 
@@ -55,6 +50,7 @@
       };
 
       imports = with inputs.self.modules.nixos; [
+        noctalia-greeter
         umbriel
         niri
       ];
