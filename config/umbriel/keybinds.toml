@@ -1,0 +1,166 @@
+# Converted from config/niri/config.kdl binds.
+# https://docs.noctalia.dev/umbriel/keybinds/
+# https://docs.noctalia.dev/umbriel/actions/
+
+[keybinds]
+# Show a list of important hotkeys.
+"Mod+Shift+Slash" = "cheatsheet-toggle"
+
+# Programs: terminal, app launcher, screen locker.
+"Mod+T"                 = { action = "spawn:alacritty", repeat = false }
+"Mod+Space"             = "spawn:noctalia msg panel-toggle launcher"
+"Super+Shift+Backspace" = "spawn:noctalia msg session lock"
+
+# Volume keys (PipeWire & WirePlumber). "-l 1.0" limits the volume to 100%.
+"XF86AudioRaiseVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-", allow_when_locked = true }
+"XF86AudioMute"        = { action = "spawn:wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", allow_when_locked = true }
+"XF86AudioMicMute"     = { action = "spawn:wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", allow_when_locked = true }
+
+# Media keys (playerctl).
+"XF86AudioPlay" = { action = "spawn:playerctl play-pause", allow_when_locked = true }
+"XF86AudioStop" = { action = "spawn:playerctl stop", allow_when_locked = true }
+"XF86AudioPrev" = { action = "spawn:playerctl previous", allow_when_locked = true }
+"XF86AudioNext" = { action = "spawn:playerctl next", allow_when_locked = true }
+
+# Brightness keys.
+"XF86MonBrightnessUp"   = { action = "spawn:brightnessctl --class=backlight set +10%", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn:brightnessctl --class=backlight set 10%-", allow_when_locked = true }
+
+# Overview.
+"Mod+O" = { action = "overview-toggle", repeat = false }
+
+"Mod+Shift+Q" = { action = "window-close", repeat = false }
+
+# Focus.
+"Mod+H" = "window-focus-left"
+"Mod+J" = "window-focus-down"
+"Mod+K" = "window-focus-up"
+"Mod+L" = "window-focus-right"
+
+# Move.
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+K" = "window-move-up"
+"Mod+Shift+L" = "column-move-right"
+
+# Alternatives that cross workspaces at the edge of a column.
+# "Mod+J"      = "window-focus-or-workspace-down"
+# "Mod+K"      = "window-focus-or-workspace-up"
+# "Mod+Ctrl+J" = "window-move-or-workspace-down"
+# "Mod+Ctrl+K" = "window-move-or-workspace-up"
+
+"Mod+Alt+H"     = "column-focus-first"
+"Mod+Alt+L"     = "column-focus-last"
+"Mod+Home"      = "column-focus-first"
+"Mod+End"       = "column-focus-last"
+"Mod+Ctrl+Home" = "column-move-to-first"
+"Mod+Ctrl+End"  = "column-move-to-last"
+
+# Monitors.
+"Mod+Ctrl+Left"  = "output-focus-left"
+"Mod+Ctrl+Down"  = "output-focus-down"
+"Mod+Ctrl+Up"    = "output-focus-up"
+"Mod+Ctrl+Right" = "output-focus-right"
+"Mod+Ctrl+H"     = "output-focus-left"
+"Mod+Ctrl+J"     = "output-focus-down"
+"Mod+Ctrl+K"     = "output-focus-up"
+"Mod+Ctrl+L"     = "output-focus-right"
+
+"Mod+Shift+Ctrl+H" = "column-move-to-output-left"
+"Mod+Shift+Ctrl+J" = "column-move-to-output-down"
+"Mod+Shift+Ctrl+K" = "column-move-to-output-up"
+"Mod+Shift+Ctrl+L" = "column-move-to-output-right"
+
+# Workspaces.
+"Mod+U"      = "workspace-next"
+"Mod+I"      = "workspace-previous"
+"Mod+Ctrl+U" = "column-move-to-workspace-next"
+"Mod+Ctrl+I" = "column-move-to-workspace-previous"
+
+"Mod+Shift+U" = "workspace-move-down"
+"Mod+Shift+I" = "workspace-move-up"
+
+# Mouse wheel. shaver: these look upside down, but...natural-scroll
+"Mod+WheelUp"        = { action = "workspace-next", cooldown_ms = 150 }
+"Mod+WheelDown"      = { action = "workspace-previous", cooldown_ms = 150 }
+"Mod+Ctrl+WheelUp"   = { action = "column-move-to-workspace-next", cooldown_ms = 150 }
+"Mod+Ctrl+WheelDown" = { action = "column-move-to-workspace-previous", cooldown_ms = 150 }
+
+# Shift+wheel scrolls horizontally.
+"Mod+Shift+WheelUp"        = "window-focus-right"
+"Mod+Shift+WheelDown"      = "window-focus-left"
+"Mod+Ctrl+Shift+WheelUp"   = "column-move-right"
+"Mod+Ctrl+Shift+WheelDown" = "column-move-left"
+
+"Mod+1"      = "workspace-switch:1"
+"Mod+2"      = "workspace-switch:2"
+"Mod+3"      = "workspace-switch:3"
+"Mod+4"      = "workspace-switch:4"
+"Mod+5"      = "workspace-switch:5"
+"Mod+6"      = "workspace-switch:6"
+"Mod+7"      = "workspace-switch:7"
+"Mod+8"      = "workspace-switch:8"
+"Mod+9"      = "workspace-switch:9"
+"Mod+Ctrl+1" = "column-move-to-workspace:1"
+"Mod+Ctrl+2" = "column-move-to-workspace:2"
+"Mod+Ctrl+3" = "column-move-to-workspace:3"
+"Mod+Ctrl+4" = "column-move-to-workspace:4"
+"Mod+Ctrl+5" = "column-move-to-workspace:5"
+"Mod+Ctrl+6" = "column-move-to-workspace:6"
+"Mod+Ctrl+7" = "column-move-to-workspace:7"
+"Mod+Ctrl+8" = "column-move-to-workspace:8"
+"Mod+Ctrl+9" = "column-move-to-workspace:9"
+
+# Move the focused window in and out of a column.
+"Mod+BracketLeft"  = "window-consume-or-expel-left"
+"Mod+BracketRight" = "window-consume-or-expel-right"
+
+# Consume one window from the right into the focused column.
+"Mod+Comma" = "window-consume-from-right"
+# niri's expel-window-from-column has no direct equivalent; this is the closest.
+"Mod+Period" = "window-consume-or-expel-right"
+
+# Sizing. In the scrolling layout, primary extent = column width, secondary = window height.
+"Mod+R" = "window-cycle-primary-extent"
+# "Mod+R"     = "window-cycle-primary-extent-back"
+"Mod+Shift+R" = "window-cycle-secondary-extent"
+# niri's reset-window-height has no direct equivalent.
+# "Mod+Ctrl+R" = ...
+"Mod+F"       = "window-toggle-maximize"
+"Mod+Shift+F" = "window-toggle-fullscreen"
+# niri's expand-column-to-available-width has no direct equivalent.
+# "Mod+Ctrl+F" = ...
+
+"Mod+Shift+C" = "column-center"
+# niri's center-visible-columns has no direct equivalent.
+# "Mod+Ctrl+C" = ...
+
+"Mod+Minus" = "window-modify-primary-extent:-0.1"
+"Mod+Equal" = "window-modify-primary-extent:+0.1"
+
+# Finer height adjustments when in a column with other windows.
+"Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1"
+"Mod+Shift+Equal" = "window-modify-secondary-extent:+0.1"
+
+# Move the focused window between floating and tiling.
+# "Mod+V"       = "window-toggle-floating"
+# "Mod+Shift+V" = "window-focus-switch-floating"
+
+# Tabbed column display.
+"Mod+W" = "column-toggle-tabbed"
+
+# Screenshots via noctalia. shaver: reminder, Fn-Del = PrtScr
+"Print"      = "spawn:noctalia msg screenshot-region"
+"Ctrl+Print" = "spawn:noctalia msg screenshot-fullscreen"
+# noctalia has no window screenshot; niri's screenshot-window has no equivalent.
+# "Alt+Print" = ...
+
+# Escape hatch for keyboard shortcuts inhibition.
+"Mod+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+
+# Session menu.
+"Mod+Shift+E" = "spawn:noctalia msg panel-toggle session"
+
+# Power off monitors; any input turns them back on.
+"Mod+Shift+P" = "dpms-off"

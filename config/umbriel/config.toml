@@ -4,10 +4,30 @@ mod_key                    = "Super"
 xwayland                   = true
 xwayland_native_resolution = false
 show_cheatsheet            = false
-honor_restore_maximized    = true
+honor_restored_maximize    = true
 
-[keybinds]
-"Mod+Shift+Space" = "window-move-to-scratchpad"
-"Mod+Space"       = "scratchpad-toggle"
-"Mod+T"           = { action = "spawn:alacritty", repeat = false }
-"Mod+Shift+4"     = { action = "submap:screencap", repeat = false }
+[output."Dell Inc. AW3423DWF FB742S3"]
+mode     = "3440x1440@99.982"
+position = [0, 0]
+vrr      = "always"
+hdr      = "auto"
+
+[output."Dell Inc. Dell AW3420DW #ASONM/I5x9fd"]
+mode     = "3440x1440@100"
+position = [3440, -400]
+vrr      = "always"
+hdr      = "off"
+
+[include]
+files = ["keybinds.toml"]
+
+[input.keyboard]
+numlock_toggle = true
+options        = "compose:ralt"
+
+[input.mouse]
+natural_scroll = true
+sensitivity    = -0.7
+
+[input.cursor]
+follows_focus = true
