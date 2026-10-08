@@ -38,6 +38,9 @@
         };
       };
 
-      environment.systemPackages = [ pkgs.rippkgs ];
+      environment.systemPackages = [
+        pkgs.rippkgs
+        pkgs.tack
+      ];
     };
 }

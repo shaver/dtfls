@@ -1,0 +1,136 @@
+{
+  "claude-code": {
+    "type": "github",
+    "owner": "sadjow",
+    "repo": "claude-code-nix",
+    "rev": "261b4c79b90c817841230d8a73a38f72fe5a7b96",
+    "narHash": "sha256-xV5Rhghg6bwwJTmfhPYivbBHqopDahvuVsjGNdQW5BU=",
+    "lastModified": 1791489701
+  },
+  "flake-parts": {
+    "type": "github",
+    "owner": "hercules-ci",
+    "repo": "flake-parts",
+    "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
+    "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
+    "lastModified": 1790898470
+  },
+  "home-manager": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "home-manager",
+    "rev": "dfadbe5162d5e86bc0808badec8f346f81b4b3f0",
+    "narHash": "sha256-iKxFHJrg7Sltwhq3ssCZYQ4CFEDVvReVVuVuO9dj3sE=",
+    "lastModified": 1791484883
+  },
+  "jiaoshijie-undotree": {
+    "type": "github",
+    "owner": "jiaoshijie",
+    "repo": "undotree",
+    "rev": "a6a8b1a67fc6275ed343703101384eff290b70c0",
+    "narHash": "sha256-+fks3HYQxKK8F6biP1omPZuMDt5JYuCYG7kTwqnBOYI=",
+    "lastModified": 1790961170
+  },
+  "jjsigns-nvim": {
+    "type": "github",
+    "owner": "shaver",
+    "repo": "jjsigns.nvim",
+    "rev": "f5f5cefef0945cc00ba914584275f9cef8c2e792",
+    "narHash": "sha256-nZu61pIkd85nISneMBy82ZZPB7Wj85Uy2LsOoWo99CE=",
+    "lastModified": 1756327939
+  },
+  "moonshine": {
+    "type": "github",
+    "owner": "hgaiser",
+    "repo": "moonshine",
+    "rev": "d67303c407274a1bb005cb1d8b2a83a981596240",
+    "narHash": "sha256-RjhZTtI24jBxBoqJJjM8ihuwMOGW5zA1kCxzzqb/lmc=",
+    "lastModified": 1790954503
+  },
+  "nix-darwin": {
+    "type": "github",
+    "owner": "nix-darwin",
+    "repo": "nix-darwin",
+    "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
+    "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
+    "lastModified": 1786845137
+  },
+  "nix-gaming": {
+    "type": "github",
+    "owner": "fufexan",
+    "repo": "nix-gaming",
+    "rev": "74105fcc663c660efb04dcf1d69ba321094f0ad6",
+    "narHash": "sha256-AJAIMIhVGq7rOxvuxIsa70Bawy/fMutkcjM/2YXzDyI=",
+    "lastModified": 1791350236
+  },
+  "nixpkgs": {
+    "type": "tarball",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1087755.e7439b6b14ad/nixexprs.tar.xz",
+    "rev": "e7439b6b14ad3cc35d05608ebca9bce01a25f5f8",
+    "narHash": "sha256-gRZ/s8WQJ2CsXdhcDVQH34qxuL0MuMCOs3aBiK1Prsw="
+  },
+  "noctalia": {
+    "type": "github",
+    "owner": "noctalia-dev",
+    "repo": "noctalia",
+    "rev": "3e159ec301f8916e3bfd17c178258fa030f40e39",
+    "narHash": "sha256-FGSRW221nZGuufoGsi74r8yolpZa03N5eAUS8wlXLmg=",
+    "lastModified": 1791493355
+  },
+  "nvf": {
+    "type": "github",
+    "owner": "notashelf",
+    "repo": "nvf",
+    "rev": "01d245e20e19c9e283fce3b0db8719c2a6bba5f5",
+    "narHash": "sha256-9rIjqnq43mKaiUCv0DBe8H0HFZQue0fADosuJxemoaU=",
+    "lastModified": 1791488733
+  },
+  "pi": {
+    "type": "github",
+    "owner": "lukasl-dev",
+    "repo": "pi.nix",
+    "rev": "d37155f96c30d4727ed37f9563359a9a50d530db",
+    "narHash": "sha256-+G5kYoy/xb2pdX9rBOetC2eKp42cvfbppYdFZP9Lesg=",
+    "lastModified": 1791458664
+  },
+  "proton-cachyos": {
+    "type": "github",
+    "owner": "powerofthe69",
+    "repo": "proton-cachyos-nix",
+    "rev": "a17fa6542f6f9794e42b30ada3cab7c55c57ccc9",
+    "narHash": "sha256-NRNK4yQ8txSfAuVNKwgdmdTgF/FEfbIMEuSc4taKd6I=",
+    "lastModified": 1791481455
+  },
+  "sops-nix": {
+    "type": "github",
+    "owner": "Mic92",
+    "repo": "sops-nix",
+    "rev": "dcd241ba97088c22569d1573286e1b9daad340c0",
+    "narHash": "sha256-nFxM+pKoZ8LJAEnUXARyCaOAloWgaW9kZQOSjWzKcTE=",
+    "lastModified": 1791103873
+  },
+  "tmux-status-nvim": {
+    "type": "github",
+    "owner": "christopher-francisco",
+    "repo": "tmux-status.nvim",
+    "rev": "d985ba67132269dedc9a5f6479f2d40f10e06315",
+    "narHash": "sha256-o4Gj3KEnkjCVrbmSYxhDzu43RNeTunEANij1RK68r2s=",
+    "lastModified": 1745399055
+  },
+  "umbriel": {
+    "type": "github",
+    "owner": "noctalia-dev",
+    "repo": "umbriel",
+    "rev": "f976de59e196fc74bce36c6b76e7ccd209e50839",
+    "narHash": "sha256-7Rx3ZdQ5cGpbVFt8IsYilVvocSOqj85ndtpcZoTjbeQ=",
+    "lastModified": 1791492575
+  },
+  "xivlauncher-rb": {
+    "type": "github",
+    "owner": "shaver",
+    "repo": "nixos-xivlauncher-rb",
+    "rev": "944eceaa094f8e8f6ae5580519f481f8c5cca6ec",
+    "narHash": "sha256-XKDkjGR70cqHXrqhpMa2WJ+FK1wfMSWH5zGR3auKmao=",
+    "lastModified": 1788130927
+  }
+}

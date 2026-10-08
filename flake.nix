@@ -1,91 +1,15 @@
 {
   description = "dtfls comprehensive and brilliant flake";
 
-  inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    proton-cachyos = {
-      url = "github:powerofthe69/proton-cachyos-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    umbriel = {
-      url = "github:noctalia-dev/umbriel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noctalia = {
-      # guarantee a cache hit because compiling is for chumps
-      url = "github:noctalia-dev/noctalia/cachix";
-      # inputs.nixpkgs.follows = "nixpkgs"; # omit for binary cache
-    };
-
-    claude-code = {
-      url = "github:sadjow/claude-code-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    pi.url = "github:lukasl-dev/pi.nix";
-
-    xivlauncher-rb = {
-      url = "github:shaver/nixos-xivlauncher-rb";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    moonshine.url = "github:hgaiser/moonshine";
-
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Neovim plugins not in nixpkgs
-    jjsigns-nvim = {
-      url = "github:shaver/jjsigns.nvim";
-      flake = false;
-    };
-    jiaoshijie-undotree = {
-      url = "github:jiaoshijie/undotree";
-      flake = false;
-    };
-    tmux-status-nvim = {
-      url = "github:christopher-francisco/tmux-status.nvim";
-      flake = false;
-    };
-  };
-
+  # inputs are pinned by tack: see .tack/pins.toml, update with `tack update`
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-parts,
-      ...
-    }@inputs:
+    { self, ... }@args:
     let
+      inputs = (import ./.tack) { overrides = args.tackOverrides or { }; } // {
+        inherit self;
+      };
+      inherit (inputs) nixpkgs flake-parts;
+
       systems = [
         "x86_64-linux"
         "aarch64-darwin"
@@ -104,6 +28,13 @@
         (importsFromDirectoryTree ./modules)
         (importsFromDirectoryTree ./packages)
       ];
+
+      # flake-parts looks for nixpkgs in self.inputs, which tack leaves empty
+      perSystem =
+        { system, ... }:
+        {
+          _module.args.pkgs = nixpkgs.legacyPackages.${system};
+        };
 
       # build formatters for each system
       flake.formatter = builtins.listToAttrs (
