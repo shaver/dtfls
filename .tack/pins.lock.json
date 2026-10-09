@@ -73,9 +73,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "3e159ec301f8916e3bfd17c178258fa030f40e39",
-    "narHash": "sha256-FGSRW221nZGuufoGsi74r8yolpZa03N5eAUS8wlXLmg=",
-    "lastModified": 1791493355
+    "rev": "46d7762ee30649bdafd9a1bb652bb00f10c2777f",
+    "narHash": "sha256-2mEtbKf+dX9R/uC+9MWhqipyZhwTCPDqhDEQjlWl0zA=",
+    "lastModified": 1791507400
   },
   "nvf": {
     "type": "github",
@@ -121,16 +121,16 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "f976de59e196fc74bce36c6b76e7ccd209e50839",
-    "narHash": "sha256-7Rx3ZdQ5cGpbVFt8IsYilVvocSOqj85ndtpcZoTjbeQ=",
-    "lastModified": 1791492575
+    "rev": "fd674e16c49a1a04486a590050fe8e616400aa6f",
+    "narHash": "sha256-ukzJID5/4nUejV7AoSDb2K++fmDAQvICzSfBCzPDoio=",
+    "lastModified": 1791499731
   },
   "xivlauncher-rb": {
     "type": "github",
     "owner": "shaver",
     "repo": "nixos-xivlauncher-rb",
-    "rev": "944eceaa094f8e8f6ae5580519f481f8c5cca6ec",
-    "narHash": "sha256-XKDkjGR70cqHXrqhpMa2WJ+FK1wfMSWH5zGR3auKmao=",
-    "lastModified": 1788130927
+    "rev": "462490e14c04afa4c799e3dee6611eebebbb5f43",
+    "narHash": "sha256-kOSbRzyLe9x1/5fT2EXgYoHil0mJyzxoTs0qrO7Ww2k=",
+    "lastModified": 1791508731
   }
 }
