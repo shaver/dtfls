@@ -1,22 +1,17 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.umbriel =
+  flake.modules.hjem.umbriel =
     { config, pkgs, ... }:
     let
-      configRepo = "${config.home.homeDirectory}/dtfls";
+      configRepo = "${config.directory}/dtfls";
     in
     {
-      home.packages = with pkgs; [
+      packages = with pkgs; [
         xwayland-satellite
         playerctl
       ];
 
-      xdg.configFile = {
-        umbriel = {
-          source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/umbriel";
-          recursive = true;
-        };
-      };
+      xdg.config.files.umbriel.source = "${configRepo}/config/umbriel";
     };
 
   flake.modules.nixos.umbriel = {

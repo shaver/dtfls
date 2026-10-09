@@ -64,11 +64,11 @@
       };
     };
 
-  flake.modules.homeManager.gaming =
+  flake.modules.hjem.gaming =
     {
       pkgs,
       lib,
-      config,
+      osConfig,
       ...
     }:
     let
@@ -76,7 +76,7 @@
         name = "do-ff14-otp";
         text = ''
           for i in $(seq 1 60); do
-            TOTP=$(${lib.getExe' pkgs.oath-toolkit "oathtool"} --totp -b - < ${config.sops.secrets.ffxiv-otp-secret.path})
+            TOTP=$(${lib.getExe' pkgs.oath-toolkit "oathtool"} --totp -b - < ${osConfig.sops.secrets.ffxiv-otp-secret.path})
             if ${lib.getExe pkgs.curl} -sf "http://localhost:4646/ffxivlauncher/''${TOTP}"; then
               echo "succeeded with TOTP ''${TOTP} on attempt ''${i}"
               exit 0
@@ -90,19 +90,18 @@
       };
     in
     {
-      home = {
-        packages = [
-          # pkgs.xivlauncher # now managed by xlm
-          do-ff14-otp
-        ];
-        sessionVariables = {
-          "__GL_SHADER_DISK_CACHE_SIZE" = "10737418240";
-        };
-      };
-      xdg.desktopEntries.do-ff14-otp = {
-        name = "FF14 OTP";
-        exec = "${lib.getExe do-ff14-otp}";
-        categories = [ "Game" ];
+      packages = [
+        # pkgs.xivlauncher # now managed by xlm
+        do-ff14-otp
+        (pkgs.makeDesktopItem {
+          name = "do-ff14-otp";
+          desktopName = "FF14 OTP";
+          exec = "${lib.getExe do-ff14-otp}";
+          categories = [ "Game" ];
+        })
+      ];
+      environment.sessionVariables = {
+        "__GL_SHADER_DISK_CACHE_SIZE" = "10737418240";
       };
     };
 }

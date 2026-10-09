@@ -71,8 +71,8 @@
     environment.systemPackages = [ config.boot.kernelPackages.usbip ];
   };
 
-  flake.modules.homeManager.host-splashdown-shaver = {
-    imports = with inputs.self.modules.homeManager; [
+  flake.modules.hjem.host-splashdown-shaver = {
+    imports = with inputs.self.modules.hjem; [
       shaver-3d-printing
       gaming
       claude-code

@@ -1,12 +1,12 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.niri =
+  flake.modules.hjem.niri =
     { config, pkgs, ... }:
     let
-      configRepo = "${config.home.homeDirectory}/dtfls";
+      configRepo = "${config.directory}/dtfls";
     in
     {
-      home.packages = with pkgs; [
+      packages = with pkgs; [
         fuzzel
         swaylock
         waybar
@@ -15,13 +15,7 @@
       ];
 
       # use the "raw" niri config from this repo
-      xdg.configFile = {
-        niri = {
-          source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/niri";
-          recursive = true;
-        };
-      };
-
+      xdg.config.files.niri.source = "${configRepo}/config/niri";
     };
 
   flake.modules.nixos.niri = {

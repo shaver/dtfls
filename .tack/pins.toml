@@ -34,10 +34,17 @@ nixpkgs = "nixpkgs"
 [inputs.flake-parts]
 url = "github:hercules-ci/flake-parts"
 
-[inputs.home-manager]
-url = "github:nix-community/home-manager/master"
+[inputs.hjem]
+url = "github:feel-co/hjem"
 
-[inputs.home-manager.follows]
+[inputs.hjem.follows]
+nixpkgs = "nixpkgs"
+
+[inputs.hjem-rum]
+url = "github:snugnug/hjem-rum"
+
+[inputs.hjem-rum.follows]
+hjem = "hjem"
 nixpkgs = "nixpkgs"
 
 [inputs.jiaoshijie-undotree]

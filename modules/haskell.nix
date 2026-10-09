@@ -1,8 +1,8 @@
 {
-  flake.modules.homeManager.haskell =
+  flake.modules.hjem.haskell =
     { pkgs, ... }:
     {
-      home.packages = with pkgs; [
+      packages = with pkgs; [
         ghc
         haskell-language-server
       ];

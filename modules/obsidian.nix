@@ -1,6 +1,6 @@
 {
-  flake.modules.homeManager.obsidian = { pkgs, ... }: {
-    home.packages = [ pkgs.obsidian ];
+  flake.modules.hjem.obsidian = { pkgs, ... }: {
+    packages = [ pkgs.obsidian ];
     # future: configure syncthing here
   };
 }

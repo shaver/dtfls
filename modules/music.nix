@@ -1,7 +1,7 @@
 {
-  flake.modules.homeManager.music =
+  flake.modules.hjem.music =
     { pkgs, ... }:
     {
-      home.packages = [ pkgs.cider-2 ];
+      packages = [ pkgs.cider-2 ];
     };
 }

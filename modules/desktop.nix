@@ -1,14 +1,14 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.desktop =
+  flake.modules.hjem.desktop =
     { pkgs, ... }:
     {
-      home.packages = [
+      packages = [
         pkgs.jellyfin-desktop
         pkgs.wl-clipboard
       ];
 
-      imports = with inputs.self.modules.homeManager; [
+      imports = with inputs.self.modules.hjem; [
         alacritty
         umbriel
       ];

@@ -8,19 +8,19 @@
       mac-app-store
     ];
 
-    home-manager.users.shaver = {
-      imports = with inputs.self.modules.homeManager; [ shaver-work ];
+    hjem.users.shaver = {
+      imports = with inputs.self.modules.hjem; [ shaver-work ];
     };
   };
 
-  flake.modules.homeManager.shaver-work =
+  flake.modules.hjem.shaver-work =
     { pkgs, ... }:
     {
-      imports = with inputs.self.modules.homeManager; [
+      imports = with inputs.self.modules.hjem; [
         shaver-base
         obsidian
       ];
-      home.packages = with pkgs; [
+      packages = with pkgs; [
         go-junit-report
         golangci-lint
       ];

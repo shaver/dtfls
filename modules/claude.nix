@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.claude-code =
+  flake.modules.hjem.claude-code =
     { pkgs, ... }:
     {
       # hit the cache
@@ -11,7 +11,7 @@
         ];
       };
 
-      home.packages = [
+      packages = [
         inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
       ];
     };

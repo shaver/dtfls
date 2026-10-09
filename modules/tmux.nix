@@ -1,14 +1,11 @@
 {
-  flake.modules.homeManager.tmux =
+  flake.modules.hjem.tmux =
     { config, pkgs, ... }:
     let
-      configRepo = "${config.home.homeDirectory}/dtfls";
+      configRepo = "${config.directory}/dtfls";
     in
     {
-      home.packages = [ pkgs.tmux ];
-      xdg.configFile.tmux = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/tmux";
-        recursive = true;
-      };
+      packages = [ pkgs.tmux ];
+      xdg.config.files.tmux.source = "${configRepo}/config/tmux";
     };
 }

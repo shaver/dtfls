@@ -1,7 +1,7 @@
 {
-  flake.modules.homeManager.home-assistant =
+  flake.modules.hjem.home-assistant =
     { pkgs, ... }:
     {
-      home.packages = [ pkgs.home-assistant-cli ];
+      packages = [ pkgs.home-assistant-cli ];
     };
 }

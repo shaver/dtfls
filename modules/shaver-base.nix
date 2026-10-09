@@ -1,4 +1,40 @@
 { inputs, ... }:
+let
+  # hjem wiring shared by nixos and darwin
+  hjemFor =
+    { config, ... }:
+    {
+      hjem = {
+        # hjem refuses to replace existing files by default; the targets were
+        # previously home-manager symlinks into the store
+        clobberByDefault = true;
+        extraModules = [
+          inputs.hjem-rum.hjemModules.default
+          inputs.self.modules.hjem.nix
+          inputs.self.modules.hjem."host-${config.networking.hostName}-shaver"
+        ];
+      };
+    };
+
+  desktopFonts =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      fonts.packages = lib.optionals (config.flake.dtfls.opts.form == "desktop") (
+        with pkgs;
+        [
+          nerd-fonts.meslo-lg
+          nerd-fonts.jetbrains-mono
+          font-awesome
+          noto-fonts
+        ]
+      );
+    };
+in
 {
   # Common module for shaver user. Configurations should include
   # shaver-personal or shaver-work rather than including shaver-base
@@ -21,46 +57,46 @@
       programs.zsh.enable = true;
       programs.firefox.enable = config.flake.dtfls.opts.form == "desktop";
 
-      # bring in Home Manager
-      imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-      home-manager = {
-        useGlobalPkgs = true;
-        backupFileExtension = "hmbckp";
-        sharedModules = [
-          inputs.sops-nix.homeManagerModules.sops
-          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
-        ];
+      # TODO put this with other nix stuff somehow
+      programs.nh = {
+        enable = true;
+        clean.enable = true;
+        flake = "/home/shaver/dtfls"; # default for "os switch"
       };
+
+      # plain ssh-agent at $XDG_RUNTIME_DIR/ssh-agent, rather than the gcr
+      # one that niri pulls in
+      programs.ssh.startAgent = true;
+      services.gnome.gcr-ssh-agent.enable = false;
+
+      # bring in hjem
+      imports = [
+        inputs.hjem.nixosModules.default
+        hjemFor
+        desktopFonts
+      ];
     };
 
-  flake.modules.darwin.shaver-base =
-    { config, ... }:
-    {
-      programs.zsh.enable = true;
+  flake.modules.darwin.shaver-base = {
+    programs.zsh.enable = true;
 
-      # bring in Home Manager
-      imports = [ inputs.home-manager.darwinModules.home-manager ];
+    # bring in hjem
+    imports = [
+      inputs.hjem.darwinModules.default
+      hjemFor
+      desktopFonts
+    ];
+  };
 
-      home-manager = {
-        useGlobalPkgs = true;
-        backupFileExtension = "hmbckp";
-        sharedModules = [
-          inputs.sops-nix.homeManagerModules.sops
-          inputs.self.modules.homeManager."host-${config.networking.hostName}-shaver"
-        ];
-      };
-    };
-
-  flake.modules.homeManager.shaver-base =
+  flake.modules.hjem.shaver-base =
     {
       config,
       pkgs,
-      osConfig,
+      lib,
       ...
     }:
     {
-      imports = with inputs.self.modules.homeManager; [
+      imports = with inputs.self.modules.hjem; [
         git
         nvf
         shell
@@ -68,40 +104,38 @@
         tmux
       ];
 
-      home = {
-        username = "shaver";
-        homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/shaver" else "/home/shaver";
-        stateVersion = "25.11";
-      };
-      nix.extraOptions = "!include ${config.sops.secrets.nix-config-github-token.path}";
+      environment.sessionVariables.NH_FLAKE = "${config.directory}/dtfls";
 
-      programs = {
-        bat.enable = true;
-        jq.enable = true;
-        btop.enable = true;
-        htop.enable = true;
-
-        # TODO put this with other nix stuff somehow
-        nh = {
-          enable = true;
-          clean.enable = true;
-          flake = "${config.home.homeDirectory}/dtfls"; # default for "os switch"
+      # gh writes its own state to hosts.yml, so only config.yml is managed
+      xdg.config.files."gh/config.yml" = {
+        generator = (pkgs.formats.yaml { }).generate "gh-config.yml";
+        value = {
+          version = "1";
+          git_protocol = "https";
+          extensions = [ "yusukebe/gh-markdown-preview" ];
         };
-
-        gh = {
-          enable = true;
-          settings.git_protocol = "https";
-          settings.extensions = [ "yusukebe/gh-markdown-preview" ];
-        };
-        gh-dash.enable = true;
-
       };
 
-      fonts.fontconfig.enable = osConfig.flake.dtfls.opts.form == "desktop";
+      rum.programs.git.settings.credential =
+        lib.genAttrs [ "https://github.com" "https://gist.github.com" ]
+          (_: {
+            helper = [
+              ""
+              "${lib.getExe pkgs.gh} auth git-credential"
+            ];
+          });
 
-      home.packages =
+      packages =
         with pkgs;
         [
+          bat
+          jq
+          btop
+          htop
+          nh
+          gh
+          gh-dash
+
           # Unix tools
           ripgrep # Better `grep`
           fd
@@ -119,20 +153,8 @@
           nixpkgs-fmt
           nixfmt
 
-          jq
           curl
-          coreutils
-
         ]
-        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.darwin.libresolv ]
-        ++ lib.optionals (osConfig.flake.dtfls.opts.form == "desktop") (
-          with pkgs;
-          [
-            nerd-fonts.meslo-lg
-            nerd-fonts.jetbrains-mono
-            font-awesome
-            noto-fonts
-          ]
-        );
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.darwin.libresolv ];
     };
 }

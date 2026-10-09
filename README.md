@@ -2,7 +2,7 @@
 
 an attempt at
 [dendritic](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/tree/main)
-configuration of nixos and nix-darwin and home-manager
+configuration of nixos and nix-darwin and [hjem](https://github.com/feel-co/hjem)
 
 largely built atop the endless patience of
 [@Michael-C-Buckley](https://github.com/Michael-C-Buckley) and the other

@@ -1,17 +1,20 @@
 { inputs, ... }:
 {
   flake.modules.nixos.shaver-personal-desktop = {
-    home-manager.users.shaver = {
-      imports = with inputs.self.modules.homeManager; [
+    hjem.users.shaver = {
+      imports = with inputs.self.modules.hjem; [
         shaver-personal-nixos-desktop
       ];
     };
   };
 
   flake.modules.nixos.shaver-personal = {
-    imports = [ inputs.self.modules.nixos.shaver-base ];
-    home-manager.users.shaver = {
-      imports = with inputs.self.modules.homeManager; [
+    imports = with inputs.self.modules; [
+      nixos.shaver-base
+      generic.shaver-secrets
+    ];
+    hjem.users.shaver = {
+      imports = with inputs.self.modules.hjem; [
         shaver-personal-nixos
       ];
     };
@@ -21,52 +24,52 @@
     ];
   };
 
-  flake.modules.homeManager.shaver-personal-darwin = {
-    imports = with inputs.self.modules.homeManager; [ shaver-personal ];
+  flake.modules.hjem.shaver-personal-darwin = {
+    imports = with inputs.self.modules.hjem; [ shaver-personal ];
   };
 
-  flake.modules.homeManager.shaver-personal-nixos-desktop =
+  flake.modules.hjem.shaver-personal-nixos-desktop =
     { pkgs, ... }:
     {
-      imports = with inputs.self.modules.homeManager; [
+      imports = with inputs.self.modules.hjem; [
         niri
         noctalia
         desktop
       ];
-      home.packages = with pkgs; [
+      packages = with pkgs; [
         signal-desktop
         discord
         vesktop
       ];
     };
 
-  flake.modules.homeManager.shaver-personal-nixos = { pkgs, ... }: {
-    imports = with inputs.self.modules.homeManager; [
+  flake.modules.hjem.shaver-personal-nixos = { pkgs, ... }: {
+    imports = with inputs.self.modules.hjem; [
       shaver-personal
       music
     ];
-    home.packages = [ pkgs.hcloud ];
+    packages = [ pkgs.hcloud ];
   };
 
-  flake.modules.homeManager.shaver-personal = {
-    imports =
-      with inputs.self.modules.homeManager;
-      [
-        shaver-base
-        shaver-secrets
-      ]
-      ++ (with inputs.self.modules.homeManager; [ irssi ]);
+  # secrets are decrypted at the system level, see generic.shaver-secrets
+  flake.modules.hjem.shaver-personal = {
+    imports = with inputs.self.modules.hjem; [
+      shaver-base
+      irssi
+    ];
   };
 
   flake.modules.darwin.shaver-personal = {
-    imports = with inputs.self.modules.darwin; [
-      shaver-base
-      aerospace
-      homebrew
-    ];
+    imports =
+      (with inputs.self.modules.darwin; [
+        shaver-base
+        aerospace
+        homebrew
+      ])
+      ++ [ inputs.self.modules.generic.shaver-secrets ];
 
-    home-manager.users.shaver = {
-      imports = with inputs.self.modules.homeManager; [
+    hjem.users.shaver = {
+      imports = with inputs.self.modules.hjem; [
         shaver-personal-darwin
         alacritty
       ];

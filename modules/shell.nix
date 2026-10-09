@@ -1,38 +1,65 @@
 {
-  flake.modules.homeManager.shell =
-    { pkgs, ... }:
+  flake.modules.hjem.shell =
+    { lib, pkgs, ... }:
     {
+      packages = [ pkgs.jj-starship ];
 
-      programs = {
-        direnv = {
-          enable = true;
-          nix-direnv.enable = true;
-          silent = true;
-          # https://github.com/NixOS/nixpkgs/issues/513019 -- direnv/zsh badness
-          package = pkgs.direnv.overrideAttrs { doCheck = false; };
-        };
-
+      rum.programs = {
+        # compinit and NIX_PROFILES fpath handling come from the system zshrc
         zsh = {
           enable = true;
-          autosuggestion.enable = true;
-          syntaxHighlighting.enable = true;
-          defaultKeymap = "emacs";
-          enableCompletion = true;
+          initConfig = lib.mkMerge [
+            (lib.mkBefore ''
+              # Use emacs keymap as the default.
+              bindkey -e
+
+              source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+              ZSH_AUTOSUGGEST_STRATEGY=(history)
+
+              HISTSIZE="10000"
+              SAVEHIST="10000"
+              HISTFILE="$HOME/.zsh_history"
+              setopt HIST_FCNTL_LOCK HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+              setopt NO_APPEND_HISTORY NO_EXTENDED_HISTORY NO_HIST_EXPIRE_DUPS_FIRST
+              setopt NO_HIST_FIND_NO_DUPS NO_HIST_IGNORE_ALL_DUPS NO_HIST_SAVE_NO_DUPS
+            '')
+            # must come after everything else that touches zle, including the
+            # rum integrations, which are themselves mkAfter
+            (lib.mkOrder 2000 ''
+              source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+              ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+            '')
+          ];
+        };
+
+        direnv = {
+          enable = true;
+          integrations.nix-direnv.enable = true;
+          integrations.zsh.enable = true;
+          # https://github.com/NixOS/nixpkgs/issues/513019 -- direnv/zsh badness
+          package = pkgs.direnv.overrideAttrs { doCheck = false; };
+          # silent
+          settings.global = {
+            log_format = "-";
+            log_filter = "^$";
+          };
         };
 
         fzf = {
           enable = true;
-          enableZshIntegration = true;
+          integrations.zsh.enable = true;
         };
 
         # Type `z <pat>` to cd to some directory
-        zoxide.enable = true;
+        zoxide = {
+          enable = true;
+          integrations.zsh.enable = true;
+        };
 
         # Better shell prompt!
         starship = {
           enable = true;
-          enableZshIntegration = true;
-          extraPackages = [ pkgs.jj-starship ];
+          integrations.zsh.enable = true;
           settings = {
             custom.jj = {
               when = "jj-starship detect";

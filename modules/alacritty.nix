@@ -1,14 +1,12 @@
 {
-  flake.modules.homeManager.alacritty =
+  flake.modules.hjem.alacritty =
     { config, pkgs, ... }:
     let
-      configRepo = "${config.home.homeDirectory}/dtfls";
+      configRepo = "${config.directory}/dtfls";
     in
     {
-      home.packages = [ pkgs.alacritty ];
-      xdg.configFile.alacritty = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/alacritty";
-        recursive = true;
-      };
+      packages = [ pkgs.alacritty ];
+      # a string (not a nix path) source links straight into the repo
+      xdg.config.files.alacritty.source = "${configRepo}/config/alacritty";
     };
 }

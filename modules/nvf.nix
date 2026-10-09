@@ -1,12 +1,12 @@
-# nvf neovim configuration — flake-parts home-manager modules
+# nvf neovim configuration — flake-parts hjem modules
 #
-# flake.modules.homeManager.nvf        — installs as "nvim" (default editor)
-# flake.modules.homeManager.nvf-separate — installs as "nvf" only; lets a
-#                                          different neovim own "nvim"
+# flake.modules.hjem.nvf          — installs as "nvim" (default editor)
+# flake.modules.hjem.nvf-separate — installs as "nvf" only; lets a
+#                                   different neovim own "nvim"
 { inputs, ... }:
 let
   # ── Shared nvf module ──────────────────────────────────────────────────────
-  # Called by both homeManager modules. Receives the nvf-extended lib and pkgs
+  # Called by both hjem modules. Receives the nvf-extended lib and pkgs
   # from the module system, so lib.nvim.dag.* is available.
   nvfModule =
     { lib, pkgs, ... }:
@@ -54,7 +54,6 @@ let
           servers.nixd.settings.nixd = {
             nixpkgs.expr = "import <nixpkgs> {}";
             nixos.expr = "(builtins.getFlake \"/home/shaver/dtfls\").nixosConfigurations.splashdown.options";
-            home-manager.expr = "(builtins.getFlake \"/home/shaver/dtfls\").homeConfigurations.shaver.options";
           };
           trouble.enable = true;
         };
@@ -508,41 +507,39 @@ let
         ];
       };
     };
+  nvfPackageFor =
+    pkgs: extraModules:
+    (inputs.nvf.lib.neovimConfiguration {
+      inherit pkgs;
+      modules = [ nvfModule ] ++ extraModules;
+    }).neovim;
 in
 {
   # ── nvf: installs as "nvim" (replaces default neovim) ──────────────────────
-  flake.modules.homeManager.nvf =
-    { ... }:
+  flake.modules.hjem.nvf =
+    { pkgs, ... }:
     {
-      imports = [ inputs.nvf.homeManagerModules.nvf ];
-      programs.nvf = {
-        enable = true;
-        defaultEditor = true;
-        settings = {
-          imports = [ nvfModule ];
-          vim = {
-            viAlias = true;
-            vimAlias = true;
-          };
-        };
-      };
+      packages = [
+        (nvfPackageFor pkgs [
+          {
+            vim = {
+              viAlias = true;
+              vimAlias = true;
+            };
+          }
+        ])
+      ];
+      environment.sessionVariables.EDITOR = "nvim";
     };
 
   # ── nvf-separate: installs as "nvf" only; leaves "nvim" alone ──────────────
-  flake.modules.homeManager.nvf-separate =
+  flake.modules.hjem.nvf-separate =
     { pkgs, ... }:
-    let
-      nvfPackage =
-        (inputs.nvf.lib.neovimConfiguration {
-          inherit pkgs;
-          modules = [ nvfModule ];
-        }).neovim;
-    in
     {
-      home.packages = [
+      packages = [
         (pkgs.runCommandLocal "nvf" { } ''
           mkdir -p $out/bin
-          ln -s ${nvfPackage}/bin/nvim $out/bin/nvf
+          ln -s ${nvfPackageFor pkgs [ ]}/bin/nvim $out/bin/nvf
         '')
       ];
     };

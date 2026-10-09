@@ -1,49 +1,64 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.noctalia =
+  flake.modules.hjem.noctalia =
     {
       config,
       pkgs,
       ...
     }:
-    {
-      imports = [ inputs.noctalia.homeModules.default ];
-
-      gtk = {
-        enable = true;
-        theme = {
-          name = "Palenight";
-          package = pkgs.palenight-theme;
-        };
-
-        iconTheme = {
-          name = "Adwaita";
-          package = pkgs.adwaita-icon-theme;
-        };
-
-        gtk3.extraConfig = {
-          "gtk-application-prefer-dark-theme" = 1;
-        };
-
-        gtk4 = {
-          theme = null;
-          extraConfig = {
-            "gtk-application-prefer-dark-theme" = 1;
-          };
-        };
-      };
-
-      home.pointerCursor = {
-        enable = true;
+    let
+      cursor = {
         name = "BreezeX-RosePine-Linux";
         package = pkgs.rose-pine-cursor;
         size = 24;
-        gtk.enable = true;
+      };
+    in
+    {
+      imports = [ inputs.noctalia.hjemModules.default ];
+
+      packages = [
+        pkgs.palenight-theme
+        pkgs.adwaita-icon-theme
+        cursor.package
+      ];
+
+      # gtk4 deliberately gets no theme name: Palenight is gtk3-only
+      xdg.config.files = {
+        "gtk-3.0/settings.ini".text = ''
+          [Settings]
+          gtk-application-prefer-dark-theme=1
+          gtk-cursor-theme-name=${cursor.name}
+          gtk-cursor-theme-size=${toString cursor.size}
+          gtk-icon-theme-name=Adwaita
+          gtk-theme-name=Palenight
+        '';
+        "gtk-4.0/settings.ini".text = ''
+          [Settings]
+          gtk-application-prefer-dark-theme=1
+          gtk-cursor-theme-name=${cursor.name}
+          gtk-cursor-theme-size=${toString cursor.size}
+          gtk-icon-theme-name=Adwaita
+        '';
+      };
+      files = {
+        ".gtkrc-2.0".text = ''
+          gtk-cursor-theme-name = "${cursor.name}"
+          gtk-cursor-theme-size = ${toString cursor.size}
+          gtk-icon-theme-name = "Adwaita"
+          gtk-theme-name = "Palenight"
+        '';
+        ".icons/default/index.theme".text = ''
+          [Icon Theme]
+          Name=Default
+          Comment=Default Cursor Theme
+          Inherits=${cursor.name}
+        '';
       };
 
-      home.sessionVariables = {
-        XCURSOR_THEME = "BreezeX-RosePine-Linux";
-        XCURSOR_SIZE = "24";
+      environment.sessionVariables = {
+        GTK2_RC_FILES = "${config.directory}/.gtkrc-2.0";
+        XCURSOR_THEME = cursor.name;
+        XCURSOR_SIZE = toString cursor.size;
         QT_QPA_PLATFORMTHEME = "gtk3";
       };
 
@@ -51,10 +66,7 @@
         enable = true;
       };
 
-      xdg.configFile.noctalia = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dtfls/config/noctalia";
-        recursive = true;
-      };
+      xdg.config.files.noctalia.source = "${config.directory}/dtfls/config/noctalia";
 
       nix.settings = {
         extra-substituters = [

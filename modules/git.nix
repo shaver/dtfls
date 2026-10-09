@@ -1,11 +1,11 @@
 {
-  flake.modules.homeManager.git =
+  flake.modules.hjem.git =
     { config, pkgs, ... }:
     let
-      configRepo = "${config.home.homeDirectory}/dtfls";
+      configRepo = "${config.directory}/dtfls";
     in
     {
-      programs = {
+      rum.programs = {
         git = {
           enable = true;
           settings = {
@@ -22,20 +22,30 @@
             push.default = "current";
             pull.rebase = "true";
           };
-          ignores = [
-            "*~"
-            "*.swp"
-          ];
+          ignore = ''
+            *~
+            *.swp
+          '';
         };
-        lazygit.enable = true;
-        jujutsu.enable = true;
+
+        zsh.initConfig = ''
+          function lg() {
+              export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+              command lazygit "$@"
+              if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+                cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+                rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+              fi
+          }
+        '';
       };
 
-      xdg.configFile.jj = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configRepo}/config/jj";
-        recursive = true;
-      };
+      xdg.config.files.jj.source = "${configRepo}/config/jj";
 
-      home.packages = [ pkgs.meld ]; # for diff-munging
+      packages = with pkgs; [
+        lazygit
+        jujutsu
+        meld # for diff-munging
+      ];
     };
 }

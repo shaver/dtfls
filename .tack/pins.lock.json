@@ -15,13 +15,21 @@
     "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
     "lastModified": 1790898470
   },
-  "home-manager": {
+  "hjem": {
     "type": "github",
-    "owner": "nix-community",
-    "repo": "home-manager",
-    "rev": "dfadbe5162d5e86bc0808badec8f346f81b4b3f0",
-    "narHash": "sha256-iKxFHJrg7Sltwhq3ssCZYQ4CFEDVvReVVuVuO9dj3sE=",
-    "lastModified": 1791484883
+    "owner": "feel-co",
+    "repo": "hjem",
+    "rev": "2b155694ce412300f240de06735c93779f9e19a4",
+    "narHash": "sha256-JdmZVrzGDRRcOAwsYujnE7f/d1YZ9Xtk4z/1MWmQXxM=",
+    "lastModified": 1791289048
+  },
+  "hjem-rum": {
+    "type": "github",
+    "owner": "snugnug",
+    "repo": "hjem-rum",
+    "rev": "4194064c687bf6ca7a79cbe127cbe5a3f51ed5d5",
+    "narHash": "sha256-ntcojKoFfndHu9/cw6zRyan2AECyxMwJ0e1Qr7a+m40=",
+    "lastModified": 1789576270
   },
   "jiaoshijie-undotree": {
     "type": "github",

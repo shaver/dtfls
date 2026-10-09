@@ -50,14 +50,12 @@ let
       );
     };
 
-  # build all configurations and per-host HM module stubs for all hosts of the given os
+  # build all configurations and per-host hjem module stubs for all hosts of the given os
   makeConfigurations = hostMap: os: {
     "${os}Configurations" = mapAttrs' (
       hostname: data: nameValuePair hostname (makeConfiguration hostname data os)
     ) hostMap.${os};
-    modules.homeManager = mapAttrs' (
-      hostname: _: nameValuePair "host-${hostname}-shaver" { }
-    ) hostMap.${os};
+    modules.hjem = mapAttrs' (hostname: _: nameValuePair "host-${hostname}-shaver" { }) hostMap.${os};
   };
 
   nixosConfigurations = makeConfigurations hostMap "nixos";

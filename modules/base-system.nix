@@ -229,7 +229,7 @@
         # restartAfterPowerFailure = true; # not supported on laptop, sigh
       };
 
-      system.primaryUser = lib.mkDefault "shaver";
+      system.primaryUser = "shaver";
 
       networking.wakeOnLan.enable = true;
 
