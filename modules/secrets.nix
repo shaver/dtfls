@@ -8,6 +8,9 @@
       secrets.ha-cli-token = {
         sopsFile = ../secrets/users/shaver/secrets.yaml;
       };
+      secrets.nix-config-github-token = {
+        sopsFile = ../secrets/users/shaver/secrets.yaml;
+      };
     };
   };
 }

@@ -73,6 +73,7 @@
         homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/shaver" else "/home/shaver";
         stateVersion = "25.11";
       };
+      nix.extraOptions = "!include ${config.sops.secrets.nix-config-github-token.path}";
 
       programs = {
         bat.enable = true;

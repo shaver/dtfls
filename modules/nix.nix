@@ -38,9 +38,13 @@
         };
       };
 
+      programs.tack = {
+        enable = true;
+        nixConfTokens = true;
+      };
+
       environment.systemPackages = [
         pkgs.rippkgs
-        pkgs.tack
       ];
     };
 }
