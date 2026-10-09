@@ -3,9 +3,9 @@
     "type": "github",
     "owner": "sadjow",
     "repo": "claude-code-nix",
-    "rev": "261b4c79b90c817841230d8a73a38f72fe5a7b96",
-    "narHash": "sha256-xV5Rhghg6bwwJTmfhPYivbBHqopDahvuVsjGNdQW5BU=",
-    "lastModified": 1791489701
+    "rev": "cf32dde7150fc94b01e8325e2a345594625f5084",
+    "narHash": "sha256-N996OhXcTOphvYFGkjMTDYj2c4A/o6FzuwLAKdVf8N4=",
+    "lastModified": 1791576109
   },
   "flake-parts": {
     "type": "github",
@@ -67,9 +67,9 @@
     "type": "github",
     "owner": "fufexan",
     "repo": "nix-gaming",
-    "rev": "74105fcc663c660efb04dcf1d69ba321094f0ad6",
-    "narHash": "sha256-AJAIMIhVGq7rOxvuxIsa70Bawy/fMutkcjM/2YXzDyI=",
-    "lastModified": 1791350236
+    "rev": "48295cadfae0d3c9b98ec0c987437d4628f8202e",
+    "narHash": "sha256-O6BSuzYKtpewcrErb4Hw3Ul3yUtWGYeOHoM93fGBv6w=",
+    "lastModified": 1791523833
   },
   "nixpkgs": {
     "type": "tarball",
@@ -81,9 +81,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "46d7762ee30649bdafd9a1bb652bb00f10c2777f",
-    "narHash": "sha256-2mEtbKf+dX9R/uC+9MWhqipyZhwTCPDqhDEQjlWl0zA=",
-    "lastModified": 1791507400
+    "rev": "b2e3ffb259c746606eb4477703ba7e9882ade37e",
+    "narHash": "sha256-koepvlA8wY8gBTURAxdC5gLzSSsqV0bdrZFwQctGNP4=",
+    "lastModified": 1791554119
   },
   "nvf": {
     "type": "github",
@@ -97,9 +97,9 @@
     "type": "github",
     "owner": "lukasl-dev",
     "repo": "pi.nix",
-    "rev": "d37155f96c30d4727ed37f9563359a9a50d530db",
-    "narHash": "sha256-+G5kYoy/xb2pdX9rBOetC2eKp42cvfbppYdFZP9Lesg=",
-    "lastModified": 1791458664
+    "rev": "c284ed1207c9c1cbe77753932de8ed03787591df",
+    "narHash": "sha256-zcRVsd5b/nJ+jrntl3GNAeuNBYX+148PecZ+C1/vte8=",
+    "lastModified": 1791544903
   },
   "proton-cachyos": {
     "type": "github",
@@ -129,9 +129,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "fd674e16c49a1a04486a590050fe8e616400aa6f",
-    "narHash": "sha256-ukzJID5/4nUejV7AoSDb2K++fmDAQvICzSfBCzPDoio=",
-    "lastModified": 1791499731
+    "rev": "e587585338539186ec7e3105fcf6683c3f7adc0c",
+    "narHash": "sha256-k4yRoQHMav+RMYMt1yxNXnvlGIdyrFrtLx+GsdAlyNo=",
+    "lastModified": 1791581795
   },
   "xivlauncher-rb": {
     "type": "github",
