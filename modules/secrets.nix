@@ -18,5 +18,7 @@
           nix-config-github-token = secret;
         };
       };
+
+      nix.extraOptions = "!include ${config.sops.secrets.nix-config-github-token.path}";
     };
 }
