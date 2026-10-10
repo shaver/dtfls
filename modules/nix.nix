@@ -36,15 +36,15 @@
 
           # download-buffer-size = 671088640; # 640MB or 10x the default. lfg
         };
-        extraOptions = "!include ${config.sops.secrets.nix-config-github-token.path}";
+        # the token secret only exists on hosts that import shaver-secrets
+        extraOptions = lib.mkIf (config.sops.secrets ? nix-config-github-token)
+          "!include ${config.sops.secrets.nix-config-github-token.path}";
       };
 
-      programs.tack = {
-        enable = true;
-        nixConfTokens = true;
-      };
+      environment.variables.TACK_NIX_CONF_TOKENS = "1";
 
       environment.systemPackages = [
+        pkgs.tack
         pkgs.rippkgs
       ];
     };
