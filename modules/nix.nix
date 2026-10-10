@@ -21,13 +21,6 @@
             "@wheel"
           ];
 
-          # ideally this would be in the noctalia module, but that's a hjem
-          # module and can't affect global nix settings
-          extra-substituters = [ "https://noctalia.cachix.org" ];
-          extra-trusted-public-keys = [
-            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-          ];
-
           warn-dirty = false;
 
           # ensure that the registry only contains our inputs
