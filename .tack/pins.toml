@@ -40,13 +40,6 @@ url = "github:feel-co/hjem"
 [inputs.hjem.follows]
 nixpkgs = "nixpkgs"
 
-[inputs.hjem-rum]
-url = "github:snugnug/hjem-rum"
-
-[inputs.hjem-rum.follows]
-hjem = "hjem"
-nixpkgs = "nixpkgs"
-
 [inputs.jiaoshijie-undotree]
 url = "github:jiaoshijie/undotree"
 type = "fetch"

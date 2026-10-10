@@ -9,7 +9,6 @@ let
         # previously home-manager symlinks into the store
         clobberByDefault = true;
         extraModules = [
-          inputs.hjem-rum.hjemModules.default
           inputs.self.modules.hjem.nix
           inputs.self.modules.hjem."host-${config.networking.hostName}-shaver"
         ];
@@ -116,7 +115,7 @@ in
         };
       };
 
-      rum.programs.git.settings.credential =
+      xdg.config.files."git/config".value.credential =
         lib.genAttrs [ "https://github.com" "https://gist.github.com" ]
           (_: {
             helper = [
