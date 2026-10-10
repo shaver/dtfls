@@ -62,7 +62,8 @@
         loader = {
           systemd-boot = {
             enable = true;
-            memtest86.enable = true;
+            # memtest86+ only exists for x86
+            memtest86.enable = pkgs.stdenv.hostPlatform.isx86_64;
           };
           efi.canTouchEfiVariables = true;
         };

@@ -35,6 +35,7 @@
         niri
         noctalia
         desktop
+        music
       ];
       packages = with pkgs; [
         signal-desktop
@@ -46,7 +47,6 @@
   flake.modules.hjem.shaver-personal-nixos = { pkgs, ... }: {
     imports = with inputs.self.modules.hjem; [
       shaver-personal
-      music
     ];
     packages = [ pkgs.hcloud ];
   };
