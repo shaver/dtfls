@@ -41,15 +41,12 @@ url = "github:feel-co/hjem"
 nixpkgs = "nixpkgs"
 
 [inputs.jiaoshijie-undotree]
-url = "github:jiaoshijie/undotree"
+url  = "github:jiaoshijie/undotree"
 type = "fetch"
 
 [inputs.jjsigns-nvim]
-url = "github:shaver/jjsigns.nvim"
+url  = "github:shaver/jjsigns.nvim"
 type = "fetch"
-
-[inputs.moonshine]
-url = "github:hgaiser/moonshine"
 
 [inputs.nix-darwin]
 url = "github:nix-darwin/nix-darwin/master"
@@ -62,7 +59,7 @@ url = "github:fufexan/nix-gaming"
 
 [inputs.nix-gaming.follows]
 flake-parts = "flake-parts"
-nixpkgs = "nixpkgs"
+nixpkgs     = "nixpkgs"
 
 [inputs.nixpkgs]
 url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
@@ -94,7 +91,7 @@ url = "github:Mic92/sops-nix"
 nixpkgs = "nixpkgs"
 
 [inputs.tmux-status-nvim]
-url = "github:christopher-francisco/tmux-status.nvim"
+url  = "github:christopher-francisco/tmux-status.nvim"
 type = "fetch"
 
 [inputs.umbriel]

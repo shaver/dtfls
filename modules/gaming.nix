@@ -6,13 +6,10 @@
       inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) xlm;
     in
     {
-      imports =
-        with inputs.nix-gaming.nixosModules;
-        [
-          wine
-          platformOptimizations
-        ]
-        ++ [ inputs.moonshine.nixosModules.default ];
+      imports = with inputs.nix-gaming.nixosModules; [
+        wine
+        platformOptimizations
+      ];
 
       # avoid having to build everything
       ## covered by ncro in nix.nix

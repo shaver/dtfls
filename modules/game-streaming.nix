@@ -27,7 +27,10 @@
       services.moonshine = {
         enable = true;
         user = "shaver";
-        openFirewall = true;
+        firewallInterfaces = [
+          "tailscale0"
+          "enp6s0"
+        ]; # XXX TODO splashdown
 
         settings = {
           application = [
