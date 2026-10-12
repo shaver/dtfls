@@ -40,7 +40,15 @@
         enable = true;
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
-        gamescopeSession.enable = true;
+        gamescopeSession = {
+          enable = true;
+          env = {
+            # enable HDR for Proton
+            PROTON_ENABLE_WAYLAND = "1";
+            PROTON_ENABLE_HDR = "1";
+          };
+        };
+
         extraCompatPackages = [
           pkgs.proton-ge-bin
           inputs.proton-cachyos.packages.${pkgs.stdenv.hostPlatform.system}.proton-cachyos
@@ -98,6 +106,8 @@
         })
       ];
       environment.sessionVariables = {
+        PROTON_ENABLE_WAYLAND = 1;
+        PROTON_ENABLE_HDR = 1;
         "__GL_SHADER_DISK_CACHE_SIZE" = "10737418240";
       };
     };
