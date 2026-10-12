@@ -19,7 +19,7 @@ vrr      = "always"
 hdr      = "off"
 
 [layout.scrolling]
-default_extent_fraction = 0.333
+default_extent_fraction = 0.5
 
 [include]
 files = ["keybinds.toml"]
