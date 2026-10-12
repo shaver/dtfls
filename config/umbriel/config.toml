@@ -7,10 +7,11 @@ show_cheatsheet            = false
 honor_restored_maximize    = true
 
 [output."Dell Inc. AW3423DWF FB742S3"]
-mode     = "3440x1440@99.982"
-position = [0, 0]
-vrr      = "always"
-hdr      = "auto"
+mode       = "3440x1440@99.982"
+position   = [0, 0]
+vrr        = "always"
+hdr        = "on"
+workspaces = ["BROWSER", "CHAT", "GAMES"]
 
 [output."Dell Inc. Dell AW3420DW #ASONM/I5x9fd"]
 mode     = "3440x1440@100"
@@ -34,3 +35,28 @@ sensitivity    = -0.7
 
 [input.cursor]
 follows_focus = true
+
+[[window_rule]]
+match.app_id      = ["^steam$"]
+default_workspace = "GAMES"
+
+[[window_rule]]
+match.app_id       = "^steam_app_"
+default_fullscreen = true
+default_workspace  = "GAMES"
+
+[[window_rule]]
+match.app_id      = ["^(discord|vesktop)$", "^signal$"]
+default_workspace = "CHAT"
+
+[[window_rule]]
+match.app_id     = "firefox$"
+match.title      = "^Picture-in-Picture"
+default_floating = true
+
+[[window_rule]]
+match.app_id     = "^steam$"
+match.title      = "^notificationtoasts_\\d+_desktop$"
+default_floating = true
+default_focused  = false
+default_position = { x = 10, y = 10, anchor = "bottom_right" }
