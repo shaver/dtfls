@@ -31,7 +31,7 @@ options        = "compose:ralt"
 
 [input.mouse]
 natural_scroll = true
-sensitivity    = -0.7
+sensitivity    = -0.8
 
 [input.cursor]
 follows_focus = true
