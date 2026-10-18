@@ -51,7 +51,7 @@
 
         extraCompatPackages = [
           pkgs.proton-ge-bin
-          inputs.proton-cachyos.packages.${pkgs.stdenv.hostPlatform.system}.proton-cachyos
+          inputs.proton-cachyos.packages.${pkgs.stdenv.hostPlatform.system}.proton-cachyos-x86_64-v3
           xlm
         ];
         extraPackages = [ pkgs.gamemode ];
