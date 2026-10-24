@@ -22,8 +22,6 @@
           git
           jujutsu
 
-          mermaid-cli
-
           sops
           age
           ssh-to-age
