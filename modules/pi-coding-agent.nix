@@ -1,9 +1,16 @@
 { inputs, ... }:
 {
   flake.modules.hjem.pi-coding-agent =
-    { config, osConfig, ... }:
+    {
+      config,
+      osConfig,
+      pkgs,
+      ...
+    }:
     let
       cfg = config.programs.pi.coding-agent;
+      inherit (pkgs.stdenv.hostPlatform) system;
+      inherit (inputs.self.packages.${system}) pi-mcp-adapter pi-claude-bridge;
     in
     {
       # binary cache
@@ -30,7 +37,15 @@
         })
       ];
 
-      programs.pi.coding-agent.wsl = osConfig.wsl.enable or false;
-      packages = [ cfg.finalPackage ];
+      programs.pi.coding-agent = {
+        wsl = osConfig.wsl.enable or false;
+        extensions = [
+          "${pi-claude-bridge}/lib/node_modules/pi-claude-bridge"
+          "${pi-mcp-adapter}/lib/node_modules/pi-mcp-adapter"
+        ];
+      };
+      packages = [
+        cfg.finalPackage
+      ];
     };
 }
