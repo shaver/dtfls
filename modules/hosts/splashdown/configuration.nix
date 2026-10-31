@@ -75,6 +75,7 @@
     imports = with inputs.self.modules.hjem; [
       shaver-3d-printing
       gaming
+      moondeck-buddy
       claude-code
       pi-coding-agent
       haskell
