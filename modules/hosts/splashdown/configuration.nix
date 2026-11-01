@@ -7,6 +7,7 @@
       desktop
       shaver-personal-desktop
       nvidia-hardware
+      (inputs.self.lib.nvidia-power-limit { percent = 80; })
       shaver-personal
       ollama
       bluetooth
