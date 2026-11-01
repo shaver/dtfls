@@ -84,7 +84,7 @@
       settings = {
         cursor.size = 24;
         keyboard.layout = "us";
-        output.layout = "DP-3:0,0; DP-2:3440,-400"; # TODO splashdown
+        output.layout = "Dell Inc. AW3423DWF FB742S3:0,0; Dell Inc. Dell AW3420DW #ASONM/I5x9fd:3440,-400"; # TODO splashdown
         session.default = "Umbriel";
         idle.timeout = 300;
       };
