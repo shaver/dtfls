@@ -181,7 +181,7 @@ let
                     query = "@conditional.outer";
                     desc = "Next conditional start";
                   };
-                  "]l" = {
+                  "]o" = {
                     query = "@loop.outer";
                     desc = "Next loop start";
                   };
@@ -213,7 +213,7 @@ let
                     query = "@conditional.outer";
                     desc = "Prev conditional start";
                   };
-                  "[l" = {
+                  "[o" = {
                     query = "@loop.outer";
                     desc = "Prev loop start";
                   };
@@ -249,10 +249,33 @@ let
         };
 
         # ── Completion ────────────────────────────────────────────────────────
-        autocomplete.blink-cmp.enable = true;
+        autocomplete.blink-cmp = {
+          enable = true;
+          # nvf's default also includes "buffer" (words from open buffers),
+          # which is noisy in prose; mkForce since nvf's list would merge in
+          setupOpts.sources.default = lib.mkForce [
+            "lsp"
+            "path"
+            "snippets"
+          ];
+        };
 
         # ── Telescope ─────────────────────────────────────────────────────────
         telescope.enable = true;
+        keymaps = [
+          {
+            key = "<leader>fk";
+            mode = "n";
+            action = "<cmd>Telescope keymaps<CR>";
+            desc = "Keymaps [Telescope]";
+          }
+          {
+            key = "<leader>fc";
+            mode = "n";
+            action = "<cmd>Telescope commands<CR>";
+            desc = "Commands [Telescope]";
+          }
+        ];
 
         # ── Status / tab line ─────────────────────────────────────────────────
         statusline.lualine.enable = true;
