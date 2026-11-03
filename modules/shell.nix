@@ -72,7 +72,7 @@
             format = "$output ";
           };
           format = "$all$jj$line_break$shell$character";
-          right_format = "$time$nix_shell";
+          # right_format = "$time$nix_shell";
           username = {
             style_user = "blue bold";
             style_root = "red bold";
@@ -91,8 +91,9 @@
           git_commit.disabled = true;
           git_status.disabled = true;
           nix_shell = {
+            disabled = true;
             symbol = "❄️";
-            format = "[\\($symbol$name\\)]($style) ";
+            format = "[$symbol]($style) ";
           };
         };
       };
