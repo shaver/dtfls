@@ -3,9 +3,9 @@
     "type": "github",
     "owner": "sadjow",
     "repo": "claude-code-nix",
-    "rev": "bdbe1006fc66bde6578ebc732bd2eb4312b6871d",
-    "narHash": "sha256-kqeV8WOaJ1E/nS17HwhLgB6EbA+jlzXEgPH3YI4d3N0=",
-    "lastModified": 1793671290
+    "rev": "7408fb1fbd27a75e8acd655b826ec7d66c54bf68",
+    "narHash": "sha256-/a6BDNT687BMsWHiobSSO9GiWNmp4sLzUYg8ukEeSPo=",
+    "lastModified": 1794253360
   },
   "flake-parts": {
     "type": "github",
@@ -19,9 +19,9 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "8408642aa3035135fa6d70269dc93e0814e2a4f6",
-    "narHash": "sha256-hmlUXxCk6On7Hrop/TyS3//dgI2BLvaN4TEsOq1ma+Y=",
-    "lastModified": 1793333241
+    "rev": "28cec3017cc94842f919f8f294c8b7136216b79b",
+    "narHash": "sha256-tttNqwFIXsClznNv3uEltACsfBm8xIDo9bPl+BHqYZc=",
+    "lastModified": 1794190356
   },
   "jiaoshijie-undotree": {
     "type": "github",
@@ -51,55 +51,55 @@
     "type": "github",
     "owner": "fufexan",
     "repo": "nix-gaming",
-    "rev": "dac06f956e8d6b76a0a67487c7fc3e52e171b23d",
-    "narHash": "sha256-TA0MWE1lWF0nE89lEF4fYjBwkEjIiOgJcKjEk5C1u5k=",
-    "lastModified": 1793701090
+    "rev": "917f7eeedd72527e044c4ef2c18df58f0e7d1244",
+    "narHash": "sha256-rcjqitVbDxtmNWDv35gPmTexDeQFsV9BF4GD3NmQgtA=",
+    "lastModified": 1794224602
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1106360.0bb2eedc20e4/nixexprs.tar.xz",
-    "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
-    "narHash": "sha256-us2GRWGXbOQpN1blyJGvmdx+g4bv9GoFYq5iiOHRiZ8="
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1108983.f9a75f41be3a/nixexprs.tar.xz",
+    "rev": "f9a75f41be3a74eab55d3a7679d34ad6cc0da977",
+    "narHash": "sha256-Q62pssAT9r01POiSyXW0IPXBWhntiKqMhzlsp3bsl5I="
   },
   "noctalia": {
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "3c7e6343efac4cb683eb102374cccb210c05dc1c",
-    "narHash": "sha256-/He0g2IYutiafqOvCkR0Nb4tdb9Cnn+gAIZ0hzECIMc=",
-    "lastModified": 1793676314
+    "rev": "0a0d63805eb6e17e699de391171618a5d696726d",
+    "narHash": "sha256-n/joTTVKRUS8lMZ5bU7eBSRZg5aJjR5jKrNlJGy4saU=",
+    "lastModified": 1794251266
   },
   "nvf": {
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "ab3159aea7707333e689289a74545b26c1c9d37c",
-    "narHash": "sha256-N5ulCQwTIcd3Il7uE491pbkRTWL2BtZKf/B5jfavmCo=",
-    "lastModified": 1793550142
+    "rev": "c5a635adcd638bc1d5bc31098a2ba4b89bfe787b",
+    "narHash": "sha256-2xkGsyT1C6+z9fx72VeRdmExCIOibm4q0Rk7mfKBCj0=",
+    "lastModified": 1794159704
   },
   "pi": {
     "type": "github",
     "owner": "lukasl-dev",
     "repo": "pi.nix",
-    "rev": "69237751bf82a1a508e3d7d55256484844fe64af",
-    "narHash": "sha256-dfFbHZN4Iwgzd3B2n0klCbCfwaEATq14lJ/45F/fMgA=",
-    "lastModified": 1793644189
+    "rev": "ff3bad1a08b4beb705d9ae1b7d8579174c0c9126",
+    "narHash": "sha256-cTfr+9NLzVV8BmUbDS42YuYTqaXwxqOvAyTMmJlWi4U=",
+    "lastModified": 1794250493
   },
   "proton-cachyos": {
     "type": "github",
     "owner": "powerofthe69",
     "repo": "proton-cachyos-nix",
-    "rev": "94dd572eddd7ce5c082493f154b92748a5b772d0",
-    "narHash": "sha256-maHHDWknqKxOACpbSFY63o9b98COHbH0KSREppljgG0=",
-    "lastModified": 1793625258
+    "rev": "573149061c577203c3b20afd7f32f9c677550f77",
+    "narHash": "sha256-cXsoUQNUfsyrl+Nsab+6CyClTUauW2zZ1t7WdNr/tTY=",
+    "lastModified": 1794159535
   },
   "sops-nix": {
     "type": "github",
     "owner": "Mic92",
     "repo": "sops-nix",
-    "rev": "b18e01ce148eb3efff5de2f2d3181ca53b2b2a54",
-    "narHash": "sha256-GoOvpdsjO5hqZuO6T6ok9u6sJEjO0iPli2zRr9oNUNw=",
-    "lastModified": 1793657466
+    "rev": "89a234ce2daf6e568a7d4b4fe250afdd23d84e20",
+    "narHash": "sha256-ZlE4BtMjWhfC6rFXLO9Qimn36Ene1INqCgKDDvazjhc=",
+    "lastModified": 1793995029
   },
   "tmux-status-nvim": {
     "type": "github",
@@ -113,9 +113,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "e0da106317b10831e709618f52cc00bd7a9dc793",
-    "narHash": "sha256-zQ+Kb+qj8s+HGAU/7h2pE9gnQKeZd7jiTN+3inaCY5w=",
-    "lastModified": 1793669697
+    "rev": "0a22bd2431b8d735ffc6dbb47e29b5b1fdcd5b02",
+    "narHash": "sha256-r2gk56nlrvI1j7ypEoIZiggYsBuK5nxegWbtsQ2oSxI=",
+    "lastModified": 1794235787
   },
   "xivlauncher-rb": {
     "type": "github",
