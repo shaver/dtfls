@@ -368,32 +368,6 @@ let
             package = pkgs.vimPlugins.inc-rename-nvim;
             setup = "require('inc_rename').setup({})";
           };
-          neotest = {
-            package = pkgs.vimPlugins.neotest;
-            after = [
-              "neotest-python"
-              "neotest-golang"
-              "neotest-haskell"
-            ];
-            setup = ''
-              require('neotest').setup({
-                adapters = {
-                  require('neotest-python'),
-                  require('neotest-golang'),
-                  require('neotest-haskell'),
-                },
-              })
-            '';
-          };
-          neotest-python = {
-            package = pkgs.vimPlugins.neotest-python;
-          };
-          neotest-golang = {
-            package = pkgs.vimPlugins.neotest-golang;
-          };
-          neotest-haskell = {
-            package = pkgs.vimPlugins.neotest-haskell;
-          };
           ts-comments-nvim = {
             package = pkgs.vimPlugins.ts-comments-nvim;
             setup = "require('ts-comments').setup()";
