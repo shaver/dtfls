@@ -51,9 +51,9 @@
     "type": "github",
     "owner": "fufexan",
     "repo": "nix-gaming",
-    "rev": "01772509e6c8d07deaa5f5c1d5fd494c3460a026",
-    "narHash": "sha256-sMffGA16WJBVMDoWUPLH6PXy5V5W3IeaTOxgA9cYw8A=",
-    "lastModified": 1794293202
+    "rev": "3d460ece2fde6ba86a7f9deacc9a65e40f9ed19e",
+    "narHash": "sha256-x97M5XOV+IDcm7K9Bv6a7OUePyEVCjPeLpr3iD3BJD8=",
+    "lastModified": 1794375173
   },
   "nixpkgs": {
     "type": "tarball",
@@ -65,9 +65,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "03d144e58367f9d7e69b7c085c1dda9ffee69bf6",
-    "narHash": "sha256-ifRSEpQSKEn/4v2KnFFejejGfJLg+iZHgGzGHhJWSEY=",
-    "lastModified": 1794336464
+    "rev": "750418a7d58825a90b077bce0efe5410f217ace8",
+    "narHash": "sha256-eXrRtc3JmF6wT6bC34LTZXQ8In36NNR94xUWoW2dT9c=",
+    "lastModified": 1794400433
   },
   "nvf": {
     "type": "github",
@@ -113,9 +113,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "d13b34108f68cd8f72a5a5df40b281bdf60c0758",
-    "narHash": "sha256-nP73DOkupzZ1WksKOSZGDx2ypD0tzZOKD9UoX+vp7LQ=",
-    "lastModified": 1794328794
+    "rev": "d3c85928dc05d7913a5aaaa094dec9db30c2f6f4",
+    "narHash": "sha256-Kikh8qX/gg+iONFPZSFNE1UE4mKcKsyRXdsxSk8gpkk=",
+    "lastModified": 1794392787
   },
   "xivlauncher-rb": {
     "type": "github",
