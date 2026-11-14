@@ -90,10 +90,6 @@ url = "github:Mic92/sops-nix"
 [inputs.sops-nix.follows]
 nixpkgs = "nixpkgs"
 
-[inputs.tmux-status-nvim]
-url  = "github:christopher-francisco/tmux-status.nvim"
-type = "fetch"
-
 [inputs.umbriel]
 url = "github:noctalia-dev/umbriel"
 
