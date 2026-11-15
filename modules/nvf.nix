@@ -327,6 +327,9 @@ let
           };
           grug-far-nvim.enable = true;
           motion.flash-nvim.enable = true;
+          surround = {
+            enable = true;
+          };
         };
 
         # ── Which-key ─────────────────────────────────────────────────────────
