@@ -65,9 +65,9 @@
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "noctalia",
-    "rev": "9ef3714b2daabc415640ed711eb4400a7b86674d",
-    "narHash": "sha256-M9xrFysHI5O/1mkjOxxoqYqh2CiCHT6T/LkK7zhUFUg=",
-    "lastModified": 1795566013
+    "rev": "30254799f51c6bdb06fa21936e36214c93a455b5",
+    "narHash": "sha256-HgJ/d9CgRfMbjj1yhiLZrtl1danFXH2tXqOdwnQn0gI=",
+    "lastModified": 1795614498
   },
   "nvf": {
     "type": "github",
@@ -81,9 +81,9 @@
     "type": "github",
     "owner": "lukasl-dev",
     "repo": "pi.nix",
-    "rev": "00ad9b10f40b508c0bb9555485bb650396f1858e",
-    "narHash": "sha256-wobpbvPL4QON/BbbXSPH1W20ohNLf8JP4DhG1p7gHT0=",
-    "lastModified": 1795549003
+    "rev": "9b53beb713d92a2a4ab128e6d2ffc8e0505d5eb5",
+    "narHash": "sha256-btR97QE2H37S5vTNMBcdTKGW08EFoZse75vSP9snDhU=",
+    "lastModified": 1795632188
   },
   "proton-cachyos": {
     "type": "github",
@@ -105,17 +105,17 @@
     "type": "github",
     "owner": "tailscale",
     "repo": "tailscale",
-    "rev": "445df50dcf76b6172dc4688c2097c47878f41641",
-    "narHash": "sha256-WfCGEZAqX5u0NVqiAq6Pc7Lq+U0ZM+eXzji73KbW/RQ=",
-    "lastModified": 1795592081
+    "rev": "f2c476cf173836a9873c7c9d593c9784619ecd80",
+    "narHash": "sha256-Y/cRO/g0TAayU40cCiKvcBZjLFZagcj3doyM65/6fXU=",
+    "lastModified": 1795643061
   },
   "umbriel": {
     "type": "github",
     "owner": "noctalia-dev",
     "repo": "umbriel",
-    "rev": "ce2d8eed0f8b01a43a163f90f819a930c8c62e8c",
-    "narHash": "sha256-Kzp7Tq0qZkYebTm20gqZKNxOQzZ8F7Ns47z/2lIhSL0=",
-    "lastModified": 1795609760
+    "rev": "6a7ee9587c521799712e809b571b7d01b2372cdb",
+    "narHash": "sha256-GjZPuCryDDvJyEhVaQ5Oy7vew+OfB3vALI7iBIMGQ9Y=",
+    "lastModified": 1795641084
   },
   "xivlauncher-rb": {
     "type": "github",
