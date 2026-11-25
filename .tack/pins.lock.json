@@ -101,6 +101,14 @@
     "narHash": "sha256-2p8/wnENYHU2Z79Ir/rpq+V1sMI9mSD6xGAlvlbVBUY=",
     "lastModified": 1795471345
   },
+  "tailscale": {
+    "type": "github",
+    "owner": "tailscale",
+    "repo": "tailscale",
+    "rev": "258b0879984b1a2c23cb11e4674d84b3fb536c7e",
+    "narHash": "sha256-lcmTp9Rp2wL4ZP/2Bnj6GtVccTN3Fj/TOfSNqNDeCNk=",
+    "lastModified": 1795572539
+  },
   "umbriel": {
     "type": "github",
     "owner": "noctalia-dev",

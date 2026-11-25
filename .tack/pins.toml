@@ -101,3 +101,9 @@ url = "github:shaver/nixos-xivlauncher-rb"
 
 [inputs.xivlauncher-rb.follows]
 nixpkgs = "nixpkgs"
+
+[inputs.tailscale]
+url = "github:tailscale/tailscale"
+
+[inputs.tailscale.follows]
+nixpkgs = "nixpkgs"

@@ -1,6 +1,6 @@
-{
+{ inputs, ... }: {
   flake.modules.nixos.base-networking =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       services.resolved = {
         enable = true;
@@ -23,6 +23,7 @@
 
       services.tailscale = {
         enable = true;
+        package = lib.mkDefault inputs.tailscale.packages.${pkgs.stdenv.hostPlatform.system}.tailscale;
       };
 
       environment.systemPackages = [ pkgs.ethtool ];
