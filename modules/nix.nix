@@ -7,6 +7,9 @@
       config,
       ...
     }:
+    let
+      inherit (inputs.tack.packages.${pkgs.stdenv.hostPlatform.system}) tack;
+    in
     {
       nix = {
         optimise.automatic = config.nix.enable;
@@ -34,7 +37,7 @@
       environment.variables.TACK_NIX_CONF_TOKENS = "1";
 
       environment.systemPackages = [
-        pkgs.tack
+        tack
         pkgs.rippkgs
       ];
     };

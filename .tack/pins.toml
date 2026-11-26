@@ -107,3 +107,6 @@ url = "github:tailscale/tailscale"
 
 [inputs.tailscale.follows]
 nixpkgs = "nixpkgs"
+
+[inputs.tack]
+url = "github:manic-systems/tack"
